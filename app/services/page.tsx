@@ -1,6 +1,8 @@
 'use client';
 
-import React from 'react';
+import React, { useEffect } from 'react';
+import gsap from 'gsap';
+import ScrollTrigger from 'gsap/ScrollTrigger';
 
 // TypeScript Interfaces
 interface ServiceCard {
@@ -190,6 +192,30 @@ const productRows: ProductRow[] = [
 ];
 
 export default function ServicesPage() {
+  useEffect(() => {
+    gsap.registerPlugin(ScrollTrigger);
+
+    const reveals = document.querySelectorAll('.showcase-reveal');
+    reveals.forEach((element, index) => {
+      gsap.to(element, {
+        opacity: 1,
+        y: 0,
+        duration: 0.6,
+        delay: index * 0.1,
+        scrollTrigger: {
+          trigger: element,
+          start: 'top center',
+          end: 'bottom center',
+          once: true,
+        },
+      });
+    });
+
+    return () => {
+      ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
+    };
+  }, []);
+
   return (
     <div className="bg-black text-white overflow-x-hidden block">
       {/* Global Header */}
