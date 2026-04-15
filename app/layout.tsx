@@ -1,7 +1,23 @@
 import type { Metadata } from 'next';
+import { Outfit, Cormorant_Garamond } from 'next/font/google';
 import './globals.css';
 import { PreloaderProvider } from './components/PreloaderContext';
 import PreloaderOverlay from './components/PreloaderOverlay';
+
+const outfit = Outfit({
+  variable: '--font-main',
+  subsets: ['latin'],
+  weight: ['300', '400', '700', '900'],
+  display: 'swap',
+});
+
+const cormorantGaramond = Cormorant_Garamond({
+  variable: '--font-serif',
+  subsets: ['latin'],
+  weight: ['700'],
+  style: ['italic'],
+  display: 'swap',
+});
 
 export const metadata: Metadata = {
   title: 'Atrellis',
@@ -14,10 +30,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
-      <head>
-        <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;700;900&family=Cormorant+Garamond:ital,wght@1,700&display=swap" rel="stylesheet" />
-      </head>
+    <html lang="en" className={`${outfit.variable} ${cormorantGaramond.variable}`}>
       <body>
         <PreloaderProvider>
           <PreloaderOverlay />
