@@ -3,6 +3,7 @@
 import React, { useEffect, useState } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import SocialProofSection from './SocialProofSection';
 
 // Register ScrollTrigger plugin
 if (typeof window !== 'undefined') {
@@ -135,6 +136,9 @@ export default function ServicesPageClient() {
           <p>From bespoke 3D visualization to smart home integration, we bridge the gap between design philosophy and precise execution.</p>
         </div>
       </section>
+
+      {/* Social Proof Section */}
+      <SocialProofSection />
 
       {/* Services Grid */}
       <section className="services-section">
