@@ -2,6 +2,10 @@ import type { Metadata } from 'next';
 import './globals.css';
 import { PreloaderProvider } from './components/PreloaderContext';
 import PreloaderOverlay from './components/PreloaderOverlay';
+import { Geist } from "next/font/google";
+import { cn } from "@/lib/utils";
+
+const geist = Geist({subsets:['latin'],variable:'--font-sans'});
 
 export const metadata: Metadata = {
   title: 'Atrellis',
@@ -14,7 +18,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
+    <html lang="en" className={cn("font-sans", geist.variable)}>
       <head>
         <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;700;900&family=Cormorant+Garamond:ital,wght@1,700&display=swap" rel="stylesheet" />
       </head>
