@@ -15,6 +15,9 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
+      <head>
+        <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;700;900&family=Cormorant+Garamond:ital,wght@1,700&display=swap" rel="stylesheet" />
+      </head>
       <body>
         <PreloaderProvider>
           <PreloaderOverlay />
