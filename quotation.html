@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Atrellis | Instant Quotation</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;700;900&family=Cormorant+Garamond:ital,wght@1,700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            background: #000;
+            color: var(--text-offwhite);
+            font-family: 'Inter', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            overflow: hidden;
+            opacity: 0;
+            transition: opacity 1s ease;
+        }
+        
+        body.loaded {
+            opacity: 1;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 600px;
+            padding: 60px;
+            background: var(--glass-background);
+            backdrop-filter: var(--glass-blur);
+            -webkit-backdrop-filter: var(--glass-blur);
+            border: 1px solid var(--glass-border);
+            border-radius: 40px;
+            text-align: center;
+            box-shadow: 0 40px 100px rgba(0,0,0,0.5);
+        }
+
+        .accent-line {
+            width: 50px;
+            height: 3px;
+            background: var(--accent-blue);
+            margin: 0 auto 40px;
+            border-radius: 2px;
+        }
+
+        h1 {
+            font-weight: 900;
+            text-transform: uppercase;
+            letter-spacing: 6px;
+            font-size: 2.2rem;
+            margin-bottom: 15px;
+            color: var(--text-offwhite);
+        }
+
+        p {
+            color: var(--text-grey);
+            margin-bottom: 50px;
+            font-size: 1rem;
+            line-height: 1.6;
+        }
+
+        .engine-placeholder {
+            border: 1px solid var(--glass-border);
+            border-radius: 20px;
+            padding: 80px 20px;
+            color: var(--text-grey);
+            font-style: italic;
+            background: rgba(255,255,255,0.01);
+            font-size: 0.9rem;
+        }
+
+        .back-btn {
+            display: inline-block;
+            margin-top: 50px;
+            text-decoration: none;
+            color: var(--accent-blue);
+            font-weight: 600;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            transition: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .back-btn:hover {
+            color: white;
+            letter-spacing: 4px;
+            transform: translateX(-5px);
+        }
+    </style>
+</head>
+<body onload="document.body.classList.add('loaded')">
+    <div class="container">
+        <div class="accent-line"></div>
+        <h1>Assessment</h1>
+        <p>Initializing your bespoke architectural quotation engine...</p>
+        
+        <div class="step-indicator-container">
+            <div class="step-indicator" id="step-progress" style="width: 14%;"></div>
+        </div>
+
+        <div class="quotation-engine-wrapper">
+            <!-- Step 1: Property Type -->
+            <div class="step-container active" id="step-1">
+                <h2>1. Property Type</h2>
+                <div class="options-grid">
+                    <div class="glass-radio-card" onclick="selectOption('propertyType', 'HDB BTO', this)">HDB BTO</div>
+                    <div class="glass-radio-card" onclick="selectOption('propertyType', 'HDB Resale', this)">HDB Resale</div>
+                    <div class="glass-radio-card" onclick="selectOption('propertyType', 'Condominium', this)">Condominium</div>
+                    <div class="glass-radio-card" onclick="selectOption('propertyType', 'Landed', this)">Landed</div>
+                    <div class="glass-radio-card" onclick="selectOption('propertyType', 'Commercial', this)">Commercial</div>
+                </div>
+            </div>
+
+            <!-- Step 2: Property Size -->
+            <div class="step-container" id="step-2">
+                <h2>2. Property Size</h2>
+                <div class="options-grid">
+                    <div class="glass-radio-card" onclick="selectOption('propertySize', 'Below 600 sqft', this)">Below 600 sqft</div>
+                    <div class="glass-radio-card" onclick="selectOption('propertySize', '601 - 1000 sqft', this)">601 - 1000 sqft</div>
+                    <div class="glass-radio-card" onclick="selectOption('propertySize', '1001 - 1500 sqft', this)">1001 - 1500 sqft</div>
+                    <div class="glass-radio-card" onclick="selectOption('propertySize', 'Above 1500 sqft', this)">Above 1500 sqft</div>
+                </div>
+            </div>
+
+            <!-- Step 3: Style Preference -->
+            <div class="step-container" id="step-3">
+                <h2>3. Style Preference</h2>
+                <div class="options-grid">
+                    <div class="glass-radio-card" onclick="selectOption('style', 'Minimalist', this)">Minimalist</div>
+                    <div class="glass-radio-card" onclick="selectOption('style', 'Modern Luxury', this)">Modern Luxury</div>
+                    <div class="glass-radio-card" onclick="selectOption('style', 'Scandinavian', this)">Scandinavian</div>
+                    <div class="glass-radio-card" onclick="selectOption('style', 'Industrial', this)">Industrial</div>
+                    <div class="glass-radio-card" onclick="selectOption('style', 'Japandi', this)">Japandi</div>
+                    <div class="glass-radio-card" onclick="selectOption('style', 'Contemporary', this)">Contemporary</div>
+                    <div class="glass-radio-card" onclick="selectOption('style', 'Classic Elegant', this)">Classic Elegant</div>
+                </div>
+            </div>
+
+            <!-- Step 4: Work Scope -->
+            <div class="step-container" id="step-4">
+                <h2>4. Scope of Work (Select Multiple)</h2>
+                <div class="options-grid">
+                    <div class="glass-radio-card multi" onclick="toggleMultiOption('scope', 'Carpentry', this)">Carpentry</div>
+                    <div class="glass-radio-card multi" onclick="toggleMultiOption('scope', 'Kitchen', this)">Kitchen</div>
+                    <div class="glass-radio-card multi" onclick="toggleMultiOption('scope', 'Flooring', this)">Flooring</div>
+                    <div class="glass-radio-card multi" onclick="toggleMultiOption('scope', 'Painting', this)">Painting</div>
+                    <div class="glass-radio-card multi" onclick="toggleMultiOption('scope', 'Electrical', this)">Electrical</div>
+                    <div class="glass-radio-card multi" onclick="toggleMultiOption('scope', 'Plumbing', this)">Plumbing</div>
+                    <div class="glass-radio-card multi" onclick="toggleMultiOption('scope', 'False Ceiling', this)">False Ceiling</div>
+                    <div class="glass-radio-card multi" onclick="toggleMultiOption('scope', 'Doors/Windows', this)">Doors/Windows</div>
+                    <div class="glass-radio-card multi" onclick="toggleMultiOption('scope', 'Blinds/Shading', this)">Blinds/Shading</div>
+                </div>
+            </div>
+
+            <!-- Step 5: Budget Tier -->
+            <div class="step-container" id="step-5">
+                <h2>5. Finish Tier</h2>
+                <div class="options-grid">
+                    <div class="glass-radio-card" onclick="selectOption('budget', 'Economic', this)">
+                        <strong>Economic</strong><br><small>Functional & clean</small>
+                    </div>
+                    <div class="glass-radio-card" onclick="selectOption('budget', 'Mid-Range', this)">
+                        <strong>Mid-Range</strong><br><small>Balanced aesthetics</small>
+                    </div>
+                    <div class="glass-radio-card" onclick="selectOption('budget', 'Premium', this)">
+                        <strong>Premium</strong><br><small>Luxury materials</small>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Step 6: Contact Details -->
+            <div class="step-container" id="step-6">
+                <h2>6. Your Details</h2>
+                <div class="form-group">
+                    <input type="text" id="contactName" class="glass-input" placeholder="Name" required>
+                    <input type="email" id="contactEmail" class="glass-input" placeholder="Email Address" required>
+                    <input type="tel" id="contactPhone" class="glass-input" placeholder="Contact Number">
+                </div>
+            </div>
+
+            <!-- Step 7: Summary -->
+            <div class="step-container" id="step-7">
+                <h2>Indicative Estimate</h2>
+                <div class="estimate-box">
+                    <div class="estimate-range" id="estimateOutput">S$ -- , ---</div>
+                    <p class="estimate-disclaimer">This is a real-time indicative range based on standard metrics. Final quotation is subject to a detailed site survey and material selection.</p>
+                </div>
+                <button class="glass-btn primary" onclick="submitLead()">REQUEST DETAILED QUOTE</button>
+            </div>
+            
+            <div class="navigation-controls">
+                <button id="btn-prev" class="glass-btn secondary" style="display: none;" onclick="prevStep()">Back</button>
+                <button id="btn-next" class="glass-btn primary" onclick="nextStep()">Continue</button>
+            </div>
+        </div>
+
+        <a href="services.html" class="back-link">← Cancel Request</a>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="js/quotation.js"></script>
+</body>
+</html>
