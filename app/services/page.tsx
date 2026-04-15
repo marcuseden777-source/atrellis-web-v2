@@ -191,29 +191,30 @@ const productRows: ProductRow[] = [
 
 export default function ServicesPage() {
   return (
-    <div className="services-page">
+    <div className="bg-black text-white overflow-x-hidden block">
       {/* Global Header */}
-      <header className="glass-header">
+      <header className="fixed top-0 left-0 w-full px-12 py-5 flex justify-between items-center bg-black/40 backdrop-blur-2xl border-b border-white/5 z-100">
         <div className="logo">
           <img
             src="/assets/trustbar_logos/atrellis_brand_nobg.png"
             alt="Atrellis Brand"
+            className="h-10 w-auto"
           />
         </div>
-        <a href="/quotation" className="glass-btn primary outline">
+        <a href="/quotation" className="px-8 py-3 rounded-full bg-white/5 border border-white/15 backdrop-blur-xl text-white font-bold text-sm uppercase letter-spacing-2 hover:bg-white/10 transition-all duration-500">
           GET A FAST QUOTE
         </a>
       </header>
 
       {/* Hero Section */}
-      <section className="services-hero">
-        <div className="hero-content showcase-reveal">
-          <h1>
+      <section className="min-h-screen flex items-center justify-center text-center pt-24">
+        <div className="opacity-0 translate-y-10 showcase-reveal">
+          <h1 className="text-6xl font-light letter-spacing-1 text-white mb-5">
             ENGINEERED
             <br />
-            <span>LUXURY</span>
+            <span className="font-bold text-blue-500 drop-shadow-lg" style={{ textShadow: '0 0 40px rgba(43, 115, 240, 0.3)' }}>LUXURY</span>
           </h1>
-          <p>
+          <p className="max-w-xl mx-auto text-white/50 text-xl leading-relaxed">
             From bespoke 3D visualization to smart home integration, we bridge
             the gap between design philosophy and precise execution.
           </p>
@@ -221,26 +222,30 @@ export default function ServicesPage() {
       </section>
 
       {/* Services Grid */}
-      <section className="services-section">
-        <div className="section-container">
-          <header className="section-intro showcase-reveal">
-            <h2 className="section-title">ATRELLIS SYSTEMS</h2>
-            <p className="section-subtitle">
+      <section className="relative border-t border-white/5 bg-black/20">
+        <div className="max-w-7xl mx-auto px-4 py-24">
+          <header className="opacity-0 translate-y-10 showcase-reveal mb-16">
+            <h2 className="text-4xl font-bold letter-spacing-1 text-white mb-16 text-center uppercase">ATRELLIS SYSTEMS</h2>
+            <p className="text-white/50 text-lg max-w-md mx-auto mb-10 letter-spacing-0.5">
               A vertically integrated approach to architectural renovation.
             </p>
           </header>
 
-          <div className="solution-grid">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {serviceCards.map((card) => (
-              <div key={card.id} className="glass-system-card showcase-reveal">
-                <div className="card-index">
+              <div key={card.id} className="bg-white/5 border border-white/10 backdrop-blur-xl rounded-3xl p-10 relative transition-all duration-500 overflow-hidden opacity-0 translate-y-10 showcase-reveal hover:translate-y-[-10px] hover:bg-white/8 hover:border-white/20 hover:shadow-2xl group">
+                <div className="absolute inset-0 top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-blue-500 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                <div className="text-6xl font-black text-blue-500/20 absolute -top-2 right-2 leading-none">
                   {String(card.id).padStart(2, '0')}
                 </div>
-                <h3>{card.title}</h3>
-                <p>{card.description}</p>
-                <ul className="card-features">
+                <h3 className="text-xl font-bold text-white mb-5 relative">{card.title}</h3>
+                <p className="text-white/50 leading-relaxed mb-6 text-base">{card.description}</p>
+                <ul className="list-none p-0 m-0">
                   {card.features.map((feature, idx) => (
-                    <li key={idx}>{feature}</li>
+                    <li key={idx} className="text-white/95 text-sm mb-2.5 pl-5 relative opacity-80">
+                      <span className="absolute left-0 text-blue-500 font-black">→</span>
+                      {feature}
+                    </li>
                   ))}
                 </ul>
               </div>
@@ -250,21 +255,21 @@ export default function ServicesPage() {
       </section>
 
       {/* Case Studies / Portfolio Section */}
-      <section className="portfolio-section">
-        <div className="section-container">
-          <h2 className="section-title showcase-reveal">CASE STUDIES</h2>
-          <div className="portfolio-grid">
+      <section className="relative border-t border-white/5 bg-black/15">
+        <div className="max-w-7xl mx-auto px-4 py-24">
+          <h2 className="text-4xl font-bold letter-spacing-1 text-white mb-16 text-center uppercase opacity-0 translate-y-10 showcase-reveal">CASE STUDIES</h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
             {portfolioCards.map((card) => (
-              <div key={card.id} className="portfolio-card showcase-reveal">
+              <div key={card.id} className="rounded-3xl overflow-hidden bg-white/2 border border-white/5 transition-all duration-500 opacity-0 translate-y-10 showcase-reveal hover:border-blue-500 hover:shadow-2xl">
                 <div
-                  className="portfolio-img"
+                  className="w-full h-56 bg-cover bg-center transition-transform duration-600"
                   style={{
                     backgroundImage: `url('${card.imagePath}')`,
                   }}
                 />
-                <div className="portfolio-info">
-                  <h4>{card.title}</h4>
-                  <p>{card.description}</p>
+                <div className="p-7">
+                  <h4 className="text-xl font-bold text-white mb-2.5">{card.title}</h4>
+                  <p className="text-white/50 text-sm leading-relaxed">{card.description}</p>
                 </div>
               </div>
             ))}
@@ -273,33 +278,35 @@ export default function ServicesPage() {
       </section>
 
       {/* Dedicated Products Deep Dive */}
-      <section className="products-section deep-dive-section">
-        <div className="section-container">
-          <header className="section-intro showcase-reveal">
-            <h2 className="section-title">ENGINEERED PRODUCTS</h2>
-            <p className="section-subtitle">
+      <section className="relative border-t border-white/5 bg-black/25">
+        <div className="max-w-7xl mx-auto px-4 py-24">
+          <header className="opacity-0 translate-y-10 showcase-reveal mb-16">
+            <h2 className="text-4xl font-bold letter-spacing-1 text-white mb-16 text-center uppercase">ENGINEERED PRODUCTS</h2>
+            <p className="text-white/50 text-lg max-w-md mx-auto letter-spacing-0.5">
               The physical building blocks of our premium environments.
             </p>
           </header>
 
-          <div className="product-showcase-wrapper">
+          <div className="flex flex-col gap-10">
             {productRows.map((product) => (
-              <div key={product.id} className="product-glass-row showcase-reveal">
-                <div className="product-image-col">
+              <div key={product.id} className="flex flex-wrap bg-white/2 border border-white/10 backdrop-blur-xl rounded-3xl p-10 gap-10 transition-all duration-500 relative overflow-hidden opacity-0 translate-y-10 showcase-reveal hover:bg-white/8 hover:border-white/20 hover:translate-y-[-5px] hover:shadow-2xl group">
+                <div className="absolute left-0 top-0 w-1 h-full bg-gradient-to-b from-transparent via-blue-500 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                <div className="flex-1.5 min-w-80 h-96 rounded-2xl overflow-hidden mr-5">
                   <img
                     src={product.imagePath}
                     alt={`${product.title} ${product.subtitle} Mockup`}
+                    className="w-full h-full object-cover transition-transform duration-800 group-hover:scale-108"
                   />
                 </div>
-                <div className="product-title-col">
-                  <h3>{product.title}</h3>
-                  <span className="product-subtitle">{product.subtitle}</span>
+                <div className="flex-1 min-w-64 flex flex-col justify-center">
+                  <h3 className="text-3xl font-bold text-white mb-2.5">{product.title}</h3>
+                  <span className="text-blue-500 text-base letter-spacing-1 uppercase font-bold">{product.subtitle}</span>
                 </div>
-                <div className="product-variants-col">
+                <div className="flex-3 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-7">
                   {product.variants.map((variant, idx) => (
-                    <div key={idx} className="variant-item">
-                      <h4>{variant.title}</h4>
-                      <p>{variant.description}</p>
+                    <div key={idx} className="bg-black/20 border border-white/5 p-6 rounded-2xl transition-all duration-300 hover:bg-blue-500/10 hover:border-blue-500 hover:translate-y-[-3px]">
+                      <h4 className="text-lg text-white mb-3 font-bold">{variant.title}</h4>
+                      <p className="text-sm text-white/50 leading-relaxed m-0">{variant.description}</p>
                     </div>
                   ))}
                 </div>
@@ -310,7 +317,7 @@ export default function ServicesPage() {
       </section>
 
       {/* Footer */}
-      <footer className="glass-footer">
+      <footer className="text-center py-12 px-5 border-t border-white/5 text-white/50 text-sm letter-spacing-1">
         <p>
           Atrellis Pte Ltd &copy; 2026. <br />
           All rights reserved.
