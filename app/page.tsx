@@ -32,7 +32,7 @@ export default function LandingPage() {
     tl.fromTo("#build-card", { opacity: 0, x: -50 }, { opacity: 1, x: 0, duration: 0.1 }, 0.7);
     tl.to("#build-card", { opacity: 0, duration: 0.05 }, 0.82);
 
-    tl.fromTo("#final-cta", { opacity: 0, scale: 0.9 }, { opacity: 1, scale: 1, duration: 0.1 }, 0.9);
+    tl.fromTo("#final-cta", { opacity: 0, scale: 0.9 }, { opacity: 1, scale: 1, duration: 0.1 }, 0.85);
     tl.to(".footer-strip", { opacity: 1, duration: 0.1 }, 0.9);
 
     return () => {
@@ -51,7 +51,18 @@ export default function LandingPage() {
 
   return (
     <main className="bg-black text-white selection:bg-blue-500/30">
-      {/* Scrollable Container */}
+      {/* 1. Global Navigation Header (Always Accessible) */}
+      <header className="fixed top-0 left-0 w-full px-6 md:px-12 py-6 flex justify-between items-center z-[100] backdrop-blur-md bg-black/20 border-b border-white/5">
+        <Link href="/" className="logo cursor-pointer block">
+          <img src="/assets/trustbar_logos/atrellis_brand_nobg.png" alt="Atrellis Brand" className="h-8 md:h-10 w-auto" />
+        </Link>
+        <nav className="flex items-center gap-4 md:gap-8">
+          <Link href="/services" className="text-[0.7rem] md:text-xs font-bold tracking-[2px] uppercase hover:text-blue-500 transition-colors">Services</Link>
+          <Link href="/quotation" className="text-[0.7rem] md:text-xs font-bold tracking-[2px] uppercase bg-blue-500/10 border border-blue-500/20 px-4 py-2 rounded-full hover:bg-blue-500 hover:text-white transition-all">Get Quote</Link>
+        </nav>
+      </header>
+
+      {/* 2. Scrollable Container */}
       <div id="scroll-section" className="relative">
         
         {/* The Cinematic Scrubber */}
@@ -107,13 +118,19 @@ export default function LandingPage() {
           </div>
 
           {/* Final CTA */}
-          <div id="final-cta" className="pointer-events-auto mt-[15vh]">
+          <div id="final-cta" className="pointer-events-auto mt-[10vh] flex flex-col items-center gap-4">
             <button 
               onClick={triggerJourney}
-              className="start-journey-btn group"
+              className="start-journey-btn group w-[280px]"
             >
               START JOURNEY
             </button>
+            <Link 
+              href="/quotation" 
+              className="text-[0.7rem] tracking-[3px] uppercase opacity-50 hover:opacity-100 transition-opacity hover:text-blue-400"
+            >
+              OR GET INSTANT QUOTE →
+            </Link>
           </div>
 
           {/* Footer Strip */}
