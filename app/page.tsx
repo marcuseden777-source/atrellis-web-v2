@@ -131,10 +131,10 @@ export default function LandingPage() {
               START JOURNEY
             </button>
             <Link 
-              href="/quotation" 
+              href="/services" 
               className="text-[0.7rem] tracking-[3px] uppercase opacity-50 hover:opacity-100 transition-opacity hover:text-blue-400"
             >
-              OR GET INSTANT QUOTE →
+              SERVICES →
             </Link>
           </div>
 
