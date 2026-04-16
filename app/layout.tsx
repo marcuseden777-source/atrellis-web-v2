@@ -1,5 +1,7 @@
 import type { Metadata } from 'next';
 import { Outfit, Cormorant_Garamond } from 'next/font/google';
+import { Analytics } from '@vercel/analytics/next';
+import { SpeedInsights } from '@vercel/speed-insights/next';
 import './globals.css';
 import { PreloaderProvider } from './components/PreloaderContext';
 import PreloaderOverlay from './components/PreloaderOverlay';
@@ -36,6 +38,8 @@ export default function RootLayout({
           <PreloaderOverlay />
           {children}
         </PreloaderProvider>
+        <Analytics />
+        <SpeedInsights />
       </body>
     </html>
   );
