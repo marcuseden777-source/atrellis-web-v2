@@ -153,13 +153,13 @@ export default function QuotationPage() {
   return (
     <div className="bg-[#050505] min-h-screen text-white flex flex-col items-center pt-20 md:pt-24 pb-12 px-6 selection:bg-blue-500/30">
       {/* Global Header */}
-      <header className="fixed top-0 left-0 w-full px-6 md:px-12 py-5 flex justify-between items-center bg-black/40 backdrop-blur-2xl border-b border-white/5 z-[100]">
-        <div className="logo cursor-pointer" onClick={() => router.push('/')}>
-          <img src="/assets/trustbar_logos/atrellis_brand_nobg.png" alt="Atrellis Brand" className="h-8 md:h-10 w-auto" />
-        </div>
+      <header className="glass-header">
+        <Link href="/" className="logo">
+          <img src="/assets/trustbar_logos/atrellis_brand_nobg.png" alt="Atrellis Brand" />
+        </Link>
         <button 
           onClick={() => router.push('/')}
-          className="px-8 py-3 rounded-full bg-white/5 border border-white/15 backdrop-blur-xl text-white font-bold text-xs uppercase tracking-[2px] hover:bg-white/10 transition-all duration-500"
+          className="glass-btn outline py-2 px-6"
         >
           BACK HOME
         </button>

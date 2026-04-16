@@ -679,11 +679,31 @@ body {
     }
 
     .glass-header {
-        padding: 1rem 1.5rem;
+        padding: 0.8rem 1.2rem;
     }
 
     .logo img {
-        height: 32px;
+        height: 28px;
+    }
+
+    /* Prevent overlap in header */
+    .logo span {
+        display: none !important;
+    }
+
+    .glass-header .glass-btn {
+        width: auto !important;
+        padding: 8px 16px !important;
+        font-size: 0.65rem !important;
+        letter-spacing: 1px !important;
+    }
+
+    .glass-header nav {
+        gap: 12px !important;
+    }
+
+    .glass-header nav a {
+        font-size: 0.65rem !important;
     }
 
     .section-container {
@@ -791,7 +811,11 @@ body {
     }
     
     .start-journey-btn {
-        width: 100% !important;
-        font-size: 0.7rem;
+        width: 90% !important;
+        max-width: 300px;
+        padding: 1.2rem 1rem !important;
+        font-size: 0.8rem !important;
+        letter-spacing: 3px !important;
+        margin: 0 auto;
     }
 }
