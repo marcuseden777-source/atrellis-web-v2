@@ -125,7 +125,7 @@ export default function ServicesPageClient() {
         <div className="logo">
           <img src="/assets/trustbar_logos/atrellis_brand_nobg.png" alt="Atrellis Brand" />
         </div>
-        <a href="/quote" className="glass-btn primary outline">GET A FAST QUOTE</a>
+        <a href="/quotation" className="glass-btn primary outline">GET A FAST QUOTE</a>
       </header>
 
       {/* Hero Section */}
@@ -206,7 +206,7 @@ export default function ServicesPageClient() {
               <div className="product-title-col">
                 <h3>Zipblinds</h3>
                 <span className="product-subtitle">Track-Guided Protection</span>
-                <a href="/quote" className="glass-btn outline mt-8 w-fit text-center">LEARN MORE</a>
+                <a href="/quotation" className="glass-btn outline mt-8 w-fit text-center">LEARN MORE</a>
               </div>
               <div className="product-variants-col">
                 <div className="variant-item">
@@ -240,7 +240,7 @@ export default function ServicesPageClient() {
               <div className="product-title-col">
                 <h3>Indoor Blinds</h3>
                 <span className="product-subtitle">Light Architecture</span>
-                <a href="/quote" className="glass-btn outline mt-8 w-fit text-center">LEARN MORE</a>
+                <a href="/quotation" className="glass-btn outline mt-8 w-fit text-center">LEARN MORE</a>
               </div>
               <div className="product-variants-col">
                 <div className="variant-item">
@@ -266,7 +266,7 @@ export default function ServicesPageClient() {
               <div className="product-title-col">
                 <h3>Premium Roofing</h3>
                 <span className="product-subtitle">Overhead Solutions</span>
-                <a href="/quote" className="glass-btn outline mt-8 w-fit text-center">LEARN MORE</a>
+                <a href="/quotation" className="glass-btn outline mt-8 w-fit text-center">LEARN MORE</a>
               </div>
               <div className="product-variants-col">
                 <div className="variant-item">
@@ -292,7 +292,7 @@ export default function ServicesPageClient() {
               <div className="product-title-col">
                 <h3>Full Home Renovation</h3>
                 <span className="product-subtitle">Turnkey Excellence</span>
-                <a href="/quote" className="glass-btn outline mt-8 w-fit text-center">LEARN MORE</a>
+                <a href="/quotation" className="glass-btn outline mt-8 w-fit text-center">LEARN MORE</a>
               </div>
               <div className="product-variants-col">
                 <div className="variant-item">
@@ -318,7 +318,7 @@ export default function ServicesPageClient() {
               <div className="product-title-col">
                 <h3>3D Design Services</h3>
                 <span className="product-subtitle">Virtual Visualization</span>
-                <a href="/quote" className="glass-btn outline mt-8 w-fit text-center">LEARN MORE</a>
+                <a href="/quotation" className="glass-btn outline mt-8 w-fit text-center">LEARN MORE</a>
               </div>
               <div className="product-variants-col">
                 <div className="variant-item">
