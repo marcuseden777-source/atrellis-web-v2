@@ -6,9 +6,11 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import ResponsiveScrollPlayer from './components/ResponsiveScrollPlayer';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
+import { usePreloader } from './components/PreloaderContext';
 
 export default function LandingPage() {
   const router = useRouter();
+  const { setFramesLoaded } = usePreloader();
 
   useEffect(() => {
     gsap.registerPlugin(ScrollTrigger);
@@ -65,8 +67,11 @@ export default function LandingPage() {
       {/* 2. Scrollable Container */}
       <div id="scroll-section" className="relative">
         
-        {/* The Cinematic Scrubber */}
-        <ResponsiveScrollPlayer className="sticky top-0 h-screen w-full" />
+        {/* The Cinematic Scrubber (Canvas Scrubber V3) */}
+        <ResponsiveScrollPlayer 
+          className="sticky top-0 h-screen w-full" 
+          onFramesLoaded={setFramesLoaded}
+        />
 
         {/* Overlay Content */}
         <div className="fixed inset-0 pointer-events-none flex flex-col items-center justify-center z-20">

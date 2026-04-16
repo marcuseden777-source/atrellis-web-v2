@@ -4,116 +4,129 @@ import { useEffect, useRef, useState, useMemo } from 'react';
 import gsap from 'gsap';
 import ScrollTrigger from 'gsap/ScrollTrigger';
 
-// Register ScrollTrigger plugin
 gsap.registerPlugin(ScrollTrigger);
 
 /**
- * ResponsiveScrollPlayer
+ * ResponsiveScrollPlayer - V3 (Canvas Frame Scrubber)
  * 
- * A high-performance component that swaps between Desktop (16:9) and Mobile (9:16) 
- * video assets based on viewport width. It ensures that only the relevant asset 
- * is fetched and handles complex ScrollTrigger scrubbing.
+ * Implements a high-performance canvas-based image sequence player.
+ * Maps scroll position to 259 JPEGs for "Cinema Scroll" experience.
  */
 
-// Source Constants
-const DESKTOP_SOURCE = '/assets/scroll-animation-desktop.mp4';
-const MOBILE_SOURCE = '/assets/scroll-animation-mobile.mp4';
+const TOTAL_FRAMES = 259;
+const FRAME_PREFIX = '/assets/frames/ezgif-frame-';
+const FRAME_SUFFIX = '.jpg';
 
 interface ResponsiveScrollPlayerProps {
   className?: string;
+  onFramesLoaded?: (count: number) => void;
   onComplete?: () => void;
 }
 
 export default function ResponsiveScrollPlayer({
   className = '',
+  onFramesLoaded,
   onComplete,
 }: ResponsiveScrollPlayerProps) {
   const containerRef = useRef<HTMLDivElement>(null);
-  const videoRef = useRef<HTMLVideoElement>(null);
-  
-  // State for responsive switching
-  const [deviceType, setDeviceType] = useState<'desktop' | 'mobile' | null>(null);
+  const canvasRef = useRef<HTMLCanvasElement>(null);
+  const framesRef = useRef<HTMLImageElement[]>([]);
+  const [isReady, setIsReady] = useState(false);
 
-  // 1. Device Detection & Switching Logic
+  // 1. Preload Frames
   useEffect(() => {
-    const handleResize = () => {
-      const isMobileSize = window.innerWidth <= 768;
-      const nextType = isMobileSize ? 'mobile' : 'desktop';
-      
-      if (nextType !== deviceType) {
-        setDeviceType(nextType);
+    let loadedCount = 0;
+    const preloadFrames = () => {
+      for (let i = 1; i <= TOTAL_FRAMES; i++) {
+        const img = new Image();
+        const frameIndex = i.toString().padStart(3, '0');
+        img.src = `${FRAME_PREFIX}${frameIndex}${FRAME_SUFFIX}`;
+        img.onload = () => {
+          loadedCount++;
+          if (onFramesLoaded) onFramesLoaded(loadedCount);
+          if (loadedCount === 30) {
+            // "Gate opens" logic - we have enough buffer to start
+            setIsReady(true);
+          }
+        };
+        framesRef.current[i] = img;
       }
     };
 
-    // Initial check
-    handleResize();
+    preloadFrames();
+  }, [onFramesLoaded]);
 
-    window.addEventListener('resize', handleResize);
-    return () => window.removeEventListener('resize', handleResize);
-  }, [deviceType]);
-
-  // 2. Asset Source Determination (Performance: Only the active source is provided to the video tag)
-  const activeSource = useMemo(() => {
-    if (!deviceType) return null;
-    return deviceType === 'mobile' ? MOBILE_SOURCE : DESKTOP_SOURCE;
-  }, [deviceType]);
-
-  // 3. GSAP & ScrollTrigger Initialization
+  // 2. Canvas Rendering & GSAP Scrubbing
   useEffect(() => {
-    if (!deviceType || !videoRef.current || !containerRef.current) return;
+    if (!isReady || !canvasRef.current || !containerRef.current) return;
 
-    // Clear existing ScrollTriggers to prevent overlaps during resize/switch
-    ScrollTrigger.getAll().forEach(st => st.kill());
+    const canvas = canvasRef.current;
+    const context = canvas.getContext('2d');
+    if (!context) return;
 
-    const video = videoRef.current;
-    const container = containerRef.current;
+    // Initial Frame Draw
+    const renderFrame = (index: number) => {
+      const img = framesRef.current[Math.floor(index)];
+      if (img && img.complete) {
+        // Handle responsive canvas sizing
+        const w = window.innerWidth;
+        const h = window.innerHeight;
+        canvas.width = w;
+        canvas.height = h;
 
-    const initAnimation = () => {
-      const duration = video.duration;
-      if (!duration) return;
+        // Cover logic
+        const imgRatio = img.width / img.height;
+        const canvasRatio = w / h;
+        let drawW, drawH, drawX, drawY;
 
-      gsap.to(video, {
-        currentTime: duration,
-        ease: 'none',
-        scrollTrigger: {
-          trigger: container,
-          start: 'top top',
-          // Adjust scroll length based on aspect ratio/device
-          end: deviceType === 'mobile' ? '+=300%' : '+=500%', 
-          scrub: 0.5,
-          pin: true,
-          anticipatePin: 1,
-          markers: false,
-          onUpdate: (self) => {
-            // Safety check for video scrubbing completion
-            if (self.progress === 1 && onComplete) {
-              onComplete();
-            }
-          }
+        if (canvasRatio > imgRatio) {
+          drawW = w;
+          drawH = w / imgRatio;
+          drawX = 0;
+          drawY = (h - drawH) / 2;
+        } else {
+          drawW = h * imgRatio;
+          drawH = h;
+          drawX = (w - drawW) / 2;
+          drawY = 0;
         }
-      });
 
-      // Refresh to ensure markers/pins are recalculated for the current DOM state
-      ScrollTrigger.refresh();
+        context.clearRect(0, 0, w, h);
+        context.drawImage(img, drawX, drawY, drawW, drawH);
+      }
     };
 
-    // Handle video metadata loading
-    if (video.readyState >= 1) {
-      initAnimation();
-    } else {
-      video.addEventListener('loadedmetadata', initAnimation);
-    }
+    // First frame
+    renderFrame(1);
+
+    // GSAP Scrubber
+    const airInstance = { frame: 1 };
+    gsap.to(airInstance, {
+      frame: TOTAL_FRAMES,
+      snap: 'frame',
+      ease: 'none',
+      scrollTrigger: {
+        trigger: containerRef.current,
+        start: 'top top',
+        end: '+=500%',
+        scrub: 1.5,
+        pin: true,
+        onUpdate: (self) => {
+          renderFrame(airInstance.frame);
+          if (self.progress === 1 && onComplete) onComplete();
+        }
+      }
+    });
+
+    // Handle Resize
+    const handleResize = () => renderFrame(airInstance.frame);
+    window.addEventListener('resize', handleResize);
 
     return () => {
       ScrollTrigger.getAll().forEach(st => st.kill());
-      video.removeEventListener('loadedmetadata', initAnimation);
+      window.removeEventListener('resize', handleResize);
     };
-  }, [deviceType, onComplete]);
-
-  // SSR Safe: Return empty container until hydrated
-  if (!deviceType) {
-    return <div className={`w-full bg-black ${className}`} style={{ height: '100vh' }} />;
-  }
+  }, [isReady, onComplete]);
 
   return (
     <div 
@@ -121,26 +134,15 @@ export default function ResponsiveScrollPlayer({
       className={`relative w-full bg-black overflow-hidden ${className}`}
       style={{ height: '100vh' }}
     >
-      {/* 
-        Key prop forces React to unmount and remount when deviceType changes.
-        This prevents the browser from potentially downloading both sources 
-        and ensures a clean state for the new video.
-      */}
-      <video
-        key={deviceType}
-        ref={videoRef}
-        className="w-full h-full object-cover"
-        muted
-        playsInline
-        preload="auto"
-      >
-        <source src={activeSource!} type="video/mp4" />
-      </video>
-      
-      {/* Overlay Content Placeholder */}
-      <div className="absolute inset-0 z-10 pointer-events-none flex items-center justify-center">
-        {/* Your content here */}
-      </div>
+      <canvas
+        ref={canvasRef}
+        className="w-full h-full block"
+      />
+      {!isReady && (
+        <div className="absolute inset-0 flex items-center justify-center text-white/20 text-[0.6rem] uppercase tracking-widest">
+          Synchronizing Cinema...
+        </div>
+      )}
     </div>
   );
 }
