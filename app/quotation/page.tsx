@@ -151,11 +151,11 @@ export default function QuotationPage() {
   };
 
   return (
-    <div className="bg-[#050505] min-h-screen text-white flex flex-col items-center pt-24 pb-12 px-4 selection:bg-blue-500/30">
+    <div className="bg-[#050505] min-h-screen text-white flex flex-col items-center pt-20 md:pt-24 pb-12 px-6 selection:bg-blue-500/30">
       {/* Global Header */}
-      <header className="fixed top-0 left-0 w-full px-12 py-5 flex justify-between items-center bg-black/40 backdrop-blur-2xl border-b border-white/5 z-[100]">
+      <header className="fixed top-0 left-0 w-full px-6 md:px-12 py-5 flex justify-between items-center bg-black/40 backdrop-blur-2xl border-b border-white/5 z-[100]">
         <div className="logo cursor-pointer" onClick={() => router.push('/')}>
-          <img src="/assets/trustbar_logos/atrellis_brand_nobg.png" alt="Atrellis Brand" className="h-10 w-auto" />
+          <img src="/assets/trustbar_logos/atrellis_brand_nobg.png" alt="Atrellis Brand" className="h-8 md:h-10 w-auto" />
         </div>
         <button 
           onClick={() => router.push('/')}
@@ -339,7 +339,7 @@ export default function QuotationPage() {
         </div>
 
         {/* Navigation Buttons */}
-        <div className="flex justify-center gap-6 pt-12">
+        <div className="flex flex-col md:flex-row justify-center items-stretch md:items-center gap-4 md:gap-6 pt-12">
           {currentStep > 1 && (
             <button 
               onClick={prevStep}

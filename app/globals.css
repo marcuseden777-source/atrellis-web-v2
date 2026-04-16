@@ -667,3 +667,131 @@ body {
     filter: brightness(0) invert(1) drop-shadow(0 0 10px rgba(255,255,255,0.5));
 }
 
+
+/* =========================================================================
+   MOBILE 9:16 GRID REFINEMENTS
+   ========================================================================= */
+
+@media (max-width: 768px) {
+    /* Global Adjustments */
+    :root {
+        --glass-blur: blur(20px);
+    }
+
+    .glass-header {
+        padding: 1rem 1.5rem;
+    }
+
+    .logo img {
+        height: 32px;
+    }
+
+    .section-container {
+        padding: 60px 20px;
+    }
+
+    /* Typography */
+    .services-hero h1 {
+        font-size: 3rem;
+        letter-spacing: 2px;
+    }
+
+    .services-hero p {
+        font-size: 1rem;
+        padding: 0 10px;
+    }
+
+    .section-title {
+        font-size: 1.8rem;
+        letter-spacing: 2px;
+        margin-bottom: 30px;
+    }
+
+    .section-subtitle {
+        font-size: 0.95rem;
+        margin-top: -15px;
+        margin-bottom: 40px;
+    }
+
+    /* Layout Grids */
+    .solution-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+
+    .portfolio-grid {
+        grid-template-columns: 1fr;
+    }
+
+    /* Home Page Overlays */
+    .info-card {
+        width: 90%;
+        left: 5% !important;
+        right: 5% !important;
+        padding: 30px;
+        bottom: 20%;
+        transform: translateY(0);
+    }
+
+    .right-card, .left-card {
+        left: 5%;
+        right: 5%;
+    }
+
+    /* Services Page Products */
+    .product-glass-row {
+        flex-direction: column;
+        padding: 30px 20px;
+        gap: 30px;
+        text-align: center;
+        border-radius: 24px;
+    }
+
+    .product-image-col {
+        width: 100%;
+        height: 250px;
+    }
+
+    .product-title-col h3 {
+        font-size: 2.5rem;
+    }
+
+    .product-variants-col {
+        grid-template-columns: 1fr;
+        width: 100%;
+    }
+
+    .glass-btn {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .footer-strip {
+        flex-direction: column;
+        gap: 30px;
+        text-align: center;
+        padding: 40px 20px;
+        bottom: 0px;
+    }
+
+    .logo-bar {
+        padding-right: 0px;
+    }
+
+    .logo-group {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 20px;
+    }
+}
+
+@media (max-width: 480px) {
+    .services-hero h1 {
+        font-size: 2.2rem;
+    }
+    
+    .start-journey-btn {
+        width: 100% !important;
+        font-size: 0.7rem;
+    }
+}
