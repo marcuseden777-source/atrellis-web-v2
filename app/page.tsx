@@ -59,7 +59,7 @@ export default function LandingPage() {
           <img src="/assets/trustbar_logos/atrellis_brand_nobg.png" alt="Atrellis Brand" className="h-8 md:h-10 w-auto" />
         </Link>
         <nav className="flex items-center gap-4 md:gap-8">
-          <Link href="/services" className="text-[0.7rem] md:text-xs font-bold tracking-[2px] uppercase hover:text-blue-500 transition-colors">Services Page</Link>
+          <Link href="/services" className="text-[0.7rem] md:text-xs font-bold tracking-[2px] uppercase hover:text-blue-500 transition-colors">services</Link>
           <Link href="/quotation" className="text-[0.7rem] md:text-xs font-bold tracking-[2px] uppercase bg-blue-500/10 border border-blue-500/20 px-4 py-2 rounded-full hover:bg-blue-500 hover:text-white transition-all">Start Journey</Link>
         </nav>
       </header>

@@ -89,7 +89,7 @@ export default function ServicesClient() {
       <header className="glass-header">
         <Link href="/" className="logo flex items-center gap-4">
           <img src="/assets/trustbar_logos/atrellis_brand_nobg.png" alt="Atrellis Brand" />
-          <span className="text-[0.7rem] font-bold tracking-[2px] uppercase opacity-50">Services Page</span>
+          <span className="text-[0.7rem] font-bold tracking-[2px] uppercase opacity-50">services</span>
         </Link>
         <Link href="/quotation" className="glass-btn primary outline">START JOURNEY</Link>
       </header>
