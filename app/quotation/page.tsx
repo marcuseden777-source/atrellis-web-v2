@@ -183,7 +183,7 @@ export default function QuotationPage() {
         <div className="relative min-h-[450px]">
           {/* Step 1: Property Type */}
           <div 
-            ref={el => stepRefs.current[1] = el}
+            ref={el => { stepRefs.current[1] = el; }}
             className={`step-container ${currentStep === 1 ? 'active block' : 'hidden'}`}
           >
             <h2 className="text-xl font-bold mb-8 uppercase tracking-[2px]">1. Property Type</h2>
@@ -202,7 +202,7 @@ export default function QuotationPage() {
 
           {/* Step 2: Property Size */}
           <div 
-            ref={el => stepRefs.current[2] = el}
+            ref={el => { stepRefs.current[2] = el; }}
             className={`step-container ${currentStep === 2 ? 'active block' : 'hidden'}`}
           >
             <h2 className="text-xl font-bold mb-8 uppercase tracking-[2px]">2. Property Size</h2>
@@ -221,7 +221,7 @@ export default function QuotationPage() {
 
           {/* Step 3: Style Preference */}
           <div 
-            ref={el => stepRefs.current[3] = el}
+            ref={el => { stepRefs.current[3] = el; }}
             className={`step-container ${currentStep === 3 ? 'active block' : 'hidden'}`}
           >
             <h2 className="text-xl font-bold mb-8 uppercase tracking-[2px]">3. Style Preference</h2>
@@ -240,7 +240,7 @@ export default function QuotationPage() {
 
           {/* Step 4: Scope of Work */}
           <div 
-            ref={el => stepRefs.current[4] = el}
+            ref={el => { stepRefs.current[4] = el; }}
             className={`step-container ${currentStep === 4 ? 'active block' : 'hidden'}`}
           >
             <h2 className="text-xl font-bold mb-8 uppercase tracking-[2px]">4. Scope of Work (Select Multiple)</h2>
@@ -259,7 +259,7 @@ export default function QuotationPage() {
 
           {/* Step 5: Finish Tier */}
           <div 
-            ref={el => stepRefs.current[5] = el}
+            ref={el => { stepRefs.current[5] = el; }}
             className={`step-container ${currentStep === 5 ? 'active block' : 'hidden'}`}
           >
             <h2 className="text-xl font-bold mb-8 uppercase tracking-[2px]">5. Finish Tier</h2>
@@ -283,7 +283,7 @@ export default function QuotationPage() {
 
           {/* Step 6: Contact Details */}
           <div 
-            ref={el => stepRefs.current[6] = el}
+            ref={el => { stepRefs.current[6] = el; }}
             className={`step-container ${currentStep === 6 ? 'active block' : 'hidden'}`}
           >
             <h2 className="text-xl font-bold mb-8 uppercase tracking-[2px]">6. Your Details</h2>
@@ -314,7 +314,7 @@ export default function QuotationPage() {
 
           {/* Step 7: Summary & Estimate */}
           <div 
-            ref={el => stepRefs.current[7] = el}
+            ref={el => { stepRefs.current[7] = el; }}
             className={`step-container ${currentStep === 7 ? 'active block' : 'hidden'}`}
           >
             <h2 className="text-xl font-bold mb-8 uppercase tracking-[2px]">Indicative Estimate</h2>
