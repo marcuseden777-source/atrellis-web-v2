@@ -13,7 +13,10 @@ interface PreloaderContextType {
 const PreloaderContext = createContext<PreloaderContextType | undefined>(undefined);
 
 export function PreloaderProvider({ children }: { children: ReactNode }) {
-  const [isVisible, setIsVisible] = useState(true); // Default to visible for home-page start
+  // Start visible ONLY if we're on the home page or a fresh entry
+  // In a real app we might check if it's the first visit, but for now we'll default to visible
+  // and handle the hide logic in the overlay.
+  const [isVisible, setIsVisible] = useState(true); 
   const [framesLoaded, setFramesLoaded] = useState(0);
 
   const showPreloader = () => setIsVisible(true);

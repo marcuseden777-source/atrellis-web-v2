@@ -43,22 +43,30 @@ export default function ServicesClient() {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
   useEffect(() => {
-    // Initial Reveal Animations (GSAP)
-    gsap.utils.toArray('.showcase-reveal').forEach((el: any) => {
-      gsap.from(el, {
-        scrollTrigger: {
-          trigger: el,
-          start: 'top 85%',
-          toggleActions: 'play none none none',
-        },
-        y: 40,
-        opacity: 0,
-        duration: 0.8,
-        ease: 'power2.out',
+    // Small delay to ensure DOM is ready and Preloader has faded
+    const ctx = gsap.context(() => {
+      gsap.utils.toArray('.showcase-reveal').forEach((el: any) => {
+        gsap.to(el, {
+          scrollTrigger: {
+            trigger: el,
+            start: 'top 90%',
+            toggleActions: 'play none none none',
+          },
+          y: 0,
+          opacity: 1,
+          duration: 1,
+          ease: 'power3.out',
+        });
       });
     });
 
+    // Forced refresh for scroll positions
+    setTimeout(() => {
+      ScrollTrigger.refresh();
+    }, 500);
+
     return () => {
+      ctx.revert();
       ScrollTrigger.getAll().forEach(t => t.kill());
     };
   }, []);
@@ -122,7 +130,7 @@ export default function ServicesClient() {
           <h2 className="section-title showcase-reveal">CASE STUDIES</h2>
           <div className="portfolio-grid">
             {portfolioCards.map((card) => (
-              <Link href="/quotation" key={card.id} className="portfolio-card showcase-reveal block no-underline overflow-hidden border border-white/5 bg-white/2 hover:border-white/20 transition-all">
+              <Link href="/quotation" key={card.id} className="portfolio-card showcase-reveal block no-underline overflow-hidden border border-white/5 bg-white/2 hover:border-white/20 transition-all group">
                 <div 
                   className="portfolio-img h-[300px] bg-cover bg-center transition-transform duration-700 group-hover:scale-110" 
                   style={{ backgroundImage: `url('${card.imagePath}')` }}
