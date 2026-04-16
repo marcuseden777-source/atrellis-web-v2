@@ -4,6 +4,7 @@ import React, { useEffect } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import ResponsiveScrollPlayer from './components/ResponsiveScrollPlayer';
+import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 
 export default function LandingPage() {
@@ -40,7 +41,8 @@ export default function LandingPage() {
   }, []);
 
   const triggerJourney = () => {
-    gsap.to("body", {
+    const main = document.querySelector('main');
+    gsap.to(main, {
       opacity: 0,
       duration: 0.5,
       onComplete: () => { router.push('/services'); }

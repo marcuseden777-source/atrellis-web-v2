@@ -3,100 +3,58 @@
 import React, { useEffect, useState } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import Link from 'next/link';
 
 // Register ScrollTrigger plugin
 if (typeof window !== 'undefined') {
   gsap.registerPlugin(ScrollTrigger);
 }
 
-// Data Structures
 const serviceCards = [
-  {
-    id: 1,
-    title: 'Residential Refinement',
-    description: 'Full-scale luxury condo and landed property renovations tailored to your exacting lifestyle standards.',
-    features: ['Space Reconfiguration', 'High-End Surface Finishes', 'Turnkey Interior Fit-outs']
-  },
-  {
-    id: 2,
-    title: 'Architectural A&A',
-    description: 'Sophisticated Additions and Alterations, managing load-bearing modifications and structural extensions seamlessly.',
-    features: ['BCA Plan Submissions', 'Structural Reinforcement', 'Facade Modernization']
-  },
-  {
-    id: 3,
-    title: 'Commercial Spatial Planning',
-    description: 'Designing premium offices, boutique spaces, and experiential retail environments optimized for flow and brand presence.',
-    features: ['Brand & Identity Mapping', 'Ergonomic Spatial Flow', 'Lighting Architecture']
-  },
-  {
-    id: 4,
-    title: 'Bespoke Carpentry',
-    description: 'Factory-precision woodwork and architectural built-ins utilizing premium European hardware and laminates.',
-    features: ['Custom Walk-in Wardrobes', 'Integrated Kitchens', 'Acoustic Feature Walls']
-  },
-  {
-    id: 5,
-    title: 'Smart Ecosystems',
-    description: 'Invisible hardwiring and integration of centralized climate, shading, and security systems to elevate daily living.',
-    features: ['Somfy Motorization', 'Centralized Interfaces', 'App-controlled Ambience']
-  },
-  {
-    id: 6,
-    title: 'Outdoor Living Solutions',
-    description: 'Transforming balconies and terraces into year-round extensions of your indoor space with climate-resilient elements.',
-    features: ['Decking & Landscaping', 'Structural Weatherproofing', 'Outdoor Kitchens & Bars']
-  }
+  { id: 1, title: 'Residential Refinement', description: 'Full-scale luxury condo and landed property renovations tailored to your exacting lifestyle standards.', features: ['Space Reconfiguration', 'High-End Surface Finishes', 'Turnkey Interior Fit-outs'] },
+  { id: 2, title: 'Architectural A&A', description: 'Sophisticated Additions and Alterations, managing load-bearing modifications and structural extensions.', features: ['BCA Plan Submissions', 'Structural Reinforcement', 'Facade Modernization'] },
+  { id: 3, title: 'Commercial Spatial Planning', description: 'Designing premium offices and experiential retail environments optimized for flow and brand presence.', features: ['Brand & Identity Mapping', 'Ergonomic Spatial Flow', 'Lighting Architecture'] },
+  { id: 4, title: 'Bespoke Carpentry', description: 'Factory-precision woodwork and architectural built-ins utilizing premium European hardware.', features: ['Custom Walk-in Wardrobes', 'Integrated Kitchens', 'Acoustic Feature Walls'] },
+  { id: 5, title: 'Smart Ecosystems', description: 'Invisible hardwiring and integration of centralized climate, shading, and security systems.', features: ['Somfy Motorization', 'Centralized Interfaces', 'App-controlled Ambience'] },
+  { id: 6, title: 'Outdoor Living Solutions', description: 'Transforming balconies and terraces into year-round extensions with climate-resilient elements.', features: ['Decking & Landscaping', 'Structural Weatherproofing', 'Outdoor Kitchens & Bars'] },
 ];
 
 const portfolioCards = [
-  {
-    id: 1,
-    title: 'Sentosa Cove / Modern Luxury',
-    description: 'Full-scale renovation featuring integrated Somfy automation and bespoke Zipblinds.',
-    imagePath: '/assets/portfolio/sentosa_cove.png'
-  },
-  {
-    id: 2,
-    title: 'Marina One / Minimalist Loft',
-    description: 'Space optimization focused on invisible grilles and premium flooring textures.',
-    imagePath: '/assets/portfolio/marina_one_loft.png'
-  }
+  { id: 1, title: 'Sentosa Cove / Modern Luxury', description: 'Full-scale renovation featuring integrated Somfy automation and bespoke Zipblinds.', imagePath: '/assets/portfolio/sentosa_cove.png' },
+  { id: 2, title: 'Marina One / Minimalist Loft', description: 'Space optimization focused on invisible grilles and premium flooring textures.', imagePath: '/assets/portfolio/marina_one_loft.png' },
 ];
 
-// Carousel Images
 const ZIPBLIND_IMAGES = [
-  '/assets/products/zipblinds/Zipblind images/Zipblinds_product_colour_202604031252.jpeg',
-  '/assets/products/zipblinds/Zipblind images/Zipblinds_scenery_to_202604031252.jpeg',
-  '/assets/products/zipblinds/Zipblind images/Zipblind_202604031252.jpeg',
-  '/assets/products/zipblinds/Zipblind images/Zipblinds_product_colour_202604031252_2.jpeg'
+  '/assets/products/zipblinds/zipblind_1.jpg',
+  '/assets/products/zipblinds/zipblind_2.jpg',
+  '/assets/products/zipblinds/zipblind_3.jpg',
+  '/assets/products/zipblinds/zipblind_4.jpg',
 ];
 
 const BLIND_IMAGES = [
-  '/assets/products/blinds/RollerBlind images/Rollerblinds_product_colour_202604031307.jpeg',
-  '/assets/products/blinds/RollerBlind images/Rollerblinds_scenery_to_202604031307.jpeg',
-  '/assets/products/blinds/venetian blind images/venetianproduct_colour_202604031259.jpeg',
-  '/assets/products/blinds/venetian blind images/venetianscenery_to_202604031259.jpeg'
+  '/assets/products/blinds/blind_1.jpg',
+  '/assets/products/blinds/blind_2.jpg',
+  '/assets/products/blinds/blind_3.jpg',
+  '/assets/products/blinds/blind_4.jpg',
 ];
 
-export default function ServicesPageClient() {
+export default function ServicesClient() {
   const [hoveredProduct, setHoveredProduct] = useState<string | null>(null);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
   useEffect(() => {
-    // Reveal Animations
-    const reveals = document.querySelectorAll('.showcase-reveal');
-    reveals.forEach((element) => {
-      gsap.to(element, {
-        opacity: 1,
-        y: 0,
-        duration: 0.8,
-        ease: 'power3.out',
+    // Initial Reveal Animations
+    gsap.utils.toArray('.showcase-reveal').forEach((el: any) => {
+      gsap.from(el, {
         scrollTrigger: {
-          trigger: element,
+          trigger: el,
           start: 'top 85%',
-          once: true
-        }
+          toggleActions: 'play none none none',
+        },
+        y: 50,
+        opacity: 0,
+        duration: 1,
+        ease: 'power3.out',
       });
     });
 
@@ -105,7 +63,6 @@ export default function ServicesPageClient() {
     };
   }, []);
 
-  // Carousel Logic
   useEffect(() => {
     let interval: NodeJS.Timeout;
     if (hoveredProduct === 'Zipblinds' || hoveredProduct === 'Indoor Blinds') {
@@ -122,10 +79,10 @@ export default function ServicesPageClient() {
     <div className="services-page">
       {/* Global Header */}
       <header className="glass-header">
-        <div className="logo">
+        <Link href="/" className="logo">
           <img src="/assets/trustbar_logos/atrellis_brand_nobg.png" alt="Atrellis Brand" />
-        </div>
-        <a href="/quotation" className="glass-btn primary outline">GET A FAST QUOTE</a>
+        </Link>
+        <Link href="/quotation" className="glass-btn primary outline">GET A FAST QUOTE</Link>
       </header>
 
       {/* Hero Section */}
@@ -146,14 +103,14 @@ export default function ServicesPageClient() {
           
           <div className="solution-grid">
             {serviceCards.map((card) => (
-              <div key={card.id} className="glass-system-card showcase-reveal">
+              <Link href="/quotation" key={card.id} className="glass-system-card showcase-reveal block no-underline">
                 <div className="card-index">{String(card.id).padStart(2, '0')}</div>
                 <h3>{card.title}</h3>
                 <p>{card.description}</p>
                 <ul className="card-features">
                   {card.features.map((f, i) => <li key={i}>{f}</li>)}
                 </ul>
-              </div>
+              </Link>
             ))}
           </div>
         </div>
@@ -165,7 +122,7 @@ export default function ServicesPageClient() {
           <h2 className="section-title showcase-reveal">CASE STUDIES</h2>
           <div className="portfolio-grid">
             {portfolioCards.map((card) => (
-              <div key={card.id} className="portfolio-card showcase-reveal">
+              <Link href="/quotation" key={card.id} className="portfolio-card showcase-reveal block no-underline overflow-hidden">
                 <div 
                   className="portfolio-img" 
                   style={{ backgroundImage: `url('${card.imagePath}')` }}
@@ -174,7 +131,7 @@ export default function ServicesPageClient() {
                   <h4>{card.title}</h4>
                   <p>{card.description}</p>
                 </div>
-              </div>
+              </Link>
             ))}
           </div>
         </div>
@@ -206,7 +163,7 @@ export default function ServicesPageClient() {
               <div className="product-title-col">
                 <h3>Zipblinds</h3>
                 <span className="product-subtitle">Track-Guided Protection</span>
-                <a href="/quotation" className="glass-btn outline mt-8 w-fit text-center">LEARN MORE</a>
+                <Link href="/quotation" className="glass-btn outline mt-8 w-fit text-center">LEARN MORE</Link>
               </div>
               <div className="product-variants-col">
                 <div className="variant-item">
@@ -240,7 +197,7 @@ export default function ServicesPageClient() {
               <div className="product-title-col">
                 <h3>Indoor Blinds</h3>
                 <span className="product-subtitle">Light Architecture</span>
-                <a href="/quotation" className="glass-btn outline mt-8 w-fit text-center">LEARN MORE</a>
+                <Link href="/quotation" className="glass-btn outline mt-8 w-fit text-center">LEARN MORE</Link>
               </div>
               <div className="product-variants-col">
                 <div className="variant-item">
@@ -266,7 +223,7 @@ export default function ServicesPageClient() {
               <div className="product-title-col">
                 <h3>Premium Roofing</h3>
                 <span className="product-subtitle">Overhead Solutions</span>
-                <a href="/quotation" className="glass-btn outline mt-8 w-fit text-center">LEARN MORE</a>
+                <Link href="/quotation" className="glass-btn outline mt-8 w-fit text-center">LEARN MORE</Link>
               </div>
               <div className="product-variants-col">
                 <div className="variant-item">
@@ -292,7 +249,7 @@ export default function ServicesPageClient() {
               <div className="product-title-col">
                 <h3>Full Home Renovation</h3>
                 <span className="product-subtitle">Turnkey Excellence</span>
-                <a href="/quotation" className="glass-btn outline mt-8 w-fit text-center">LEARN MORE</a>
+                <Link href="/quotation" className="glass-btn outline mt-8 w-fit text-center">LEARN MORE</Link>
               </div>
               <div className="product-variants-col">
                 <div className="variant-item">
@@ -318,7 +275,7 @@ export default function ServicesPageClient() {
               <div className="product-title-col">
                 <h3>3D Design Services</h3>
                 <span className="product-subtitle">Virtual Visualization</span>
-                <a href="/quotation" className="glass-btn outline mt-8 w-fit text-center">LEARN MORE</a>
+                <Link href="/quotation" className="glass-btn outline mt-8 w-fit text-center">LEARN MORE</Link>
               </div>
               <div className="product-variants-col">
                 <div className="variant-item">
