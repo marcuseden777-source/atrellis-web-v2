@@ -160,10 +160,6 @@ export default function QuotationPage() {
     }
   }, [currentStep]);
 
-  const submitLead = () => {
-    alert("Lead captured! Connecting to CRM and redirecting home...");
-    router.push('/services');
-  };
 
   return (
     <div className="bg-[#050505] min-h-screen text-white flex flex-col items-center pt-20 md:pt-24 pb-12 px-6 selection:bg-blue-500/30">
