@@ -245,7 +245,7 @@ export default function QuotationPage() {
           >
             <h2 className="text-xl font-bold mb-8 uppercase tracking-[2px]">4. Scope of Work (Select Multiple)</h2>
             <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
-              {['Carpentry', 'Kitchen', 'Flooring', 'Painting', 'Electrical', 'Plumbing', 'False Ceiling', 'Doors/Windows', 'Blinds/Shading'].map(scope => (
+              {['Carpentry', 'Kitchen', 'Flooring', 'Painting', 'Electrical', 'Plumbing', 'Waterproofing', 'False Ceiling', 'Doors/Windows', 'AtrellisZipblinds®'].map(scope => (
                 <div 
                   key={scope}
                   onClick={() => toggleMultiOption('scope', scope)}

@@ -11,12 +11,12 @@ if (typeof window !== 'undefined') {
 }
 
 const serviceCards = [
-  { id: 1, title: 'Residential Refinement', description: 'Full-scale luxury condo and landed property renovations tailored to your exacting lifestyle standards.', features: ['Space Reconfiguration', 'High-End Surface Finishes', 'Turnkey Interior Fit-outs'] },
-  { id: 2, title: 'Architectural A&A', description: 'Sophisticated Additions and Alterations, managing load-bearing modifications and structural extensions.', features: ['BCA Plan Submissions', 'Structural Reinforcement', 'Facade Modernization'] },
-  { id: 3, title: 'Commercial Spatial Planning', description: 'Designing premium offices and experiential retail environments optimized for flow and brand presence.', features: ['Brand & Identity Mapping', 'Ergonomic Spatial Flow', 'Lighting Architecture'] },
-  { id: 4, title: 'Bespoke Carpentry', description: 'Factory-precision woodwork and architectural built-ins utilizing premium European hardware.', features: ['Custom Walk-in Wardrobes', 'Integrated Kitchens', 'Acoustic Feature Walls'] },
-  { id: 5, title: 'Smart Ecosystems', description: 'Invisible hardwiring and integration of centralized climate, shading, and security systems.', features: ['Somfy Motorization', 'Centralized Interfaces', 'App-controlled Ambience'] },
-  { id: 6, title: 'Outdoor Living Solutions', description: 'Transforming balconies and terraces into year-round extensions with climate-resilient elements.', features: ['Decking & Landscaping', 'Structural Weatherproofing', 'Outdoor Kitchens & Bars'] },
+  { id: 1, title: 'Residential Turnkey', description: 'Complete design-and-build solutions for HDB BTO, Resale, and Luxury Condominiums.', features: ['BTO Package Optimization', 'Condo Spatial Flow', 'Integrated ID & Build'] },
+  { id: 2, title: 'Architectural A&A', description: 'Additions & Alterations for Landed Properties, managing structural extensions and facade rebuilds.', features: ['BCA & URA Submissions', 'Licensed PE/Architect Support', 'Landed Property Rebuilds'] },
+  { id: 3, title: 'Waterproofing & Sealing', description: 'Professional seepage repair using the latest injection and membrane technologies.', features: ['No-Hacking PU Grouting', 'Torch-on Roofing Membrane', '24hr Water Ponding Tests'] },
+  { id: 4, title: 'Bespoke Carpentry', description: 'Precision-engineered woodwork for premium kitchens and architectural built-ins.', features: ['Quartz & Sintered Stone', 'Blum/Hettich Hardware', 'Custom Floor-to-Ceiling'] },
+  { id: 5, title: 'Smart Ecosystems', description: 'Hardwired smart home automation specializing in motorized shading and climate control.', features: ['Somfy Home Automation', 'Voice-Controlled Blinds', 'Integrated App Ecosystems'] },
+  { id: 6, title: 'Outdoor Living', description: 'Structural balcony and roof extensions utilizing heavy-duty galvanized steel framing.', features: ['Galvanized Steel Structures', 'Weatherproof Decking', 'Architectural Cladding'] },
 ];
 
 const portfolioCards = [
@@ -156,7 +156,7 @@ export default function ServicesClient() {
 
           <div className="product-showcase-wrapper space-y-12">
             
-            {/* Zipblinds */}
+            {/* AtrellisZipblinds® */}
             <div 
               className="product-glass-row showcase-reveal flex gap-10 items-center bg-white/2 backdrop-blur-2xl p-10 rounded-[40px] border border-white/5"
               onMouseEnter={() => setHoveredProduct('Zipblinds')}
@@ -165,28 +165,28 @@ export default function ServicesClient() {
               <div className="product-image-col flex-[1.5] h-[400px] rounded-2xl overflow-hidden shadow-2xl">
                 <img 
                   src={hoveredProduct === 'Zipblinds' ? ZIPBLIND_IMAGES[currentImageIndex] : '/assets/products/mockups/zipblinds_mockup_1775999699794.png'} 
-                  alt="Zipblinds" 
+                  alt="AtrellisZipblinds®" 
                   className="w-full h-full object-cover transition-all duration-500"
                 />
               </div>
               <div className="product-title-col flex-1">
-                <h3 className="text-5xl font-black mb-2 tracking-tight">Zipblinds</h3>
-                <span className="product-subtitle text-blue-500 font-bold tracking-[4px] uppercase text-sm">Track-Guided Protection</span>
+                <h3 className="text-5xl font-black mb-2 tracking-tight whitespace-nowrap">AtrellisZipblinds®</h3>
+                <span className="product-subtitle text-blue-500 font-bold tracking-[4px] uppercase text-sm">Professional Rain & Sun Protection</span>
                 <Link href="/quotation" className="glass-btn outline mt-12 block w-max">LEARN MORE</Link>
               </div>
               <div className="product-variants-col flex-[2] grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div className="p-6 bg-black/40 rounded-xl border border-white/5">
-                  <h4 className="font-bold mb-2">Solar Mesh Fabric</h4>
-                  <p className="text-sm text-white/40 leading-relaxed">Filters out up to 99% of UV rays while preserving outside views.</p>
+                  <h4 className="font-bold mb-2">Omni-Tension™ System</h4>
+                  <p className="text-sm text-white/40 leading-relaxed">Precision-welded track guidance ensuring complete edge-to-edge environmental sealing.</p>
                 </div>
                 <div className="p-6 bg-black/40 rounded-xl border border-white/5">
-                  <h4 className="font-bold mb-2">Clear PVC Rain Shield</h4>
-                  <p className="text-sm text-white/40 leading-relaxed">100% waterproof barrier ensuring complete rain protection.</p>
+                  <h4 className="font-bold mb-2">Climate-Shield™ Fabric</h4>
+                  <p className="text-sm text-white/40 leading-relaxed">Advanced UV-rejecting mesh engineered for Singapore's extreme humidity and rainfall.</p>
                 </div>
               </div>
             </div>
 
-            {/* Indoor Blinds */}
+            {/* Indoor Korean Combi / Zebra */}
             <div 
               className="product-glass-row showcase-reveal flex gap-10 items-center bg-white/2 backdrop-blur-2xl p-10 rounded-[40px] border border-white/5"
               onMouseEnter={() => setHoveredProduct('Indoor Blinds')}
@@ -200,40 +200,40 @@ export default function ServicesClient() {
                 />
               </div>
               <div className="product-title-col flex-1">
-                <h3 className="text-5xl font-black mb-2 tracking-tight">Indoor Blinds</h3>
-                <span className="product-subtitle text-blue-500 font-bold tracking-[4px] uppercase text-sm">Light Architecture</span>
-                <Link href="/quotation" className="glass-btn outline mt-12 block w-max">LEARN MORE</Link>
+                <h3 className="text-5xl font-black mb-2 tracking-tight">Korean Combi</h3>
+                <span className="product-subtitle text-blue-500 font-bold tracking-[4px] uppercase text-sm">Dual-Layer Zebra Control</span>
+                <Link href="/quotation" className="glass-btn outline mt-12 block w-max">EXPLORE STYLES</Link>
               </div>
               <div className="product-variants-col flex-[2] grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div className="p-6 bg-black/40 rounded-xl border border-white/5">
-                  <h4 className="font-bold mb-2">Roller Blinds</h4>
-                  <p className="text-sm text-white/40 leading-relaxed">Minimalist roll-up shades available in absolute blackout or dim-out.</p>
+                  <h4 className="font-bold mb-2">Blackout Series</h4>
+                  <p className="text-sm text-white/40 leading-relaxed">Maximum privacy and light blocking, ideal for bedrooms and home cinemas.</p>
                 </div>
                 <div className="p-6 bg-black/40 rounded-xl border border-white/5">
-                  <h4 className="font-bold mb-2">Venetian Blinds</h4>
-                  <p className="text-sm text-white/40 leading-relaxed">Premium horizontal slatted blinds in timber or aluminum profiles.</p>
+                  <h4 className="font-bold mb-2">Antimicrobial Fabric</h4>
+                  <p className="text-sm text-white/40 leading-relaxed">Dust-resistant and hypoallergenic materials perfect for young families.</p>
                 </div>
               </div>
             </div>
 
-            {/* Premium Roofing */}
+            {/* Architectural Roofing */}
             <div className="product-glass-row showcase-reveal flex gap-10 items-center bg-white/2 backdrop-blur-2xl p-10 rounded-[40px] border border-white/5">
               <div className="product-image-col flex-[1.5] h-[400px] rounded-2xl overflow-hidden shadow-2xl">
-                <img src="/assets/products/mockups/roofing_mockup_1775999733894.png" alt="Premium Roofing" className="w-full h-full object-cover" />
+                <img src="/assets/products/mockups/roofing_mockup_1775999733894.png" alt="Architectural Roofing" className="w-full h-full object-cover" />
               </div>
               <div className="product-title-col flex-1">
-                <h3 className="text-5xl font-black mb-2 tracking-tight">Premium Roofing</h3>
-                <span className="product-subtitle text-blue-500 font-bold tracking-[4px] uppercase text-sm">Overhead Solutions</span>
-                <Link href="/quotation" className="glass-btn outline mt-12 block w-max">LEARN MORE</Link>
+                <h3 className="text-5xl font-black mb-2 tracking-tight">A&A Roofing</h3>
+                <span className="product-subtitle text-blue-500 font-bold tracking-[4px] uppercase text-sm">Structural Overhead Works</span>
+                <Link href="/quotation" className="glass-btn outline mt-12 block w-max">REQUEST SURVEY</Link>
               </div>
               <div className="product-variants-col flex-[2] grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div className="p-6 bg-black/40 rounded-xl border border-white/5">
-                  <h4 className="font-bold mb-2">Bioclimatic Pergolas</h4>
-                  <p className="text-sm text-white/40 leading-relaxed">Motorized aluminum blades allowing total control over sun and air.</p>
+                  <h4 className="font-bold mb-2">Galvanized Steel Frame</h4>
+                  <p className="text-sm text-white/40 leading-relaxed">Industrial-grade hollow sections ensuring maximum structural longevity.</p>
                 </div>
                 <div className="p-6 bg-black/40 rounded-xl border border-white/5">
-                  <h4 className="font-bold mb-2">Tempered Sky-Roofs</h4>
-                  <p className="text-sm text-white/40 leading-relaxed">Frameless minimalist canopies delivering weather protection.</p>
+                  <h4 className="font-bold mb-2">Panel Cladding</h4>
+                  <p className="text-sm text-white/40 leading-relaxed">Choice of Polycarbonate, ACP (Aluminum Composite), or Composite panels.</p>
                 </div>
               </div>
             </div>

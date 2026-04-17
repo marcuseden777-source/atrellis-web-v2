@@ -116,22 +116,22 @@ export default function LandingPage() {
           {/* Design Card */}
           <div id="design-card" className="info-card right-card pointer-events-auto">
             <div className="card-line"></div>
-            <h3 className="text-4xl font-serif italic font-bold mb-5 italic">Design Solutions</h3>
+            <h3 className="text-4xl font-serif italic font-bold mb-5 italic">Architectural A&A</h3>
             <ul className="text-white/50 space-y-4 font-light tracking-wide text-sm">
-              <li>Bespoke 3D Visualization</li>
-              <li>Smart Space Optimization</li>
-              <li>Regulatory Compliance Planning</li>
+              <li>Landed Property A&A (Additions & Alterations)</li>
+              <li>BCA & URA Regulatory Submissions</li>
+              <li>Bespoke 3D Visualization & Planning</li>
             </ul>
           </div>
 
           {/* Build Card */}
           <div id="build-card" className="info-card left-card pointer-events-auto">
             <div className="card-line"></div>
-            <h3 className="text-xl uppercase tracking-[4px] font-black mb-5">The Atrellis Journey</h3>
+            <h3 className="text-xl uppercase tracking-[4px] font-black mb-5">AtrellisZipblinds®</h3>
             <ol className="process-list space-y-4 text-white/50 font-light italic text-sm">
-              <li className="flex items-center gap-4"><span className="w-6 h-6 rounded-full bg-blue-500 text-white flex items-center justify-center text-[10px] font-bold not-italic">1</span> Online Request</li>
-              <li className="flex items-center gap-4"><span className="w-6 h-6 rounded-full bg-blue-500 text-white flex items-center justify-center text-[10px] font-bold not-italic">2</span> Instant Quotation</li>
-              <li className="flex items-center gap-4"><span className="w-6 h-6 rounded-full bg-blue-500 text-white flex items-center justify-center text-[10px] font-bold not-italic">3</span> Site Audit & Fit-out</li>
+              <li className="flex items-center gap-4"><span className="w-6 h-6 rounded-full bg-blue-500 text-white flex items-center justify-center text-[10px] font-bold not-italic">1</span> Online Assessment</li>
+              <li className="flex items-center gap-4"><span className="w-6 h-6 rounded-full bg-blue-500 text-white flex items-center justify-center text-[10px] font-bold not-italic">2</span> Proprietary Omni-Tension™ Install</li>
+              <li className="flex items-center gap-4"><span className="w-6 h-6 rounded-full bg-blue-500 text-white flex items-center justify-center text-[10px] font-bold not-italic">3</span> Site Handover & Smart Setup</li>
             </ol>
           </div>
 
