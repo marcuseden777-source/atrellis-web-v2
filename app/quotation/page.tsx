@@ -3,6 +3,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { useRouter } from 'next/navigation';
 import gsap from 'gsap';
+import Link from 'next/link';
 
 interface UserSelections {
   propertyType: string | null;
