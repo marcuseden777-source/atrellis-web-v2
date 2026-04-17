@@ -111,16 +111,24 @@ export default function ServicesClient() {
           </header>
           
           <div className="solution-grid">
-            {serviceCards.map((card) => (
-              <Link href="/quotation" key={card.id} className="glass-system-card showcase-reveal block no-underline group hover:translate-y-[-10px] transition-all">
-                <div className="card-index">{String(card.id).padStart(2, '0')}</div>
-                <h3>{card.title}</h3>
-                <p className="text-white/60">{card.description}</p>
-                <ul className="card-features opacity-0 group-hover:opacity-100 transition-opacity">
-                  {card.features.map((f, i) => <li key={i}>{f}</li>)}
-                </ul>
-              </Link>
-            ))}
+            {serviceCards.map((card) => {
+              // Custom routes for specific deep-dives
+              let route = "/quotation";
+              if (card.id === 2) route = "/services/aa-structural";
+              if (card.id === 3) route = "/services/waterproofing";
+              
+              return (
+                <Link href={route} key={card.id} className="glass-system-card showcase-reveal block no-underline group hover:translate-y-[-10px] transition-all">
+                  <div className="card-index">{String(card.id).padStart(2, '0')}</div>
+                  <h3>{card.title}</h3>
+                  <p className="text-white/60">{card.description}</p>
+                  <ul className="card-features opacity-0 group-hover:opacity-100 transition-opacity">
+                    {card.features.map((f, i) => <li key={i}>{f}</li>)}
+                  </ul>
+                  <div className="mt-6 text-[0.6rem] uppercase tracking-[2px] text-blue-500 opacity-0 group-hover:opacity-100 transition-opacity">Technical Detail &rarr;</div>
+                </Link>
+              );
+            })}
           </div>
         </div>
       </section>
@@ -172,7 +180,7 @@ export default function ServicesClient() {
               <div className="product-title-col flex-1">
                 <h3 className="text-5xl font-black mb-2 tracking-tight whitespace-nowrap">AtrellisZipblinds®</h3>
                 <span className="product-subtitle text-blue-500 font-bold tracking-[4px] uppercase text-sm">Professional Rain & Sun Protection</span>
-                <Link href="/quotation" className="glass-btn outline mt-12 block w-max">LEARN MORE</Link>
+                <Link href="/services/zipblinds" className="glass-btn outline mt-12 block w-max">EXPLORE TECH</Link>
               </div>
               <div className="product-variants-col flex-[2] grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div className="p-6 bg-black/40 rounded-xl border border-white/5">
@@ -202,7 +210,7 @@ export default function ServicesClient() {
               <div className="product-title-col flex-1">
                 <h3 className="text-5xl font-black mb-2 tracking-tight">Korean Combi</h3>
                 <span className="product-subtitle text-blue-500 font-bold tracking-[4px] uppercase text-sm">Dual-Layer Zebra Control</span>
-                <Link href="/quotation" className="glass-btn outline mt-12 block w-max">EXPLORE STYLES</Link>
+                <Link href="/services/indoor-blinds" className="glass-btn outline mt-12 block w-max">EXPLORE TECH</Link>
               </div>
               <div className="product-variants-col flex-[2] grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div className="p-6 bg-black/40 rounded-xl border border-white/5">
@@ -224,7 +232,7 @@ export default function ServicesClient() {
               <div className="product-title-col flex-1">
                 <h3 className="text-5xl font-black mb-2 tracking-tight">A&A Roofing</h3>
                 <span className="product-subtitle text-blue-500 font-bold tracking-[4px] uppercase text-sm">Structural Overhead Works</span>
-                <Link href="/quotation" className="glass-btn outline mt-12 block w-max">REQUEST SURVEY</Link>
+                <Link href="/services/aa-roofing" className="glass-btn outline mt-12 block w-max">TECHNICAL SPECS</Link>
               </div>
               <div className="product-variants-col flex-[2] grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div className="p-6 bg-black/40 rounded-xl border border-white/5">
