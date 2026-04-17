@@ -20,8 +20,8 @@ const serviceCards = [
 ];
 
 const portfolioCards = [
-  { id: 1, title: 'Sentosa Cove / Modern Luxury', description: 'Full-scale renovation featuring integrated Somfy automation and bespoke Zipblinds.', imagePath: '/assets/portfolio/sentosa_cove.png' },
-  { id: 2, title: 'Marina One / Minimalist Loft', description: 'Space optimization focused on invisible grilles and premium flooring textures.', imagePath: '/assets/portfolio/marina_one_loft.png' },
+  { id: 1, title: 'Sentosa Cove / Modern Luxury', description: 'AtrellisZipblinds® integration with structural A&A facade works.', imagePath: '/assets/projects/sentosa_after.png', slug: 'sentosa-cove' },
+  { id: 2, title: 'Marina One / Minimalist Loft', description: 'Space optimization featuring Korean Combi systems and smart lighting.', imagePath: '/assets/projects/marina_after.png', slug: 'marina-one' },
 ];
 
 const ZIPBLIND_IMAGES = [
@@ -139,7 +139,7 @@ export default function ServicesClient() {
           <h2 className="section-title showcase-reveal">CASE STUDIES</h2>
           <div className="portfolio-grid">
             {portfolioCards.map((card) => (
-              <Link href="/quotation" key={card.id} className="portfolio-card showcase-reveal block no-underline overflow-hidden border border-white/5 bg-white/2 hover:border-white/20 transition-all group">
+              <Link href={`/portfolio/${card.slug}`} key={card.id} className="portfolio-card showcase-reveal block no-underline overflow-hidden border border-white/5 bg-white/2 hover:border-white/20 transition-all group">
                 <div 
                   className="portfolio-img h-[300px] bg-cover bg-center transition-transform duration-700 group-hover:scale-110" 
                   style={{ backgroundImage: `url('${card.imagePath}')` }}
@@ -147,6 +147,7 @@ export default function ServicesClient() {
                 <div className="portfolio-info p-8">
                   <h4 className="text-xl font-bold mb-2">{card.title}</h4>
                   <p className="text-white/50">{card.description}</p>
+                  <div className="mt-4 text-[0.6rem] uppercase tracking-[3px] text-blue-500 font-bold opacity-30 group-hover:opacity-100 transition-opacity">View Transformation &rarr;</div>
                 </div>
               </Link>
             ))}

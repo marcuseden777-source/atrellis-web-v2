@@ -23,6 +23,8 @@ export default function QuotationPage() {
   const router = useRouter();
   const [currentStep, setCurrentStep] = useState(1);
   const [estimate, setEstimate] = useState<string>('S$ -- , ---');
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [isSuccess, setIsSuccess] = useState(false);
   const [userSelections, setUserSelections] = useState<UserSelections>({
     propertyType: null,
     propertySize: null,
@@ -109,6 +111,19 @@ export default function QuotationPage() {
       newList.push(value);
     }
     setUserSelections(prev => ({ ...prev, [category]: newList }));
+  };
+
+  const submitLead = () => {
+    setIsSubmitting(true);
+    
+    // Simulate technical analysis and routing
+    const tl = gsap.timeline();
+    tl.to({}, { duration: 2.5 })
+      .add(() => {
+        setIsSubmitting(false);
+        setIsSuccess(true);
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      });
   };
 
   const generateEstimate = () => {

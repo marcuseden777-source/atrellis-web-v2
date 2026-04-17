@@ -4,6 +4,7 @@ import React, { useEffect, useRef } from 'react';
 import { useParams, useRouter } from 'next/navigation';
 import gsap from 'gsap';
 import Link from 'next/link';
+import MaterialConfigurator from '@/app/components/MaterialConfigurator';
 
 interface TechDetail {
   title: string;
@@ -175,6 +176,13 @@ export default function ServiceDetailPage() {
 
       {/* Process Roadmap */}
       <section className="px-8 max-w-7xl mx-auto mt-32">
+        {id === 'zipblinds' && (
+          <div className="reveal-text mb-40">
+            <h2 className="text-3xl font-black uppercase tracking-[6px] text-center mb-16">SYSTEM CUSTOMIZATION</h2>
+            <MaterialConfigurator />
+          </div>
+        )}
+
         <div className="reveal-text mb-20 text-center">
           <h2 className="text-3xl font-black uppercase tracking-[6px]">THE ATRELLIS ROADMAP</h2>
           <p className="text-white/30 text-sm mt-4">Precision-engineered from initial audit to final certification.</p>
