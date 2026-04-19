@@ -80,7 +80,7 @@ export default function LandingPage() {
     gsap.to(main, {
       opacity: 0,
       duration: 0.5,
-      onComplete: () => { router.push('/services'); }
+      onComplete: () => { router.push('/quotation'); }
     });
   };
 
@@ -94,8 +94,7 @@ export default function LandingPage() {
           <img src="/assets/trustbar_logos/atrellis_brand_nobg.png" alt="Atrellis Brand" className="h-8 md:h-10 w-auto" />
         </Link>
         <nav className="flex items-center gap-4 md:gap-8">
-          <Link href="/services" className="text-[0.7rem] md:text-xs font-bold tracking-[2px] uppercase hover:text-blue-500 transition-colors">services</Link>
-          <Link href="/quotation" className="text-[0.7rem] md:text-xs font-bold tracking-[2px] uppercase bg-blue-500/10 border border-blue-500/20 px-4 py-2 rounded-full hover:bg-blue-500 hover:text-white transition-all">Start Journey</Link>
+          <Link href="/quotation" className="text-[0.7rem] md:text-xs font-bold tracking-[2px] uppercase bg-blue-500/10 border border-blue-500/20 px-6 py-3 rounded-full hover:bg-blue-500 hover:text-white transition-all shadow-[0_0_20px_rgba(59,130,246,0.2)]">Start Journey</Link>
         </nav>
       </header>
       
@@ -114,26 +113,28 @@ export default function LandingPage() {
           </div>
 
           {/* Design Card */}
-          <div id="design-card" className="info-card right-card pointer-events-auto">
+          <Link href="/quotation" id="design-card" className="info-card right-card pointer-events-auto block transition-all hover:scale-[1.02] active:scale-95 group">
             <div className="card-line"></div>
-            <h3 className="text-4xl font-serif italic font-bold mb-5 italic">Architectural A&A</h3>
-            <ul className="text-white/50 space-y-4 font-light tracking-wide text-sm">
+            <h3 className="text-4xl font-serif italic font-bold mb-5">Architectural A&A</h3>
+            <ul className="text-white/50 space-y-4 font-light tracking-wide text-sm mb-6">
               <li>Landed Property A&A (Additions & Alterations)</li>
               <li>BCA & URA Regulatory Submissions</li>
               <li>Bespoke 3D Visualization & Planning</li>
             </ul>
-          </div>
+            <div className="text-[0.6rem] uppercase tracking-[3px] text-blue-500 font-black opacity-0 group-hover:opacity-100 transition-opacity">Launch Assessment &rarr;</div>
+          </Link>
 
           {/* Build Card */}
-          <div id="build-card" className="info-card left-card pointer-events-auto">
+          <Link href="/quotation" id="build-card" className="info-card left-card pointer-events-auto block transition-all hover:scale-[1.02] active:scale-95 group">
             <div className="card-line"></div>
             <h3 className="text-xl uppercase tracking-[4px] font-black mb-5">AtrellisZipblinds®</h3>
-            <ol className="process-list space-y-4 text-white/50 font-light italic text-sm">
+            <ol className="process-list space-y-4 text-white/50 font-light italic text-sm mb-6">
               <li className="flex items-center gap-4"><span className="w-6 h-6 rounded-full bg-blue-500 text-white flex items-center justify-center text-[10px] font-bold not-italic">1</span> Online Assessment</li>
               <li className="flex items-center gap-4"><span className="w-6 h-6 rounded-full bg-blue-500 text-white flex items-center justify-center text-[10px] font-bold not-italic">2</span> Proprietary Omni-Tension™ Install</li>
               <li className="flex items-center gap-4"><span className="w-6 h-6 rounded-full bg-blue-500 text-white flex items-center justify-center text-[10px] font-bold not-italic">3</span> Site Handover & Smart Setup</li>
             </ol>
-          </div>
+            <div className="text-[0.6rem] uppercase tracking-[3px] text-blue-500 font-black opacity-0 group-hover:opacity-100 transition-opacity">Launch Assessment &rarr;</div>
+          </Link>
 
           {/* Final Conversion Reveal */}
           <div id="cta-reveal" className="flex flex-col items-center gap-8 pointer-events-auto">
@@ -142,14 +143,8 @@ export default function LandingPage() {
               className="start-journey-btn relative px-12 py-6 bg-transparent border border-white/20 text-white font-black uppercase tracking-[6px] text-lg overflow-hidden group hover:border-blue-500 transition-all duration-500"
             >
               <div className="absolute inset-0 bg-blue-600/10 translate-y-full group-hover:translate-y-0 transition-transform duration-500"></div>
-              START JOURNEY
+              START ASSESSMENT
             </button>
-            <Link 
-              href="/services" 
-              className="text-[0.7rem] tracking-[3px] uppercase opacity-50 hover:opacity-100 transition-opacity hover:text-blue-400"
-            >
-              SERVICES →
-            </Link>
           </div>
 
         </div>

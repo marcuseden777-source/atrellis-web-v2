@@ -127,6 +127,22 @@ export default function QuotationPage() {
       });
   };
 
+  const getWhatsAppLink = () => {
+    const message = `Hi Atrellis Team, I've just generated my Technical Brief on your site.
+
+Project Details:
+- Name: ${userSelections.contact.name}
+- Property: ${userSelections.propertyType} (${userSelections.propertySize})
+- Style: ${userSelections.style}
+- Scope: ${userSelections.scope.join(', ')}
+- Tier: ${userSelections.budget}
+- Indicative Estimate: ${estimate}
+
+I'd like to schedule a site survey to finalize these specifications.`;
+    
+    return `https://wa.me/6588888888?text=${encodeURIComponent(message)}`;
+  };
+
   const generateEstimate = () => {
     let basePrice = 20000;
     if (userSelections.propertySize === '601 - 1000 sqft') basePrice += 15000;
@@ -177,206 +193,246 @@ export default function QuotationPage() {
         </button>
       </header>
 
-      <div className="w-full max-w-2xl text-center space-y-12">
-        <div className="space-y-4">
-          <div className="w-12 h-1 bg-blue-500 mx-auto rounded-full mb-8"></div>
-          <h1 className="text-4xl md:text-5xl font-black uppercase tracking-[6px]">ASSESSMENT</h1>
-          <p className="text-white/50 text-base md:text-lg tracking-[1px] max-w-md mx-auto">Initializing your bespoke architectural quotation engine...</p>
+      {isSuccess ? (
+        <div className="w-full max-w-3xl text-center space-y-12 py-20 animate-in fade-in slide-in-from-bottom-10 duration-1000">
+          <div className="space-y-6">
+            <div className="w-20 h-20 bg-blue-500/20 rounded-full flex items-center justify-center mx-auto mb-8 border border-blue-500/30">
+              <svg className="w-10 h-10 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="3" d="M5 13l4 4L19 7"></path>
+              </svg>
+            </div>
+            <h1 className="text-4xl md:text-6xl font-black uppercase tracking-[8px]">ANALYSIS<br/>COMPLETE</h1>
+            <p className="text-white/40 text-lg tracking-[1px] max-w-xl mx-auto">
+              Your technical brief has been synchronized with the Atrellis Engineering cloud. 
+              Our indicative valuation for your <span className="text-white font-bold">{userSelections.style}</span> project is:
+            </p>
+          </div>
+
+          <div className="p-12 bg-white/5 border border-white/10 rounded-[40px] relative overflow-hidden group">
+            <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-blue-500 to-transparent"></div>
+            <div className="text-5xl md:text-7xl font-black text-blue-500 mb-4 tracking-tighter">
+              {estimate}
+            </div>
+            <p className="text-xs uppercase tracking-[4px] text-white/20 font-bold">Standard Indicative Range</p>
+          </div>
+
+          <div className="space-y-8 pt-8">
+            <h3 className="text-xs font-black uppercase tracking-[4px] text-white/30">Mandatory Next Step</h3>
+            <a 
+              href={getWhatsAppLink()}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-block px-12 py-7 bg-blue-500 text-white font-black uppercase tracking-[4px] rounded-full hover:bg-blue-600 transition-all duration-300 shadow-[0_25px_60px_rgba(59,130,246,0.4)] hover:scale-105 active:scale-95"
+            >
+              Consult Lead Engineer (WhatsApp)
+            </a>
+            <p className="text-[0.6rem] text-white/20 italic tracking-[1px]">
+              *Speed-to-Lead response time: Typically under 15 minutes during business hours.
+            </p>
+          </div>
         </div>
-
-        {/* Progress Bar */}
-        <div className="w-[60%] h-1 bg-white/10 mx-auto rounded-full overflow-hidden">
-          <div 
-            className="h-full bg-blue-500 transition-all duration-500 ease-out shadow-[0_0_15px_rgba(59,130,246,0.5)]" 
-            style={{ width: `${(currentStep / TOTAL_STEPS) * 100}%` }}
-          ></div>
-        </div>
-
-        <div className="relative min-h-[450px]">
-          {/* Step 1: Property Type */}
-          <div 
-            ref={el => { stepRefs.current[1] = el; }}
-            className={`step-container ${currentStep === 1 ? 'active block' : 'hidden'}`}
-          >
-            <h2 className="text-xl font-bold mb-8 uppercase tracking-[2px]">1. Property Type</h2>
-            <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
-              {['HDB BTO', 'HDB Resale', 'Condominium', 'Landed', 'Commercial'].map(type => (
-                <div 
-                  key={type}
-                  onClick={() => selectOption('propertyType', type)}
-                  className={`p-5 rounded-2xl cursor-pointer border transition-all duration-300 ${userSelections.propertyType === type ? 'bg-blue-500/20 border-blue-500 text-white shadow-[0_0_20px_rgba(59,130,246,0.3)]' : 'bg-white/5 border-white/10 text-white/50 hover:bg-white/10 hover:border-white/20 hover:text-white'}`}
-                >
-                  <span className="text-sm font-bold uppercase">{type}</span>
-                </div>
-              ))}
-            </div>
+      ) : (
+        <div className="w-full max-w-2xl text-center space-y-12">
+          <div className="space-y-4">
+            <div className="w-12 h-1 bg-blue-500 mx-auto rounded-full mb-8"></div>
+            <h1 className="text-4xl md:text-5xl font-black uppercase tracking-[6px]">ASSESSMENT</h1>
+            <p className="text-white/50 text-base md:text-lg tracking-[1px] max-w-md mx-auto">Initializing your bespoke architectural quotation engine...</p>
           </div>
 
-          {/* Step 2: Property Size */}
-          <div 
-            ref={el => { stepRefs.current[2] = el; }}
-            className={`step-container ${currentStep === 2 ? 'active block' : 'hidden'}`}
-          >
-            <h2 className="text-xl font-bold mb-8 uppercase tracking-[2px]">2. Property Size</h2>
-            <div className="grid grid-cols-2 gap-4">
-              {['Below 600 sqft', '601 - 1000 sqft', '1001 - 1500 sqft', 'Above 1500 sqft'].map(size => (
-                <div 
-                  key={size}
-                  onClick={() => selectOption('propertySize', size)}
-                  className={`p-5 rounded-2xl cursor-pointer border transition-all duration-300 ${userSelections.propertySize === size ? 'bg-blue-500/20 border-blue-500 text-white shadow-[0_0_20px_rgba(59,130,246,0.3)]' : 'bg-white/5 border-white/10 text-white/50 hover:bg-white/10 hover:border-white/20 hover:text-white'}`}
-                >
-                  <span className="text-sm font-bold uppercase">{size}</span>
-                </div>
-              ))}
-            </div>
+          {/* Progress Bar */}
+          <div className="w-[60%] h-1 bg-white/10 mx-auto rounded-full overflow-hidden">
+            <div 
+              className="h-full bg-blue-500 transition-all duration-500 ease-out shadow-[0_0_15px_rgba(59,130,246,0.5)]" 
+              style={{ width: `${(currentStep / TOTAL_STEPS) * 100}%` }}
+            ></div>
           </div>
 
-          {/* Step 3: Style Preference */}
-          <div 
-            ref={el => { stepRefs.current[3] = el; }}
-            className={`step-container ${currentStep === 3 ? 'active block' : 'hidden'}`}
-          >
-            <h2 className="text-xl font-bold mb-8 uppercase tracking-[2px]">3. Style Preference</h2>
-            <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
-              {['Minimalist', 'Modern Luxury', 'Scandinavian', 'Industrial', 'Japandi', 'Contemporary', 'Classic Elegant'].map(style => (
-                <div 
-                  key={style}
-                  onClick={() => selectOption('style', style)}
-                  className={`p-5 rounded-2xl cursor-pointer border transition-all duration-300 ${userSelections.style === style ? 'bg-blue-500/20 border-blue-500 text-white shadow-[0_0_20px_rgba(59,130,246,0.3)]' : 'bg-white/5 border-white/10 text-white/50 hover:bg-white/10 hover:border-white/20 hover:text-white'}`}
-                >
-                  <span className="text-sm font-bold uppercase">{style}</span>
-                </div>
-              ))}
-            </div>
-          </div>
-
-          {/* Step 4: Scope of Work */}
-          <div 
-            ref={el => { stepRefs.current[4] = el; }}
-            className={`step-container ${currentStep === 4 ? 'active block' : 'hidden'}`}
-          >
-            <h2 className="text-xl font-bold mb-8 uppercase tracking-[2px]">4. Scope of Work (Select Multiple)</h2>
-            <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
-              {['Carpentry', 'Kitchen', 'Flooring', 'Painting', 'Electrical', 'Plumbing', 'Waterproofing', 'False Ceiling', 'Doors/Windows', 'AtrellisZipblinds®'].map(scope => (
-                <div 
-                  key={scope}
-                  onClick={() => toggleMultiOption('scope', scope)}
-                  className={`p-5 rounded-2xl cursor-pointer border transition-all duration-300 ${userSelections.scope.includes(scope) ? 'bg-blue-500/20 border-blue-500 text-white shadow-[0_0_20px_rgba(59,130,246,0.3)]' : 'bg-white/5 border-white/10 text-white/50 hover:bg-white/10 hover:border-white/20 hover:text-white'}`}
-                >
-                  <span className="text-sm font-bold uppercase">{scope}</span>
-                </div>
-              ))}
-            </div>
-          </div>
-
-          {/* Step 5: Finish Tier */}
-          <div 
-            ref={el => { stepRefs.current[5] = el; }}
-            className={`step-container ${currentStep === 5 ? 'active block' : 'hidden'}`}
-          >
-            <h2 className="text-xl font-bold mb-8 uppercase tracking-[2px]">5. Finish Tier</h2>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-              {[
-                { label: 'Economic', desc: 'Functional & clean' },
-                { label: 'Mid-Range', desc: 'Balanced aesthetics' },
-                { label: 'Premium', desc: 'Luxury materials' }
-              ].map(tier => (
-                <div 
-                  key={tier.label}
-                  onClick={() => selectOption('budget', tier.label)}
-                  className={`p-6 rounded-2xl cursor-pointer border transition-all duration-300 flex flex-col items-center justify-center text-center ${userSelections.budget === tier.label ? 'bg-blue-500/20 border-blue-500 text-white shadow-[0_0_20px_rgba(59,130,246,0.3)]' : 'bg-white/5 border-white/10 text-white/50 hover:bg-white/10 hover:border-white/20 hover:text-white'}`}
-                >
-                  <strong className="text-sm uppercase mb-2 tracking-[1px]">{tier.label}</strong>
-                  <small className="text-[0.7rem] opacity-70 italic leading-tight">{tier.desc}</small>
-                </div>
-              ))}
-            </div>
-          </div>
-
-          {/* Step 6: Contact Details */}
-          <div 
-            ref={el => { stepRefs.current[6] = el; }}
-            className={`step-container ${currentStep === 6 ? 'active block' : 'hidden'}`}
-          >
-            <h2 className="text-xl font-bold mb-8 uppercase tracking-[2px]">6. Your Details</h2>
-            <div className="flex flex-col gap-4 max-w-sm mx-auto">
-              <input 
-                type="text" 
-                placeholder="Name"
-                value={userSelections.contact.name}
-                onChange={(e) => setUserSelections(prev => ({ ...prev, contact: { ...prev.contact, name: e.target.value } }))}
-                className="w-full p-4 bg-white/5 border border-white/10 rounded-xl focus:outline-none focus:border-blue-500 focus:bg-white/10 transition-all text-white placeholder-white/30"
-              />
-              <input 
-                type="email" 
-                placeholder="Email Address"
-                value={userSelections.contact.email}
-                onChange={(e) => setUserSelections(prev => ({ ...prev, contact: { ...prev.contact, email: e.target.value } }))}
-                className="w-full p-4 bg-white/5 border border-white/10 rounded-xl focus:outline-none focus:border-blue-500 focus:bg-white/10 transition-all text-white placeholder-white/30"
-              />
-              <input 
-                type="tel" 
-                placeholder="Contact Number"
-                value={userSelections.contact.phone}
-                onChange={(e) => setUserSelections(prev => ({ ...prev, contact: { ...prev.contact, phone: e.target.value } }))}
-                className="w-full p-4 bg-white/5 border border-white/10 rounded-xl focus:outline-none focus:border-blue-500 focus:bg-white/10 transition-all text-white placeholder-white/30"
-              />
-            </div>
-          </div>
-
-          {/* Step 7: Summary & Estimate */}
-          <div 
-            ref={el => { stepRefs.current[7] = el; }}
-            className={`step-container ${currentStep === 7 ? 'active block' : 'hidden'}`}
-          >
-            <h2 className="text-xl font-bold mb-8 uppercase tracking-[2px]">Indicative Estimate</h2>
-            <div className="p-10 bg-blue-500/5 border border-blue-500/20 rounded-3xl mb-8">
-              <div 
-                id="estimateOutput"
-                className="text-4xl md:text-5xl font-black text-blue-500 mb-6 drop-shadow-[0_0_30px_rgba(59,130,246,0.3)]"
-              >
-                {estimate}
+          <div className="relative min-h-[450px]">
+            {/* Step 1: Property Type */}
+            <div 
+              ref={el => { stepRefs.current[1] = el; }}
+              className={`step-container ${currentStep === 1 ? 'active block' : 'hidden'}`}
+            >
+              <h2 className="text-xl font-bold mb-8 uppercase tracking-[2px]">1. Property Type</h2>
+              <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
+                {['HDB BTO', 'HDB Resale', 'Condominium', 'Landed', 'Commercial'].map(type => (
+                  <div 
+                    key={type}
+                    onClick={() => selectOption('propertyType', type)}
+                    className={`p-5 rounded-2xl cursor-pointer border transition-all duration-300 ${userSelections.propertyType === type ? 'bg-blue-500/20 border-blue-500 text-white shadow-[0_0_20px_rgba(59,130,246,0.3)]' : 'bg-white/5 border-white/10 text-white/50 hover:bg-white/10 hover:border-white/20 hover:text-white'}`}
+                  >
+                    <span className="text-sm font-bold uppercase">{type}</span>
+                  </div>
+                ))}
               </div>
-              <p className="text-[0.7rem] text-white/40 max-w-sm mx-auto leading-relaxed">
-                This is a real-time indicative range based on standard metrics. Final quotation is subject to a detailed site survey and material selection.
-              </p>
             </div>
-            <button 
-              onClick={submitLead}
-              className="px-10 py-5 bg-blue-500 text-white font-black uppercase tracking-[3px] rounded-full hover:bg-blue-600 transition-all duration-300 shadow-[0_20px_50px_rgba(59,130,246,0.3)] active:scale-95"
+
+            {/* Step 2: Property Size */}
+            <div 
+              ref={el => { stepRefs.current[2] = el; }}
+              className={`step-container ${currentStep === 2 ? 'active block' : 'hidden'}`}
             >
-              REQUEST DETAILED QUOTE
-            </button>
+              <h2 className="text-xl font-bold mb-8 uppercase tracking-[2px]">2. Property Size</h2>
+              <div className="grid grid-cols-2 gap-4">
+                {['Below 600 sqft', '601 - 1000 sqft', '1001 - 1500 sqft', 'Above 1500 sqft'].map(size => (
+                  <div 
+                    key={size}
+                    onClick={() => selectOption('propertySize', size)}
+                    className={`p-5 rounded-2xl cursor-pointer border transition-all duration-300 ${userSelections.propertySize === size ? 'bg-blue-500/20 border-blue-500 text-white shadow-[0_0_20px_rgba(59,130,246,0.3)]' : 'bg-white/5 border-white/10 text-white/50 hover:bg-white/10 hover:border-white/20 hover:text-white'}`}
+                  >
+                    <span className="text-sm font-bold uppercase">{size}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Step 3: Style Preference */}
+            <div 
+              ref={el => { stepRefs.current[3] = el; }}
+              className={`step-container ${currentStep === 3 ? 'active block' : 'hidden'}`}
+            >
+              <h2 className="text-xl font-bold mb-8 uppercase tracking-[2px]">3. Style Preference</h2>
+              <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
+                {['Minimalist', 'Modern Luxury', 'Scandinavian', 'Industrial', 'Japandi', 'Contemporary', 'Classic Elegant'].map(style => (
+                  <div 
+                    key={style}
+                    onClick={() => selectOption('style', style)}
+                    className={`p-5 rounded-2xl cursor-pointer border transition-all duration-300 ${userSelections.style === style ? 'bg-blue-500/20 border-blue-500 text-white shadow-[0_0_20px_rgba(59,130,246,0.3)]' : 'bg-white/5 border-white/10 text-white/50 hover:bg-white/10 hover:border-white/20 hover:text-white'}`}
+                  >
+                    <span className="text-sm font-bold uppercase">{style}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Step 4: Scope of Work */}
+            <div 
+              ref={el => { stepRefs.current[4] = el; }}
+              className={`step-container ${currentStep === 4 ? 'active block' : 'hidden'}`}
+            >
+              <h2 className="text-xl font-bold mb-8 uppercase tracking-[2px]">4. Scope of Work (Select Multiple)</h2>
+              <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
+                {['Carpentry', 'Kitchen', 'Flooring', 'Painting', 'Electrical', 'Plumbing', 'Waterproofing', 'False Ceiling', 'Doors/Windows', 'AtrellisZipblinds®'].map(scope => (
+                  <div 
+                    key={scope}
+                    onClick={() => toggleMultiOption('scope', scope)}
+                    className={`p-5 rounded-2xl cursor-pointer border transition-all duration-300 ${userSelections.scope.includes(scope) ? 'bg-blue-500/20 border-blue-500 text-white shadow-[0_0_20px_rgba(59,130,246,0.3)]' : 'bg-white/5 border-white/10 text-white/50 hover:bg-white/10 hover:border-white/20 hover:text-white'}`}
+                  >
+                    <span className="text-sm font-bold uppercase">{scope}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Step 5: Finish Tier */}
+            <div 
+              ref={el => { stepRefs.current[5] = el; }}
+              className={`step-container ${currentStep === 5 ? 'active block' : 'hidden'}`}
+            >
+              <h2 className="text-xl font-bold mb-8 uppercase tracking-[2px]">5. Finish Tier</h2>
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                {[
+                  { label: 'Economic', desc: 'Functional & clean' },
+                  { label: 'Mid-Range', desc: 'Balanced aesthetics' },
+                  { label: 'Premium', desc: 'Luxury materials' }
+                ].map(tier => (
+                  <div 
+                    key={tier.label}
+                    onClick={() => selectOption('budget', tier.label)}
+                    className={`p-6 rounded-2xl cursor-pointer border transition-all duration-300 flex flex-col items-center justify-center text-center ${userSelections.budget === tier.label ? 'bg-blue-500/20 border-blue-500 text-white shadow-[0_0_20px_rgba(59,130,246,0.3)]' : 'bg-white/5 border-white/10 text-white/50 hover:bg-white/10 hover:border-white/20 hover:text-white'}`}
+                  >
+                    <strong className="text-sm uppercase mb-2 tracking-[1px]">{tier.label}</strong>
+                    <small className="text-[0.7rem] opacity-70 italic leading-tight">{tier.desc}</small>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Step 6: Contact Details */}
+            <div 
+              ref={el => { stepRefs.current[6] = el; }}
+              className={`step-container ${currentStep === 6 ? 'active block' : 'hidden'}`}
+            >
+              <h2 className="text-xl font-bold mb-8 uppercase tracking-[2px]">6. Your Details</h2>
+              <div className="flex flex-col gap-4 max-w-sm mx-auto">
+                <input 
+                  type="text" 
+                  placeholder="Name"
+                  value={userSelections.contact.name}
+                  onChange={(e) => setUserSelections(prev => ({ ...prev, contact: { ...prev.contact, name: e.target.value } }))}
+                  className="w-full p-4 bg-white/5 border border-white/10 rounded-xl focus:outline-none focus:border-blue-500 focus:bg-white/10 transition-all text-white placeholder-white/30"
+                />
+                <input 
+                  type="email" 
+                  placeholder="Email Address"
+                  value={userSelections.contact.email}
+                  onChange={(e) => setUserSelections(prev => ({ ...prev, contact: { ...prev.contact, email: e.target.value } }))}
+                  className="w-full p-4 bg-white/5 border border-white/10 rounded-xl focus:outline-none focus:border-blue-500 focus:bg-white/10 transition-all text-white placeholder-white/30"
+                />
+                <input 
+                  type="tel" 
+                  placeholder="Contact Number"
+                  value={userSelections.contact.phone}
+                  onChange={(e) => setUserSelections(prev => ({ ...prev, contact: { ...prev.contact, phone: e.target.value } }))}
+                  className="w-full p-4 bg-white/5 border border-white/10 rounded-xl focus:outline-none focus:border-blue-500 focus:bg-white/10 transition-all text-white placeholder-white/30"
+                />
+              </div>
+            </div>
+
+            {/* Step 7: Summary & Estimate */}
+            <div 
+              ref={el => { stepRefs.current[7] = el; }}
+              className={`step-container ${currentStep === 7 ? 'active block' : 'hidden'}`}
+            >
+              <h2 className="text-xl font-bold mb-8 uppercase tracking-[2px]">Indicative Estimate</h2>
+              <div className="p-10 bg-blue-500/5 border border-blue-500/20 rounded-3xl mb-8">
+                <div 
+                  id="estimateOutput"
+                  className="text-4xl md:text-5xl font-black text-blue-500 mb-6 drop-shadow-[0_0_30px_rgba(59,130,246,0.3)]"
+                >
+                  {estimate}
+                </div>
+                <p className="text-[0.7rem] text-white/40 max-w-sm mx-auto leading-relaxed">
+                  This is a real-time indicative range based on standard metrics. Final quotation is subject to a detailed site survey and material selection.
+                </p>
+              </div>
+              <button 
+                onClick={submitLead}
+                className="px-10 py-5 bg-blue-500 text-white font-black uppercase tracking-[3px] rounded-full hover:bg-blue-600 transition-all duration-300 shadow-[0_20px_50px_rgba(59,130,246,0.3)] active:scale-95"
+              >
+                REQUEST DETAILED QUOTE
+              </button>
+            </div>
           </div>
-        </div>
 
-        {/* Navigation Buttons */}
-        <div className="flex flex-col md:flex-row justify-center items-stretch md:items-center gap-4 md:gap-6 pt-12">
-          {currentStep > 1 && (
-            <button 
-              onClick={prevStep}
-              className="px-10 py-4 bg-transparent text-white/50 border border-white/10 rounded-full hover:border-white/30 hover:text-white transition-all font-bold text-xs uppercase tracking-[2px]"
-            >
-              BACK
-            </button>
-          )}
-          {currentStep < TOTAL_STEPS && (
-            <button 
-              onClick={nextStep}
-              className="px-12 py-4 bg-blue-500 text-white rounded-full hover:bg-blue-600 transition-all font-bold text-xs uppercase tracking-[2px] shadow-[0_10px_20px_rgba(59,130,246,0.2)]"
-            >
-              CONTINUE
-            </button>
-          )}
-        </div>
+          {/* Navigation Buttons */}
+          <div className="flex flex-col md:flex-row justify-center items-stretch md:items-center gap-4 md:gap-6 pt-12">
+            {currentStep > 1 && (
+              <button 
+                onClick={prevStep}
+                className="px-10 py-4 bg-transparent text-white/50 border border-white/10 rounded-full hover:border-white/30 hover:text-white transition-all font-bold text-xs uppercase tracking-[2px]"
+              >
+                BACK
+              </button>
+            )}
+            {currentStep < TOTAL_STEPS && (
+              <button 
+                onClick={nextStep}
+                className="px-12 py-4 bg-blue-500 text-white rounded-full hover:bg-blue-600 transition-all font-bold text-xs uppercase tracking-[2px] shadow-[0_10px_20px_rgba(59,130,246,0.2)]"
+              >
+                CONTINUE
+              </button>
+            )}
+          </div>
 
-        <button 
-          onClick={() => router.push('/services')}
-          className="block mx-auto pt-12 text-[0.7rem] uppercase tracking-[2px] text-white/30 hover:text-white/60 transition-colors"
-        >
-          &larr; Cancel Request
-        </button>
-      </div>
+          <button 
+            onClick={() => router.push('/services')}
+            className="block mx-auto pt-12 text-[0.7rem] uppercase tracking-[2px] text-white/30 hover:text-white/60 transition-colors"
+          >
+            &larr; Cancel Request
+          </button>
+        </div>
+      )}
 
       {/* Background Orbs */}
       <div className="fixed top-1/4 -right-1/4 w-[50vw] h-[50vw] bg-blue-600/10 blur-[120px] rounded-full pointer-events-none -z-10"></div>
