@@ -170,10 +170,10 @@ export default function LandingPage() {
       {/* Trust Visibility Bar */}
       <section className="bg-black py-20 px-8 border-t border-white/5">
         <div className="max-w-7xl mx-auto flex flex-wrap justify-center gap-10 md:gap-20 opacity-60 hover:opacity-100 transition-all duration-700">
-          <img src="/assets/trustbar_logos/nippon_paint_nobg.png" alt="Nippon Paint" className="h-10 w-auto" />
-          <img src="/assets/trustbar_logos/bizsafe3_nobg.png" alt="bizSafe3" className="h-10 w-auto" />
-          <img src="/assets/trustbar_logos/hdb_licensed_nobg.png" alt="HDB" className="h-10 w-auto" />
-          <img src="/assets/trustbar_logos/bca_authority_nobg.png" alt="BCA" className="h-10 w-auto" />
+          <img src="/assets/trustbar_logos/nippon_paint_clean.png" alt="Nippon Paint" className="h-10 w-auto" />
+          <img src="/assets/trustbar_logos/bizsafe3_clean.png" alt="bizSafe3" className="h-10 w-auto" />
+          <img src="/assets/trustbar_logos/hdb_licensed_clean.png" alt="HDB" className="h-10 w-auto" />
+          <img src="/assets/trustbar_logos/bca_authority_clean.png" alt="BCA" className="h-10 w-auto" />
         </div>
       </section>
 

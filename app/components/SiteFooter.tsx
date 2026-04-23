@@ -9,10 +9,10 @@ const FOOTER_NAV = [
 ];
 
 const TRUST_LOGOS = [
-  { src: '/assets/trustbar_logos/nippon_paint_nobg.png', alt: 'Nippon Paint Authorised Applicator' },
-  { src: '/assets/trustbar_logos/bizsafe3_nobg.png', alt: 'BizSafe Level 3 Certified' },
-  { src: '/assets/trustbar_logos/hdb_licensed_nobg.png', alt: 'HDB Licensed Contractor' },
-  { src: '/assets/trustbar_logos/bca_authority_nobg.png', alt: 'BCA Registered Builder' },
+  { src: '/assets/trustbar_logos/nippon_paint_clean.png', alt: 'Nippon Paint Authorised Applicator' },
+  { src: '/assets/trustbar_logos/bizsafe3_clean.png', alt: 'BizSafe Level 3 Certified' },
+  { src: '/assets/trustbar_logos/hdb_licensed_clean.png', alt: 'HDB Licensed Contractor' },
+  { src: '/assets/trustbar_logos/bca_authority_clean.png', alt: 'BCA Registered Builder' },
 ];
 
 export default function SiteFooter() {
