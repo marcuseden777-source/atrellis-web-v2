@@ -4,6 +4,8 @@ import React, { useEffect, useState } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import Link from 'next/link';
+import SiteNav from '@/app/components/SiteNav';
+import SiteFooter from '@/app/components/SiteFooter';
 
 // Register ScrollTrigger plugin
 if (typeof window !== 'undefined') {
@@ -85,14 +87,7 @@ export default function ServicesClient() {
 
   return (
     <div className="services-page">
-      {/* Global Header */}
-      <header className="glass-header">
-        <Link href="/" className="logo flex items-center gap-4">
-          <img src="/assets/trustbar_logos/atrellis_brand_nobg.png" alt="Atrellis Brand" />
-          <span className="text-[0.7rem] font-bold tracking-[2px] uppercase opacity-50">services</span>
-        </Link>
-        <Link href="/quotation" className="glass-btn primary outline">START JOURNEY</Link>
-      </header>
+      <SiteNav breadcrumb="services" ctaLabel="Start Journey" />
 
       {/* Hero Section */}
       <section className="services-hero">
@@ -251,16 +246,7 @@ export default function ServicesClient() {
         </div>
       </section>
 
-      {/* Footer */}
-      <footer className="section-container mt-20 border-t border-white/5 pt-20 pb-20 flex flex-col md:flex-row justify-between items-center gap-10">
-        <p className="text-xs uppercase tracking-[3px] text-white/30">Atrellis Pte Ltd &copy; 2026. All rights reserved.</p>
-        <div className="flex items-center gap-12 opacity-30 grayscale hover:grayscale-0 hover:opacity-100 transition-all duration-700">
-          <img src="/assets/trustbar_logos/nippon_paint_nobg.png" alt="Nippon Paint" className="h-8" />
-          <img src="/assets/trustbar_logos/bizsafe3_nobg.png" alt="bizSafe3" className="h-8" />
-          <img src="/assets/trustbar_logos/hdb_licensed_nobg.png" alt="HDB" className="h-8" />
-          <img src="/assets/trustbar_logos/bca_authority_nobg.png" alt="BCA" className="h-8" />
-        </div>
-      </footer>
+      <SiteFooter />
     </div>
   );
 }

@@ -5,6 +5,8 @@ import { useParams, useRouter } from 'next/navigation';
 import gsap from 'gsap';
 import Link from 'next/link';
 import BeforeAfterSlider from '@/app/components/BeforeAfterSlider';
+import SiteNav from '@/app/components/SiteNav';
+import SiteFooter from '@/app/components/SiteFooter';
 
 interface ProjectDetail {
   title: string;
@@ -73,14 +75,7 @@ export default function ProjectDetailPage() {
 
   return (
     <div ref={containerRef} className="bg-[#050505] min-h-screen text-white pb-32">
-      {/* Navigation */}
-      <header className="fixed top-0 left-0 w-full z-[100] p-8 flex justify-between items-center bg-gradient-to-b from-black/80 to-transparent backdrop-blur-md">
-        <Link href="/" className="flex items-center gap-4">
-          <img src="/assets/trustbar_logos/atrellis_brand_nobg.png" alt="Atrellis" className="h-8" />
-          <span className="text-[0.6rem] font-bold tracking-[3px] uppercase opacity-50 underline decoration-blue-500 underline-offset-8">Case Studies</span>
-        </Link>
-        <Link href="/quotation" className="glass-btn primary py-3 px-8 text-xs font-bold uppercase tracking-[2px]">Request Similar Build</Link>
-      </header>
+      <SiteNav breadcrumb="Case Studies" ctaLabel="Request Similar Build" ctaHref="/quotation" />
 
       {/* Main Content */}
       <main className="pt-40 px-8 max-w-7xl mx-auto">
@@ -145,11 +140,13 @@ export default function ProjectDetailPage() {
           <h2 className="text-4xl md:text-6xl font-black tracking-tighter leading-tight">Ready for your own transformation?</h2>
           <p className="text-white/40 text-lg">Every space has untapped potential. Our engineering team specializes in unlocking it through high-performance materials and legal compliance mastery.</p>
           <div className="pt-10 flex flex-col sm:flex-row gap-6 justify-center">
-            <Link href="/quotation" className="glass-btn primary py-6 px-12 text-sm font-bold uppercase tracking-[2px]">Start Assessment Assessment</Link>
+            <Link href="/quotation" className="glass-btn primary py-6 px-12 text-sm font-bold uppercase tracking-[2px]">Start Assessment</Link>
             <Link href="/services" className="glass-btn outline py-6 px-12 text-sm font-bold uppercase tracking-[2px]">Explore Systems</Link>
           </div>
         </div>
       </section>
+
+      <SiteFooter />
     </div>
   );
 }

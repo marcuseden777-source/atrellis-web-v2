@@ -5,6 +5,8 @@ import { useParams, useRouter } from 'next/navigation';
 import gsap from 'gsap';
 import Link from 'next/link';
 import MaterialConfigurator from '@/app/components/MaterialConfigurator';
+import SiteNav from '@/app/components/SiteNav';
+import SiteFooter from '@/app/components/SiteFooter';
 
 interface TechDetail {
   title: string;
@@ -136,14 +138,7 @@ export default function ServiceDetailPage() {
 
   return (
     <div ref={containerRef} className="bg-[#050505] min-h-screen text-white pb-20 selection:bg-blue-500/30">
-      {/* Header */}
-      <header className="glass-header">
-        <Link href="/services" className="logo flex items-center gap-4">
-          <img src="/assets/trustbar_logos/atrellis_brand_nobg.png" alt="Atrellis" />
-          <span className="text-[0.7rem] font-bold tracking-[2px] uppercase opacity-50 underline decoration-blue-500 underline-offset-4">back to services</span>
-        </Link>
-        <Link href="/quotation" className="glass-btn primary outline">REQUEST SURVEY</Link>
-      </header>
+      <SiteNav breadcrumb="back to services" ctaLabel="Request Survey" ctaHref="/quotation" />
 
       {/* Hero */}
       <section className="pt-32 px-8 max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
@@ -204,10 +199,12 @@ export default function ServiceDetailPage() {
         <div className="reveal-text max-w-2xl mx-auto space-y-10">
           <h2 className="text-4xl font-serif italic text-white/90">Curious how this fits into your space?</h2>
           <Link href="/quotation" className="glass-btn primary py-6 px-12 group">
-            START ASSESSMENT ASSESSMENT →
+            START ASSESSMENT →
           </Link>
         </div>
       </section>
+
+      <SiteFooter />
     </div>
   );
 }

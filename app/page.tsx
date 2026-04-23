@@ -5,6 +5,8 @@ import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import ResponsiveScrollPlayer from './components/ResponsiveScrollPlayer';
 import PreloaderOverlay from './components/PreloaderOverlay';
+import SiteNav from './components/SiteNav';
+import SiteFooter from './components/SiteFooter';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 
@@ -17,8 +19,9 @@ export default function LandingPage() {
   const router = useRouter();
 
   useEffect(() => {
-    // 1. Initial State
+    // 1. Initial State — hero headline visible, cards hidden
     gsap.set(['#design-card', '#build-card', '#cta-reveal'], { opacity: 0, scale: 0.95, filter: 'blur(10px)' });
+    gsap.set('#hero-headline', { opacity: 1, y: 0 });
 
     // 2. Main Scroll Timeline
     const tl = gsap.timeline({
@@ -31,8 +34,14 @@ export default function LandingPage() {
       }
     });
 
-    // Segment 1: Intro (0-20%) - No cards, just assembly
-    tl.to({}, { duration: 2 }); 
+    // Segment 1: Intro (0-20%) — hero fades out, cinematic assembles
+    tl.to('#hero-headline', {
+      opacity: 0,
+      y: -30,
+      filter: 'blur(8px)',
+      duration: 1.5,
+    }, 0);
+    tl.to({}, { duration: 0.5 });
 
     // Segment 2: Design Section (20-45%)
     tl.to('#design-card', { 
@@ -87,16 +96,7 @@ export default function LandingPage() {
   return (
     <main className="bg-black text-white selection:bg-blue-500/30">
       <PreloaderOverlay />
-
-      {/* Persistent Global Header */}
-      <header className="glass-header">
-        <Link href="/" className="logo">
-          <img src="/assets/trustbar_logos/atrellis_brand_nobg.png" alt="Atrellis Brand" className="h-8 md:h-10 w-auto" />
-        </Link>
-        <nav className="flex items-center gap-4 md:gap-8">
-          <Link href="/quotation" className="text-[0.7rem] md:text-xs font-bold tracking-[2px] uppercase bg-blue-500/10 border border-blue-500/20 px-6 py-3 rounded-full hover:bg-blue-500 hover:text-white transition-all shadow-[0_0_20px_rgba(59,130,246,0.2)]">Start Journey</Link>
-        </nav>
-      </header>
+      <SiteNav />
       
       <div ref={containerRef} className="relative h-screen overflow-hidden">
         {/* Cinematic Scrubber Engine */}
@@ -105,6 +105,23 @@ export default function LandingPage() {
         {/* Global UI Layer */}
         <div className="overlay-wrapper pointer-events-none">
           
+          {/* Hero Headline — visible on load, fades on scroll */}
+          <div
+            id="hero-headline"
+            className="hero-headline-block"
+            aria-label="Atrellis — Singapore Design &amp; Build"
+          >
+            <span className="hero-headline-eyebrow">Singapore&apos;s Premium Design &amp; Build Studio</span>
+            <h1 className="hero-headline-title">
+              Engineer.<br />
+              <em>Design.</em><br />
+              Build.
+            </h1>
+            <p className="hero-headline-sub">
+              Landed property A&amp;A · BCA-compliant structures · Smart home ecosystems
+            </p>
+          </div>
+
           <div id="scroll-prompt" className="flex flex-col items-center">
             <span className="text-[0.7rem] uppercase tracking-[4px] font-bold text-white/50 mb-4">Explore Design & Build</span>
             <div className="w-6 h-10 border-2 border-white/20 rounded-full relative">
@@ -152,13 +169,46 @@ export default function LandingPage() {
 
       {/* Trust Visibility Bar */}
       <section className="bg-black py-20 px-8 border-t border-white/5">
-        <div className="max-w-7xl mx-auto flex flex-wrap justify-center gap-10 md:gap-20 opacity-30 grayscale hover:grayscale-0 hover:opacity-100 transition-all duration-1000">
+        <div className="max-w-7xl mx-auto flex flex-wrap justify-center gap-10 md:gap-20 opacity-60 hover:opacity-100 transition-all duration-700">
           <img src="/assets/trustbar_logos/nippon_paint_nobg.png" alt="Nippon Paint" className="h-10 w-auto" />
           <img src="/assets/trustbar_logos/bizsafe3_nobg.png" alt="bizSafe3" className="h-10 w-auto" />
           <img src="/assets/trustbar_logos/hdb_licensed_nobg.png" alt="HDB" className="h-10 w-auto" />
           <img src="/assets/trustbar_logos/bca_authority_nobg.png" alt="BCA" className="h-10 w-auto" />
         </div>
       </section>
+
+      {/* About Section */}
+      <section id="about" className="bg-black py-32 px-8 border-t border-white/5">
+        <div className="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-20 items-center">
+          <div>
+            <span className="text-blue-500 font-bold tracking-[4px] uppercase text-xs block mb-6">About Atrellis</span>
+            <h2 className="text-5xl font-black tracking-tighter leading-tight mb-8">
+              Singapore&apos;s Most<br />Precise Build Team
+            </h2>
+            <p className="text-white/50 leading-relaxed text-lg mb-6">
+              Founded by engineers and designers who were frustrated with the gap between beautiful concepts and shoddy execution — Atrellis exists to close that gap permanently.
+            </p>
+            <p className="text-white/40 leading-relaxed">
+              Every project carries our BCA registration, BizSafe Level 3 certification, and a licensed PE on structural works. We don&apos;t just renovate spaces. We engineer them.
+            </p>
+          </div>
+          <div className="grid grid-cols-2 gap-6">
+            {[
+              { num: '200+', label: 'Projects Completed' },
+              { num: '6', label: 'Years in Singapore' },
+              { num: '98%', label: 'Client Satisfaction' },
+              { num: '<15min', label: 'Speed-to-Lead' },
+            ].map(({ num, label }) => (
+              <div key={label} className="p-8 bg-white/[0.03] border border-white/8 rounded-3xl">
+                <p className="text-4xl font-black text-blue-500 mb-2">{num}</p>
+                <p className="text-white/40 text-sm uppercase tracking-[2px]">{label}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <SiteFooter />
     </main>
   );
 }

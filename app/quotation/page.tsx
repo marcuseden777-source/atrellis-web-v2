@@ -4,6 +4,8 @@ import React, { useState, useEffect, useRef } from 'react';
 import { useRouter } from 'next/navigation';
 import gsap from 'gsap';
 import Link from 'next/link';
+import SiteNav from '@/app/components/SiteNav';
+import SiteFooter from '@/app/components/SiteFooter';
 
 interface UserSelections {
   propertyType: string | null;
@@ -26,6 +28,7 @@ export default function QuotationPage() {
   const [estimate, setEstimate] = useState<string>('S$ -- , ---');
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
+  const [stepError, setStepError] = useState<string | null>(null);
   const [userSelections, setUserSelections] = useState<UserSelections>({
     propertyType: null,
     propertySize: null,
@@ -40,9 +43,17 @@ export default function QuotationPage() {
   // Navigation Logic
   const nextStep = () => {
     if (!validateStep(currentStep)) {
-      alert("Please make a selection to proceed.");
+      setStepError('Please make a selection to continue.');
+      // Shake the error into view
+      const errorEl = document.getElementById('step-error-msg');
+      if (errorEl) {
+        errorEl.classList.remove('step-error-shake');
+        void errorEl.offsetWidth; // reflow to restart animation
+        errorEl.classList.add('step-error-shake');
+      }
       return;
     }
+    setStepError(null);
 
     if (currentStep < TOTAL_STEPS) {
       const currentEl = stepRefs.current[currentStep];
@@ -100,6 +111,7 @@ export default function QuotationPage() {
 
   const selectOption = (category: keyof UserSelections, value: string) => {
     setUserSelections(prev => ({ ...prev, [category]: value }));
+    setStepError(null);
   };
 
   const toggleMultiOption = (category: keyof UserSelections, value: string) => {
@@ -112,6 +124,7 @@ export default function QuotationPage() {
       newList.push(value);
     }
     setUserSelections(prev => ({ ...prev, [category]: newList }));
+    setStepError(null);
   };
 
   const submitLead = () => {
@@ -181,17 +194,7 @@ I'd like to schedule a site survey to finalize these specifications.`;
   return (
     <div className="bg-[#050505] min-h-screen text-white flex flex-col items-center pt-20 md:pt-24 pb-12 px-6 selection:bg-blue-500/30">
       {/* Global Header */}
-      <header className="glass-header">
-        <Link href="/" className="logo">
-          <img src="/assets/trustbar_logos/atrellis_brand_nobg.png" alt="Atrellis Brand" />
-        </Link>
-        <button 
-          onClick={() => router.push('/')}
-          className="glass-btn outline py-2 px-6"
-        >
-          BACK HOME
-        </button>
-      </header>
+      <SiteNav ctaLabel="Back Home" ctaHref="/" />
 
       {isSuccess ? (
         <div className="w-full max-w-3xl text-center space-y-12 py-20 animate-in fade-in slide-in-from-bottom-10 duration-1000">
@@ -425,6 +428,22 @@ I'd like to schedule a site survey to finalize these specifications.`;
             )}
           </div>
 
+          {/* Inline Step Error */}
+          {stepError && (
+            <div
+              id="step-error-msg"
+              role="alert"
+              className="step-error-msg step-error-shake"
+            >
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" aria-hidden="true">
+                <circle cx="12" cy="12" r="10" />
+                <line x1="12" y1="8" x2="12" y2="12" />
+                <line x1="12" y1="16" x2="12.01" y2="16" />
+              </svg>
+              {stepError}
+            </div>
+          )}
+
           <button 
             onClick={() => router.push('/services')}
             className="block mx-auto pt-12 text-[0.7rem] uppercase tracking-[2px] text-white/30 hover:text-white/60 transition-colors"
@@ -437,6 +456,7 @@ I'd like to schedule a site survey to finalize these specifications.`;
       {/* Background Orbs */}
       <div className="fixed top-1/4 -right-1/4 w-[50vw] h-[50vw] bg-blue-600/10 blur-[120px] rounded-full pointer-events-none -z-10"></div>
       <div className="fixed bottom-1/4 -left-1/4 w-[40vw] h-[40vw] bg-blue-900/10 blur-[150px] rounded-full pointer-events-none -z-10"></div>
+      <SiteFooter />
     </div>
   );
 }
