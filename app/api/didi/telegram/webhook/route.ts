@@ -1,13 +1,13 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { processMessage } from '@/lib/didi/conversation-engine';
 import { sendTelegramMessage } from '@/lib/didi/telegram';
-import { saveAndrewChatId } from '@/lib/didi/supabase';
+import { saveAuthorizedChatId } from '@/lib/didi/supabase';
 import type { TelegramUpdate } from '@/lib/didi/telegram';
 
 export const runtime = 'nodejs';
 export const maxDuration = 30;
 
-const ANDREW_USERNAME = 'Atrellis_555777';
+const AUTHORIZED_USERNAMES = ['Atrellis_555777', 'en9981'];
 
 export async function POST(req: NextRequest) {
   try {
@@ -19,11 +19,11 @@ export async function POST(req: NextRequest) {
     const username = message.from?.username ?? '';
     const text = message.text.trim();
 
-    // If Andrew messages the bot, save his chat_id for escalation targeting
-    if (username === ANDREW_USERNAME) {
-      await saveAndrewChatId(chatId);
+    // If an authorized user messages the bot, save their chat_id for escalation
+    if (AUTHORIZED_USERNAMES.includes(username)) {
+      await saveAuthorizedChatId(username, chatId);
       if (text === '/start') {
-        await sendTelegramMessage(chatId, '✅ Boss Andrew registered. Didi will send all lead briefs here.');
+        await sendTelegramMessage(chatId, '✅ Registered! Didi will send all lead briefs here.');
         return NextResponse.json({ ok: true });
       }
     }

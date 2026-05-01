@@ -113,25 +113,35 @@ export async function markLeadEscalated(sessionId: string): Promise<void> {
   ]);
 }
 
-// ── Config (Andrew's Telegram chat_id + any runtime settings) ─────────────────
+// ── Config (authorized Telegram chat_ids for escalation) ─────────────────────
 
-export async function saveAndrewChatId(chatId: number): Promise<void> {
+export async function saveAuthorizedChatId(username: string, chatId: number): Promise<void> {
+  const key = `authorized_chat_${username.toLowerCase()}`;
   const { error } = await db()
     .from('config')
-    .upsert({ key: 'andrew_telegram_chat_id', value: { chatId } });
+    .upsert({ key, value: { chatId, username } });
 
-  if (error) throw new Error(`saveAndrewChatId failed: ${error.message}`);
+  if (error) throw new Error(`saveAuthorizedChatId failed: ${error.message}`);
 }
 
-export async function getAndrewChatId(): Promise<number | null> {
+export async function getAllEscalationChatIds(): Promise<Array<number | string>> {
   const { data, error } = await db()
     .from('config')
     .select('value')
-    .eq('key', 'andrew_telegram_chat_id')
-    .single();
+    .like('key', 'authorized_chat_%');
 
-  if (error || !data) return null;
-  return (data.value as { chatId: number }).chatId ?? null;
+  if (error || !data || data.length === 0) return [];
+  return data.map((row) => (row.value as { chatId: number }).chatId).filter(Boolean);
+}
+
+// Legacy alias kept for backward compat
+export async function saveAndrewChatId(chatId: number): Promise<void> {
+  return saveAuthorizedChatId('Atrellis_555777', chatId);
+}
+
+export async function getAndrewChatId(): Promise<number | null> {
+  const ids = await getAllEscalationChatIds();
+  return (ids[0] as number) ?? null;
 }
 
 // ── Row mapper ────────────────────────────────────────────────────────────────
