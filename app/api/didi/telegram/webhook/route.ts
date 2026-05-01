@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { processMessage } from '@/lib/didi/conversation-engine';
 import { sendTelegramMessage } from '@/lib/didi/telegram';
-import { saveAndrewChatId } from '@/lib/didi/firebase';
+import { saveAndrewChatId } from '@/lib/didi/supabase';
 import type { TelegramUpdate } from '@/lib/didi/telegram';
 
 export const runtime = 'nodejs';
