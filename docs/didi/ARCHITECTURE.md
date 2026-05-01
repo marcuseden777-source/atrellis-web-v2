@@ -59,10 +59,12 @@
 - Contains all business rules: qualification logic, design brain, pricing, escalation
 - Single source of truth for Didi's personality and operational logic
 
-### `lib/didi/firebase.ts` — Memory
-- Session CRUD (create, read, update per sessionId)
-- Lead storage (qualified leads with all collected fields)
-- Andrew's chat_id storage (set on first `/start` from Andrew's Telegram)
+### `lib/didi/supabase.ts` — Memory
+- Singleton Supabase client using `service_role` key (bypasses RLS, server-side only)
+- Session CRUD: `conversations` table (JSONB for `lead_data` + `messages`)
+- Lead storage: `leads` table with FK to `conversations`
+- Andrew's chat_id: `config` table, key `andrew_telegram_chat_id`
+- `updated_at` auto-maintained by Postgres trigger
 
 ### `lib/didi/telegram.ts` — Escalation Messenger
 - `sendTelegramMessage()` — raw message to any chat
