@@ -1,6 +1,6 @@
 import Anthropic from '@anthropic-ai/sdk';
 import { buildSystemPrompt } from './system-prompt';
-import { getSession, createSession, updateSession, saveLead, markLeadEscalated, getAndrewChatId } from './firebase';
+import { getSession, createSession, updateSession, saveLead, markLeadEscalated, getAndrewChatId } from './supabase';
 import { sendAndrewBrief } from './telegram';
 import { sendToMakeWebhook } from './make-webhook';
 import { getPriceEstimate, formatPriceRange } from './pricing-engine';
