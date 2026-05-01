@@ -80,7 +80,7 @@ export async function processMessage(req: ChatRequest): Promise<ChatResponse> {
   const response = await anthropic.messages.create({
     model: 'claude-sonnet-4-6',
     max_tokens: 1024,
-    system: buildSystemPrompt(session.stage, session.leadData),
+    system: buildSystemPrompt(session.stage, session.leadData, channel),
     messages: claudeMessages,
     tools: DIDI_TOOLS,
   });
@@ -160,7 +160,7 @@ export async function processMessage(req: ChatRequest): Promise<ChatResponse> {
     const followUp = await anthropic.messages.create({
       model: 'claude-sonnet-4-6',
       max_tokens: 1024,
-      system: buildSystemPrompt(stage, leadData),
+      system: buildSystemPrompt(stage, leadData, channel),
       messages: [...claudeMessages, { role: 'assistant', content: response.content }, ...toolResults],
       tools: DIDI_TOOLS,
     });
