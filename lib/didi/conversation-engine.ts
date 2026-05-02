@@ -1,6 +1,6 @@
 import Anthropic from '@anthropic-ai/sdk';
 import { buildSystemPrompt } from './system-prompt';
-import { getSession, createSession, updateSession, saveLead, markLeadEscalated, getAndrewChatId } from './supabase';
+import { getSession, createSession, updateSession, saveLead, markLeadEscalated, getAllEscalationChatIds } from './supabase';
 import { sendAndrewBrief } from './telegram';
 import { sendToMakeWebhook } from './make-webhook';
 import { getPriceEstimate, formatPriceRange } from './pricing-engine';
@@ -80,7 +80,7 @@ export async function processMessage(req: ChatRequest): Promise<ChatResponse> {
   const response = await anthropic.messages.create({
     model: 'claude-sonnet-4-6',
     max_tokens: 1024,
-    system: buildSystemPrompt(session.stage, session.leadData),
+    system: buildSystemPrompt(session.stage, session.leadData, channel),
     messages: claudeMessages,
     tools: DIDI_TOOLS,
   });
@@ -115,9 +115,11 @@ export async function processMessage(req: ChatRequest): Promise<ChatResponse> {
       // Save to Firebase
       await saveLead({ ...session, leadData, stage, isEscalated: false });
 
-      // Send Telegram brief to Andrew
-      const andrewChatId = await getAndrewChatId() ?? process.env.TELEGRAM_ANDREW_CHAT_ID;
-      if (andrewChatId) {
+      // Send Telegram brief to all authorized users
+      const chatIds = await getAllEscalationChatIds();
+      const fallback = process.env.TELEGRAM_ANDREW_CHAT_ID;
+      const targets = chatIds.length > 0 ? chatIds : (fallback ? [fallback] : []);
+      if (targets.length > 0) {
         const brief: TelegramBrief = {
           leadName: leadData.name ?? 'Unknown',
           contact: leadData.contactNumber ?? 'Not provided',
@@ -131,7 +133,7 @@ export async function processMessage(req: ChatRequest): Promise<ChatResponse> {
           sessionId,
           timestamp: new Date().toLocaleString('en-SG', { timeZone: 'Asia/Singapore' }),
         };
-        await sendAndrewBrief(brief, andrewChatId as number | string);
+        await Promise.all(targets.map((id) => sendAndrewBrief(brief, id as number | string)));
         await markLeadEscalated(sessionId);
 
         // Fire Make.com webhook (no-op if not configured)
@@ -160,7 +162,7 @@ export async function processMessage(req: ChatRequest): Promise<ChatResponse> {
     const followUp = await anthropic.messages.create({
       model: 'claude-sonnet-4-6',
       max_tokens: 1024,
-      system: buildSystemPrompt(stage, leadData),
+      system: buildSystemPrompt(stage, leadData, channel),
       messages: [...claudeMessages, { role: 'assistant', content: response.content }, ...toolResults],
       tools: DIDI_TOOLS,
     });
