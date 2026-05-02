@@ -3,8 +3,6 @@ import { processMessage } from '@/lib/didi/conversation-engine';
 import { sendTelegramMessage } from '@/lib/didi/telegram';
 import { saveAuthorizedChatId } from '@/lib/didi/supabase';
 import type { TelegramUpdate } from '@/lib/didi/telegram';
-// eslint-disable-next-line @typescript-eslint/no-require-imports
-const pdfParse = require('pdf-parse') as (buffer: Buffer) => Promise<{ text: string }>;
 
 export const runtime = 'nodejs';
 export const maxDuration = 60;
@@ -20,6 +18,9 @@ async function downloadTelegramFile(fileId: string): Promise<Buffer> {
 }
 
 async function extractPdfText(buffer: Buffer): Promise<string> {
+  // Lazy require avoids pdf-parse crashing the module at Vercel init time
+  // eslint-disable-next-line @typescript-eslint/no-require-imports
+  const pdfParse = require('pdf-parse/lib/pdf-parse.js') as (b: Buffer) => Promise<{ text: string }>;
   const data = await pdfParse(buffer);
   return data.text.trim();
 }
