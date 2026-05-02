@@ -80,8 +80,17 @@ export interface TelegramMessage {
   chat: TelegramChat;
   date: number;
   text?: string;
-  photo?: TelegramPhotoSize[];
   caption?: string;
+  photo?: TelegramPhotoSize[];
+  document?: TelegramDocument;
+}
+
+export interface TelegramDocument {
+  file_id: string;
+  file_unique_id: string;
+  file_name?: string;
+  mime_type?: string;
+  file_size?: number;
 }
 
 export interface TelegramUser {
