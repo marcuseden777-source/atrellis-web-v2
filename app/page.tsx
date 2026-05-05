@@ -174,6 +174,76 @@ export default function LandingPage() {
         </div>
       </section>
 
+      {/* Location / Find Us Section */}
+      <section className="bg-black py-32 px-8 border-t border-white/5 relative overflow-hidden">
+        <div className="absolute inset-0 bg-blue-900/5 mix-blend-screen pointer-events-none" />
+        
+        <div className="max-w-6xl mx-auto">
+          <div className="text-center mb-16 relative z-10">
+            <span className="text-blue-500 font-bold tracking-[4px] uppercase text-xs block mb-4">Headquarters</span>
+            <h2 className="text-4xl md:text-5xl font-black tracking-tighter text-white">Visit Our Studio</h2>
+          </div>
+
+          <div className="grid grid-cols-1 lg:grid-cols-5 gap-8 lg:gap-12 items-center relative z-10">
+            
+            {/* Map Photo Container */}
+            <div className="lg:col-span-3 rounded-3xl overflow-hidden glass-panel border border-white/10 group relative h-[300px] md:h-[450px]">
+              <Image 
+                src="/assets/location-map.png" 
+                alt="Atrellis Home Decor Location Map" 
+                fill
+                className="object-cover group-hover:scale-105 transition-transform duration-700 opacity-80"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
+              
+              <div className="absolute bottom-6 left-6 right-6 flex items-end justify-between">
+                <div className="bg-black/50 backdrop-blur-md border border-white/10 rounded-xl p-4">
+                  <div className="flex items-center gap-3">
+                    <div className="w-10 h-10 rounded-full bg-blue-500/20 flex items-center justify-center">
+                      <div className="w-3 h-3 bg-blue-500 rounded-full animate-pulse" />
+                    </div>
+                    <div>
+                      <p className="text-white font-bold tracking-wide">Atrellis Studio</p>
+                      <p className="text-white/60 text-sm">Geylang Bahru Industrial Estate</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Address Details */}
+            <div className="lg:col-span-2 flex flex-col gap-8">
+              <div className="glass-panel p-8 rounded-3xl border border-white/5 hover:border-blue-500/30 transition-colors">
+                <h3 className="text-xl font-bold text-white mb-4">Singapore Office</h3>
+                <p className="text-white/60 leading-relaxed mb-6">
+                  78 Geylang Bahru, #01-2904<br />
+                  Geylang Bahru Industrial Estate<br />
+                  Kallang, Singapore 339686
+                </p>
+                <div className="h-px w-full bg-white/10 mb-6" />
+                <div className="flex flex-col gap-3">
+                  <p className="text-sm text-white/50"><strong className="text-white">Mon-Sat:</strong> 9:00 AM - 6:00 PM</p>
+                  <p className="text-sm text-white/50"><strong className="text-white">Sun & PH:</strong> Closed</p>
+                </div>
+              </div>
+
+              <a
+                href="https://www.google.com/maps?q=1.3205454,103.871088"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group relative flex items-center justify-center gap-3 py-5 bg-blue-600 hover:bg-blue-500 text-white rounded-2xl font-black uppercase tracking-widest text-sm transition-all overflow-hidden"
+              >
+                <span className="relative z-10">Get Directions</span>
+                <svg className="w-5 h-5 relative z-10 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                </svg>
+              </a>
+            </div>
+
+          </div>
+        </div>
+      </section>
+
       <SiteFooter />
     </main>
   );
