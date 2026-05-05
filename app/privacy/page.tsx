@@ -28,7 +28,7 @@ export default function PrivacyPolicyPage() {
           Atrellis Pte Ltd (&quot;Atrellis&quot;, &quot;we&quot;, &quot;our&quot;, &quot;us&quot;) is a Singapore-registered
           design-and-build company. Our registered office address is available upon request. For data protection
           enquiries, contact us at{' '}
-          <a href="mailto:hello@atrellis.business">hello@atrellis.business</a>.
+          <a href="mailto:atrelliszipblinds@gmail.com">atrelliszipblinds@gmail.com</a>.
         </p>
 
         <h2>2. Information We Collect</h2>
@@ -87,7 +87,7 @@ export default function PrivacyPolicyPage() {
         </ul>
         <p>
           To exercise any of these rights, please contact us at{' '}
-          <a href="mailto:hello@atrellis.business">hello@atrellis.business</a>.
+          <a href="mailto:atrelliszipblinds@gmail.com">atrelliszipblinds@gmail.com</a>.
         </p>
 
         <h2>8. Security</h2>
@@ -109,7 +109,7 @@ export default function PrivacyPolicyPage() {
           If you have any questions about this privacy policy or our data practices, please contact:
         </p>
         <ul>
-          <li>Email: <a href="mailto:hello@atrellis.business">hello@atrellis.business</a></li>
+          <li>Email: <a href="mailto:atrelliszipblinds@gmail.com">atrelliszipblinds@gmail.com</a></li>
           <li>WhatsApp: <a href="https://wa.me/6592223333">+65 9222 3333</a></li>
         </ul>
 

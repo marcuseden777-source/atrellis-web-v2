@@ -75,7 +75,7 @@ export default function SiteFooter() {
               WhatsApp: +65 9222 3333
             </a>
             <a
-              href="mailto:hello@atrellis.business"
+              href="mailto:atrelliszipblinds@gmail.com"
               className="site-footer-contact-item"
               aria-label="Email us"
             >
@@ -83,7 +83,7 @@ export default function SiteFooter() {
                 <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
                 <polyline points="22,6 12,13 2,6"/>
               </svg>
-              hello@atrellis.business
+              atrelliszipblinds@gmail.com
             </a>
             <p className="site-footer-hours">
               Mon – Sat · 9am – 6pm SGT<br />

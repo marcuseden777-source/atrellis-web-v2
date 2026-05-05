@@ -69,7 +69,7 @@ export default function PdpaNoticePage() {
         </p>
         <p>
           You may withdraw your consent at any time by contacting our Data Protection Officer at{' '}
-          <a href="mailto:hello@atrellis.business">hello@atrellis.business</a>. Please note that withdrawal
+          <a href="mailto:atrelliszipblinds@gmail.com">atrelliszipblinds@gmail.com</a>. Please note that withdrawal
           of consent may affect our ability to provide our services to you.
         </p>
 
@@ -110,7 +110,7 @@ export default function PdpaNoticePage() {
         <ul>
           <li><strong>Data Protection Officer</strong></li>
           <li>Atrellis Pte Ltd</li>
-          <li>Email: <a href="mailto:hello@atrellis.business">hello@atrellis.business</a></li>
+          <li>Email: <a href="mailto:atrelliszipblinds@gmail.com">atrelliszipblinds@gmail.com</a></li>
           <li>WhatsApp: <a href="https://wa.me/6592223333">+65 9222 3333</a></li>
         </ul>
 

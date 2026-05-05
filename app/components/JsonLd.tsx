@@ -15,7 +15,7 @@ export default function JsonLd() {
     description:
       "Singapore's premium design-and-build studio specialising in landed property A&A, BCA-compliant structural works, AtrellisZipblinds® smart outdoor systems, and bespoke interior design.",
     telephone: '+6592223333',
-    email: 'hello@atrellis.business',
+    email: 'atrelliszipblinds@gmail.com',
     // TODO: Update address with the registered office address
     address: {
       '@type': 'PostalAddress',
