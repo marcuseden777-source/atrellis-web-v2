@@ -104,7 +104,6 @@ export default function LandingPage() {
 
           {/* Final Conversion Reveal & Role Paths */}
           <div id="cta-reveal" className="flex flex-col items-center gap-6 pointer-events-auto mt-10">
-            <h3 className="text-white/50 text-sm uppercase tracking-[4px] font-bold">Choose Your Path</h3>
             <div className="flex flex-col sm:flex-row gap-6 items-center">
               <button 
                 onClick={triggerJourney}
