@@ -6,6 +6,7 @@ import gsap from 'gsap';
 import Link from 'next/link';
 import SiteNav from '@/app/components/SiteNav';
 import SiteFooter from '@/app/components/SiteFooter';
+import { logger } from '@/app/lib/logger';
 
 interface UserSelections {
   propertyType: string | null;
@@ -65,12 +66,14 @@ export default function QuotationPage() {
           y: -20,
           duration: 0.3,
           onComplete: () => {
+            logger.info('Quotation wizard step advanced', { fromStep: currentStep, toStep: currentStep + 1 });
             setCurrentStep(prev => prev + 1);
             gsap.fromTo(nextEl, { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.4 });
           }
         });
       } else {
         // Fallback for first/initial setup
+        logger.info('Quotation wizard step advanced (fallback)', { fromStep: currentStep, toStep: currentStep + 1 });
         setCurrentStep(prev => prev + 1);
       }
     }
@@ -130,12 +133,22 @@ export default function QuotationPage() {
   const submitLead = () => {
     setIsSubmitting(true);
     
+    logger.info('Quotation submission initiated', {
+      propertyType: userSelections.propertyType,
+      propertySize: userSelections.propertySize,
+      style: userSelections.style,
+      scopeCount: userSelections.scope.length,
+      budgetTier: userSelections.budget,
+      estimateGenerated: estimate
+    });
+    
     // Simulate technical analysis and routing
     const tl = gsap.timeline();
     tl.to({}, { duration: 2.5 })
       .add(() => {
         setIsSubmitting(false);
         setIsSuccess(true);
+        logger.info('Quotation submission successful');
         window.scrollTo({ top: 0, behavior: 'smooth' });
       });
   };
@@ -153,7 +166,7 @@ Project Details:
 
 I'd like to schedule a site survey to finalize these specifications.`;
     
-    return `https://wa.me/6588888888?text=${encodeURIComponent(message)}`;
+    return `https://wa.me/6592223333?text=${encodeURIComponent(message)}`;
   };
 
   const generateEstimate = () => {
@@ -192,7 +205,7 @@ I'd like to schedule a site survey to finalize these specifications.`;
 
 
   return (
-    <div className="bg-[#050505] min-h-screen text-white flex flex-col items-center pt-20 md:pt-24 pb-12 px-6 selection:bg-blue-500/30">
+    <div id="main-content" className="bg-[#050505] min-h-screen text-white flex flex-col items-center pt-20 md:pt-24 pb-12 px-6 selection:bg-blue-500/30">
       {/* Global Header */}
       <SiteNav ctaLabel="Back Home" ctaHref="/" />
 
@@ -259,13 +272,14 @@ I'd like to schedule a site survey to finalize these specifications.`;
               <h2 className="text-xl font-bold mb-8 uppercase tracking-[2px]">1. Property Type</h2>
               <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
                 {['HDB BTO', 'HDB Resale', 'Condominium', 'Landed', 'Commercial'].map(type => (
-                  <div 
+                  <button 
+                    type="button"
                     key={type}
                     onClick={() => selectOption('propertyType', type)}
-                    className={`p-5 rounded-2xl cursor-pointer border transition-all duration-300 ${userSelections.propertyType === type ? 'bg-blue-500/20 border-blue-500 text-white shadow-[0_0_20px_rgba(59,130,246,0.3)]' : 'bg-white/5 border-white/10 text-white/50 hover:bg-white/10 hover:border-white/20 hover:text-white'}`}
+                    className={`p-5 rounded-2xl cursor-pointer border transition-all duration-300 ease-out active:scale-95 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:ring-offset-[#050505] ${userSelections.propertyType === type ? 'bg-blue-500/20 border-blue-500 text-white shadow-[0_0_20px_rgba(59,130,246,0.3)]' : 'bg-white/5 border-white/10 text-white/50 hover:bg-white/10 hover:border-white/20 hover:text-white'}`}
                   >
                     <span className="text-sm font-bold uppercase">{type}</span>
-                  </div>
+                  </button>
                 ))}
               </div>
             </div>
@@ -278,13 +292,14 @@ I'd like to schedule a site survey to finalize these specifications.`;
               <h2 className="text-xl font-bold mb-8 uppercase tracking-[2px]">2. Property Size</h2>
               <div className="grid grid-cols-2 gap-4">
                 {['Below 600 sqft', '601 - 1000 sqft', '1001 - 1500 sqft', 'Above 1500 sqft'].map(size => (
-                  <div 
+                  <button 
+                    type="button"
                     key={size}
                     onClick={() => selectOption('propertySize', size)}
-                    className={`p-5 rounded-2xl cursor-pointer border transition-all duration-300 ${userSelections.propertySize === size ? 'bg-blue-500/20 border-blue-500 text-white shadow-[0_0_20px_rgba(59,130,246,0.3)]' : 'bg-white/5 border-white/10 text-white/50 hover:bg-white/10 hover:border-white/20 hover:text-white'}`}
+                    className={`p-5 rounded-2xl cursor-pointer border transition-all duration-300 ease-out active:scale-95 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:ring-offset-[#050505] ${userSelections.propertySize === size ? 'bg-blue-500/20 border-blue-500 text-white shadow-[0_0_20px_rgba(59,130,246,0.3)]' : 'bg-white/5 border-white/10 text-white/50 hover:bg-white/10 hover:border-white/20 hover:text-white'}`}
                   >
                     <span className="text-sm font-bold uppercase">{size}</span>
-                  </div>
+                  </button>
                 ))}
               </div>
             </div>
@@ -297,13 +312,14 @@ I'd like to schedule a site survey to finalize these specifications.`;
               <h2 className="text-xl font-bold mb-8 uppercase tracking-[2px]">3. Style Preference</h2>
               <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
                 {['Minimalist', 'Modern Luxury', 'Scandinavian', 'Industrial', 'Japandi', 'Contemporary', 'Classic Elegant'].map(style => (
-                  <div 
+                  <button 
+                    type="button"
                     key={style}
                     onClick={() => selectOption('style', style)}
-                    className={`p-5 rounded-2xl cursor-pointer border transition-all duration-300 ${userSelections.style === style ? 'bg-blue-500/20 border-blue-500 text-white shadow-[0_0_20px_rgba(59,130,246,0.3)]' : 'bg-white/5 border-white/10 text-white/50 hover:bg-white/10 hover:border-white/20 hover:text-white'}`}
+                    className={`p-5 rounded-2xl cursor-pointer border transition-all duration-300 ease-out active:scale-95 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:ring-offset-[#050505] ${userSelections.style === style ? 'bg-blue-500/20 border-blue-500 text-white shadow-[0_0_20px_rgba(59,130,246,0.3)]' : 'bg-white/5 border-white/10 text-white/50 hover:bg-white/10 hover:border-white/20 hover:text-white'}`}
                   >
                     <span className="text-sm font-bold uppercase">{style}</span>
-                  </div>
+                  </button>
                 ))}
               </div>
             </div>
@@ -316,13 +332,14 @@ I'd like to schedule a site survey to finalize these specifications.`;
               <h2 className="text-xl font-bold mb-8 uppercase tracking-[2px]">4. Scope of Work (Select Multiple)</h2>
               <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
                 {['Carpentry', 'Kitchen', 'Flooring', 'Painting', 'Electrical', 'Plumbing', 'Waterproofing', 'False Ceiling', 'Doors/Windows', 'AtrellisZipblinds®'].map(scope => (
-                  <div 
+                  <button 
+                    type="button"
                     key={scope}
                     onClick={() => toggleMultiOption('scope', scope)}
-                    className={`p-5 rounded-2xl cursor-pointer border transition-all duration-300 ${userSelections.scope.includes(scope) ? 'bg-blue-500/20 border-blue-500 text-white shadow-[0_0_20px_rgba(59,130,246,0.3)]' : 'bg-white/5 border-white/10 text-white/50 hover:bg-white/10 hover:border-white/20 hover:text-white'}`}
+                    className={`p-5 rounded-2xl cursor-pointer border transition-all duration-300 ease-out active:scale-95 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:ring-offset-[#050505] ${userSelections.scope.includes(scope) ? 'bg-blue-500/20 border-blue-500 text-white shadow-[0_0_20px_rgba(59,130,246,0.3)]' : 'bg-white/5 border-white/10 text-white/50 hover:bg-white/10 hover:border-white/20 hover:text-white'}`}
                   >
                     <span className="text-sm font-bold uppercase">{scope}</span>
-                  </div>
+                  </button>
                 ))}
               </div>
             </div>
@@ -339,14 +356,15 @@ I'd like to schedule a site survey to finalize these specifications.`;
                   { label: 'Mid-Range', desc: 'Balanced aesthetics' },
                   { label: 'Premium', desc: 'Luxury materials' }
                 ].map(tier => (
-                  <div 
+                  <button 
+                    type="button"
                     key={tier.label}
                     onClick={() => selectOption('budget', tier.label)}
-                    className={`p-6 rounded-2xl cursor-pointer border transition-all duration-300 flex flex-col items-center justify-center text-center ${userSelections.budget === tier.label ? 'bg-blue-500/20 border-blue-500 text-white shadow-[0_0_20px_rgba(59,130,246,0.3)]' : 'bg-white/5 border-white/10 text-white/50 hover:bg-white/10 hover:border-white/20 hover:text-white'}`}
+                    className={`p-6 rounded-2xl cursor-pointer border transition-all duration-300 ease-out active:scale-95 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:ring-offset-[#050505] flex flex-col items-center justify-center text-center w-full ${userSelections.budget === tier.label ? 'bg-blue-500/20 border-blue-500 text-white shadow-[0_0_20px_rgba(59,130,246,0.3)]' : 'bg-white/5 border-white/10 text-white/50 hover:bg-white/10 hover:border-white/20 hover:text-white'}`}
                   >
                     <strong className="text-sm uppercase mb-2 tracking-[1px]">{tier.label}</strong>
                     <small className="text-[0.7rem] opacity-70 italic leading-tight">{tier.desc}</small>
-                  </div>
+                  </button>
                 ))}
               </div>
             </div>
@@ -358,27 +376,39 @@ I'd like to schedule a site survey to finalize these specifications.`;
             >
               <h2 className="text-xl font-bold mb-8 uppercase tracking-[2px]">6. Your Details</h2>
               <div className="flex flex-col gap-4 max-w-sm mx-auto">
-                <input 
-                  type="text" 
-                  placeholder="Name"
-                  value={userSelections.contact.name}
-                  onChange={(e) => setUserSelections(prev => ({ ...prev, contact: { ...prev.contact, name: e.target.value } }))}
-                  className="w-full p-4 bg-white/5 border border-white/10 rounded-xl focus:outline-none focus:border-blue-500 focus:bg-white/10 transition-all text-white placeholder-white/30"
-                />
-                <input 
-                  type="email" 
-                  placeholder="Email Address"
-                  value={userSelections.contact.email}
-                  onChange={(e) => setUserSelections(prev => ({ ...prev, contact: { ...prev.contact, email: e.target.value } }))}
-                  className="w-full p-4 bg-white/5 border border-white/10 rounded-xl focus:outline-none focus:border-blue-500 focus:bg-white/10 transition-all text-white placeholder-white/30"
-                />
-                <input 
-                  type="tel" 
-                  placeholder="Contact Number"
-                  value={userSelections.contact.phone}
-                  onChange={(e) => setUserSelections(prev => ({ ...prev, contact: { ...prev.contact, phone: e.target.value } }))}
-                  className="w-full p-4 bg-white/5 border border-white/10 rounded-xl focus:outline-none focus:border-blue-500 focus:bg-white/10 transition-all text-white placeholder-white/30"
-                />
+                <div className="flex flex-col">
+                  <label htmlFor="contact-name" className="sr-only">Name</label>
+                  <input 
+                    id="contact-name"
+                    type="text" 
+                    placeholder="Name"
+                    value={userSelections.contact.name}
+                    onChange={(e) => setUserSelections(prev => ({ ...prev, contact: { ...prev.contact, name: e.target.value } }))}
+                    className="w-full p-4 bg-white/5 border border-white/10 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500/50 focus:border-blue-500 focus:bg-white/10 transition-all duration-300 text-white placeholder-white/30"
+                  />
+                </div>
+                <div className="flex flex-col">
+                  <label htmlFor="contact-email" className="sr-only">Email Address</label>
+                  <input 
+                    id="contact-email"
+                    type="email" 
+                    placeholder="Email Address"
+                    value={userSelections.contact.email}
+                    onChange={(e) => setUserSelections(prev => ({ ...prev, contact: { ...prev.contact, email: e.target.value } }))}
+                    className="w-full p-4 bg-white/5 border border-white/10 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500/50 focus:border-blue-500 focus:bg-white/10 transition-all duration-300 text-white placeholder-white/30"
+                  />
+                </div>
+                <div className="flex flex-col">
+                  <label htmlFor="contact-phone" className="sr-only">Contact Number</label>
+                  <input 
+                    id="contact-phone"
+                    type="tel" 
+                    placeholder="Contact Number"
+                    value={userSelections.contact.phone}
+                    onChange={(e) => setUserSelections(prev => ({ ...prev, contact: { ...prev.contact, phone: e.target.value } }))}
+                    className="w-full p-4 bg-white/5 border border-white/10 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500/50 focus:border-blue-500 focus:bg-white/10 transition-all duration-300 text-white placeholder-white/30"
+                  />
+                </div>
               </div>
             </div>
 
@@ -401,9 +431,20 @@ I'd like to schedule a site survey to finalize these specifications.`;
               </div>
               <button 
                 onClick={submitLead}
-                className="px-10 py-5 bg-blue-500 text-white font-black uppercase tracking-[3px] rounded-full hover:bg-blue-600 transition-all duration-300 shadow-[0_20px_50px_rgba(59,130,246,0.3)] active:scale-95"
+                disabled={isSubmitting}
+                className={`px-10 py-5 bg-blue-500 text-white font-black uppercase tracking-[3px] rounded-full transition-all duration-300 shadow-[0_20px_50px_rgba(59,130,246,0.3)] flex items-center justify-center gap-3 mx-auto focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:ring-offset-[#050505] ${isSubmitting ? 'opacity-80 cursor-not-allowed' : 'hover:bg-blue-600 active:scale-95'}`}
               >
-                REQUEST DETAILED QUOTE
+                {isSubmitting ? (
+                  <>
+                    <svg className="animate-spin h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                      <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+                      <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                    </svg>
+                    <span>ANALYZING...</span>
+                  </>
+                ) : (
+                  'REQUEST DETAILED QUOTE'
+                )}
               </button>
             </div>
           </div>
@@ -413,7 +454,7 @@ I'd like to schedule a site survey to finalize these specifications.`;
             {currentStep > 1 && (
               <button 
                 onClick={prevStep}
-                className="px-10 py-4 bg-transparent text-white/50 border border-white/10 rounded-full hover:border-white/30 hover:text-white transition-all font-bold text-xs uppercase tracking-[2px]"
+                className="px-10 py-4 bg-transparent text-white/50 border border-white/10 rounded-full hover:border-white/30 hover:text-white transition-all duration-300 font-bold text-xs uppercase tracking-[2px] focus:outline-none focus:ring-2 focus:ring-white/30 focus:ring-offset-2 focus:ring-offset-[#050505] active:scale-95"
               >
                 BACK
               </button>
@@ -421,7 +462,7 @@ I'd like to schedule a site survey to finalize these specifications.`;
             {currentStep < TOTAL_STEPS && (
               <button 
                 onClick={nextStep}
-                className="px-12 py-4 bg-blue-500 text-white rounded-full hover:bg-blue-600 transition-all font-bold text-xs uppercase tracking-[2px] shadow-[0_10px_20px_rgba(59,130,246,0.2)]"
+                className="px-12 py-4 bg-blue-500 text-white rounded-full hover:bg-blue-600 transition-all duration-300 font-bold text-xs uppercase tracking-[2px] shadow-[0_10px_20px_rgba(59,130,246,0.2)] focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:ring-offset-[#050505] active:scale-95"
               >
                 CONTINUE
               </button>
@@ -446,7 +487,7 @@ I'd like to schedule a site survey to finalize these specifications.`;
 
           <button 
             onClick={() => router.push('/services')}
-            className="block mx-auto pt-12 text-[0.7rem] uppercase tracking-[2px] text-white/30 hover:text-white/60 transition-colors"
+            className="block mx-auto pt-12 text-[0.7rem] uppercase tracking-[2px] text-white/30 hover:text-white/60 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-white/30 focus:ring-offset-2 focus:ring-offset-[#050505] rounded p-2"
           >
             &larr; Cancel Request
           </button>

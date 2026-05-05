@@ -1,0 +1,143 @@
+- generic [active] [ref=e1]:
+  - generic [ref=e5]: "Caching Digital Environment: 0%"
+  - main [ref=e7]:
+    - generic [ref=e11]: "Caching Digital Environment: 0%"
+    - banner [ref=e13]:
+      - link "Atrellis Home" [ref=e14] [cursor=pointer]:
+        - /url: /
+        - img "Atrellis" [ref=e15]
+      - navigation "Main navigation" [ref=e16]:
+        - link "Services" [ref=e17] [cursor=pointer]:
+          - /url: /services
+        - link "Portfolio" [ref=e18] [cursor=pointer]:
+          - /url: /portfolio
+        - link "About" [ref=e19] [cursor=pointer]:
+          - /url: /#about
+      - link "Start Assessment" [ref=e21] [cursor=pointer]:
+        - /url: /quotation
+    - navigation [ref=e23]:
+      - link [ref=e24] [cursor=pointer]:
+        - /url: /services
+        - text: Services
+      - link [ref=e25] [cursor=pointer]:
+        - /url: /portfolio
+        - text: Portfolio
+      - link [ref=e26] [cursor=pointer]:
+        - /url: /#about
+        - text: About
+      - link [ref=e27] [cursor=pointer]:
+        - /url: /quotation
+        - text: Start Assessment →
+    - generic [ref=e29]:
+      - generic:
+        - generic "Atrellis — Singapore Design & Build":
+          - generic: Singapore's Premium Design & Build Studio
+          - heading "Engineer. Design. Build." [level=1]:
+            - text: Engineer.
+            - emphasis: Design.
+            - text: Build.
+          - paragraph: Landed property A&A · BCA-compliant structures · Smart home ecosystems
+        - generic [ref=e34] [cursor=pointer]: Explore Design & Build
+        - link "Architectural A&A Landed Property A&A (Additions & Alterations) BCA & URA Regulatory Submissions Bespoke 3D Visualization & Planning Launch Assessment →" [ref=e37] [cursor=pointer]:
+          - /url: /quotation
+          - heading "Architectural A&A" [level=3] [ref=e39]
+          - list [ref=e40]:
+            - listitem [ref=e41]: Landed Property A&A (Additions & Alterations)
+            - listitem [ref=e42]: BCA & URA Regulatory Submissions
+            - listitem [ref=e43]: Bespoke 3D Visualization & Planning
+          - generic [ref=e44]: Launch Assessment →
+        - link "AtrellisZipblinds® 1 Online Assessment 2 Proprietary Omni-Tension™ Install 3 Site Handover & Smart Setup Launch Assessment →" [ref=e45] [cursor=pointer]:
+          - /url: /quotation
+          - heading "AtrellisZipblinds®" [level=3] [ref=e47]
+          - list [ref=e48]:
+            - listitem [ref=e49]:
+              - generic [ref=e50]: "1"
+              - text: Online Assessment
+            - listitem [ref=e51]:
+              - generic [ref=e52]: "2"
+              - text: Proprietary Omni-Tension™ Install
+            - listitem [ref=e53]:
+              - generic [ref=e54]: "3"
+              - text: Site Handover & Smart Setup
+          - generic [ref=e55]: Launch Assessment →
+        - button "START ASSESSMENT" [ref=e57] [cursor=pointer]: START ASSESSMENT
+    - generic [ref=e60]:
+      - img "Nippon Paint" [ref=e61]
+      - img "bizSafe3" [ref=e62]
+      - img "HDB" [ref=e63]
+      - img "BCA" [ref=e64]
+    - generic [ref=e66]:
+      - generic [ref=e67]:
+        - generic [ref=e68]: About Atrellis
+        - heading "Singapore's Most Precise Build Team" [level=2] [ref=e69]:
+          - text: Singapore's Most
+          - text: Precise Build Team
+        - paragraph [ref=e70]: Founded by engineers and designers who were frustrated with the gap between beautiful concepts and shoddy execution — Atrellis exists to close that gap permanently.
+        - paragraph [ref=e71]: Every project carries our BCA registration, BizSafe Level 3 certification, and a licensed PE on structural works. We don't just renovate spaces. We engineer them.
+      - generic [ref=e72]:
+        - generic [ref=e73]:
+          - paragraph [ref=e74]: 200+
+          - paragraph [ref=e75]: Projects Completed
+        - generic [ref=e76]:
+          - paragraph [ref=e77]: "6"
+          - paragraph [ref=e78]: Years in Singapore
+        - generic [ref=e79]:
+          - paragraph [ref=e80]: 98%
+          - paragraph [ref=e81]: Client Satisfaction
+        - generic [ref=e82]:
+          - paragraph [ref=e83]: <15min
+          - paragraph [ref=e84]: Speed-to-Lead
+    - contentinfo [ref=e85]:
+      - generic [ref=e86]:
+        - generic [ref=e87]:
+          - generic [ref=e88]:
+            - link "Atrellis Home" [ref=e89] [cursor=pointer]:
+              - /url: /
+              - img "Atrellis" [ref=e90]
+            - paragraph [ref=e91]: Singapore's premium design & build studio — engineered for landed properties, condominiums, and smart living.
+            - generic [ref=e92]:
+              - generic [ref=e93]: Atrellis Pte Ltd
+              - generic [ref=e94]: ·
+              - generic [ref=e95]: "UEN: 202XXXXXX"
+          - generic [ref=e96]:
+            - heading "Explore" [level=3] [ref=e97]
+            - navigation "Footer navigation" [ref=e98]:
+              - link "Services" [ref=e99] [cursor=pointer]:
+                - /url: /services
+              - link "Portfolio" [ref=e100] [cursor=pointer]:
+                - /url: /portfolio
+              - link "About" [ref=e101] [cursor=pointer]:
+                - /url: /#about
+              - link "Assessment" [ref=e102] [cursor=pointer]:
+                - /url: /quotation
+          - generic [ref=e103]:
+            - heading "Contact" [level=3] [ref=e104]
+            - link "WhatsApp us" [ref=e105] [cursor=pointer]:
+              - /url: https://wa.me/6592223333
+              - img [ref=e106]
+              - text: "WhatsApp: +65 9222 3333"
+            - link "Email us" [ref=e108] [cursor=pointer]:
+              - /url: mailto:hello@atrellis.business
+              - img [ref=e109]
+              - text: hello@atrellis.business
+            - paragraph [ref=e112]:
+              - text: Mon – Sat · 9am – 6pm SGT
+              - text: "Speed-to-Lead: <15 min response"
+        - generic [ref=e113]:
+          - img "Nippon Paint Authorised Applicator" [ref=e114]
+          - img "BizSafe Level 3 Certified" [ref=e115]
+          - img "HDB Licensed Contractor" [ref=e116]
+          - img "BCA Registered Builder" [ref=e117]
+        - generic [ref=e118]:
+          - paragraph [ref=e119]: © 2026 Atrellis Pte Ltd · All rights reserved · Registered in Singapore
+          - generic [ref=e120]:
+            - link "Privacy Policy" [ref=e121] [cursor=pointer]:
+              - /url: /privacy
+            - generic [ref=e122]: ·
+            - link "PDPA Notice" [ref=e123] [cursor=pointer]:
+              - /url: /pdpa
+  - link "Chat with us on WhatsApp" [ref=e124] [cursor=pointer]:
+    - /url: https://wa.me/6592223333?text=Hi%20Atrellis!%20I'd%20like%20to%20enquire%20about%20a%20renovation%20project.
+    - img [ref=e125]
+    - generic: Chat with us
+  - alert [ref=e128]

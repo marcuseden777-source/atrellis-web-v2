@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
+import Image from 'next/image';
 
 const COLORS = [
   { name: 'Natural', hex: '#E5E7EB', img: '/assets/visuals/zipblinds_tech.png' },
@@ -18,10 +19,11 @@ export default function MaterialConfigurator() {
         
         {/* Visualizer */}
         <div className="relative aspect-video rounded-3xl overflow-hidden border border-white/5 bg-black">
-          <img 
+          <Image 
             src={selectedColor.img} 
             alt="Zipblind Configurator" 
-            className="w-full h-full object-cover transition-opacity duration-500"
+            fill
+            className="object-cover transition-opacity duration-500"
             style={{ filter: `hue-rotate(${selectedColor.name === 'Bronze' ? '45deg' : '0deg'}) scale(1)` }} // Simulating variants
           />
           <div className="absolute top-6 left-6 bg-black/60 backdrop-blur-md px-4 py-2 rounded-xl text-[0.6rem] font-bold tracking-[2px] uppercase">

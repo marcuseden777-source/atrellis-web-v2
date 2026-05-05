@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import { Outfit, Cormorant_Garamond } from 'next/font/google';
+import { Outfit, Cormorant_Garamond, Poppins } from 'next/font/google';
 import { Analytics } from '@vercel/analytics/next';
 import { SpeedInsights } from '@vercel/speed-insights/next';
 import './globals.css';
@@ -20,6 +20,13 @@ const cormorantGaramond = Cormorant_Garamond({
   subsets: ['latin'],
   weight: ['700'],
   style: ['italic'],
+  display: 'swap',
+});
+
+const poppins = Poppins({
+  variable: '--font-poppins',
+  subsets: ['latin'],
+  weight: ['300', '400', '500', '600', '700'],
   display: 'swap',
 });
 
@@ -58,12 +65,13 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={`${outfit.variable} ${cormorantGaramond.variable}`}>
+    <html lang="en" className={`${outfit.variable} ${cormorantGaramond.variable} ${poppins.variable}`}>
       <head>
         <JsonLd />
       </head>
       <body>
         <PreloaderProvider>
+          <a href="#main-content" className="sr-only focus:not-sr-only focus:absolute focus:z-[100] focus:p-4 focus:bg-blue-600 focus:text-white top-0 left-0">Skip to content</a>
           <PreloaderOverlay />
           {children}
           <StickyWhatsApp />

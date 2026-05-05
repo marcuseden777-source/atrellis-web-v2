@@ -2,6 +2,7 @@
 
 import React, { useEffect } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import SiteNav from '@/app/components/SiteNav';
@@ -86,15 +87,16 @@ export default function PortfolioPageClient() {
             <Link
               key={project.slug}
               href={`/portfolio/${project.slug}`}
-              className="portfolio-reveal group block rounded-[32px] overflow-hidden border border-white/5 bg-white/[0.02] hover:border-white/20 transition-all duration-500 hover:shadow-[0_40px_80px_rgba(0,0,0,0.6)] no-underline"
+              className="portfolio-reveal group block rounded-[32px] overflow-hidden glass-panel hover:border-white/20 transition-all duration-500 hover:shadow-[0_40px_80px_rgba(0,0,0,0.6)] no-underline"
               id={`portfolio-card-${project.slug}`}
             >
               {/* Image */}
               <div className="relative h-[320px] overflow-hidden">
-                <img
+                <Image
                   src={project.thumbnail}
                   alt={project.title}
-                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                  fill
+                  className="object-cover transition-transform duration-700 group-hover:scale-105"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent" />
                 {/* Category tag */}
@@ -136,7 +138,7 @@ export default function PortfolioPageClient() {
         </div>
 
         {/* More coming soon note */}
-        <div className="portfolio-reveal mt-20 p-12 bg-white/[0.02] border border-white/5 rounded-[32px] text-center">
+        <div className="portfolio-reveal mt-20 p-12 glass-panel rounded-[32px] text-center">
           <p className="text-white/20 text-sm uppercase tracking-[4px] mb-4">More Case Studies</p>
           <p className="text-white/40 max-w-md mx-auto leading-relaxed">
             Additional project documentation is in preparation. Contact us directly to discuss

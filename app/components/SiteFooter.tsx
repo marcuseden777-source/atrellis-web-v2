@@ -1,5 +1,6 @@
 import React from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 
 const FOOTER_NAV = [
   { label: 'Services', href: '/services' },
@@ -26,9 +27,11 @@ export default function SiteFooter() {
           {/* Brand column */}
           <div className="site-footer-brand">
             <Link href="/" aria-label="Atrellis Home">
-              <img
+              <Image
                 src="/assets/trustbar_logos/atrellis_brand_nobg.png"
                 alt="Atrellis"
+                width={120}
+                height={35}
                 className="site-footer-logo"
               />
             </Link>
@@ -92,10 +95,12 @@ export default function SiteFooter() {
         {/* Trust logos */}
         <div className="site-footer-trust">
           {TRUST_LOGOS.map((logo) => (
-            <img
+            <Image
               key={logo.alt}
               src={logo.src}
               alt={logo.alt}
+              width={120}
+              height={30}
               className="site-footer-trust-logo"
             />
           ))}

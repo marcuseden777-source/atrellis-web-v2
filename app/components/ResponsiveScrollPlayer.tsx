@@ -139,8 +139,13 @@ export default function ResponsiveScrollPlayer({
         className="w-full h-full block"
       />
       {!isReady && (
-        <div className="absolute inset-0 flex items-center justify-center text-white/20 text-[0.6rem] uppercase tracking-widest">
-          Synchronizing Cinema...
+        <div className="absolute inset-0 flex flex-col items-center justify-center bg-gradient-to-b from-[#0a1628] via-black to-black">
+          <h2 className="text-5xl md:text-7xl font-black tracking-tighter text-white/90 mb-4">
+            Engineer.<br />
+            <em className="font-serif italic text-white/40">Design.</em><br />
+            Build.
+          </h2>
+          <p className="text-white/30 text-sm uppercase tracking-[4px] mt-6">Loading cinematic experience...</p>
         </div>
       )}
     </div>

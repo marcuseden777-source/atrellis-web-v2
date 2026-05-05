@@ -1,0 +1,381 @@
+- generic [active] [ref=e1]:
+  - main [ref=e3]:
+    - navigation [ref=e4]:
+      - generic [ref=e5]:
+        - link "ALLMOTORING.SG" [ref=e6] [cursor=pointer]:
+          - /url: /
+        - generic [ref=e7]:
+          - link "Inventory" [ref=e8] [cursor=pointer]:
+            - /url: /inventory
+          - link "Plates" [ref=e9] [cursor=pointer]:
+            - /url: /plates
+          - link "Financing" [ref=e10] [cursor=pointer]:
+            - /url: /financing
+          - link "Valuation" [ref=e11] [cursor=pointer]:
+            - /url: /valuation
+          - link "Consign" [ref=e12] [cursor=pointer]:
+            - /url: /consignment
+          - link "Workshop" [ref=e13] [cursor=pointer]:
+            - /url: /workshop
+        - generic [ref=e14]:
+          - link "WhatsApp" [ref=e15] [cursor=pointer]:
+            - /url: https://movaraai.zo.space/allmotoring-demo
+            - img [ref=e16]
+            - generic [ref=e18]: WhatsApp
+          - button "Explore" [ref=e19]:
+            - img [ref=e20]
+            - generic [ref=e21]: Explore
+    - generic [ref=e26]:
+      - generic [ref=e31]:
+        - heading "ALLMOTORING" [level=1] [ref=e32]
+        - paragraph [ref=e33]:
+          - text: Precision performance. Exceptional luxury.
+          - text: Singapore's premier destination for curated Porsche & premium pre-owned vehicles.
+      - generic [ref=e37]:
+        - generic [ref=e38]: Scroll to Explore
+        - img [ref=e40]
+    - generic [ref=e46]:
+      - generic [ref=e47]:
+        - generic [ref=e48]:
+          - heading "Curated Inventory" [level=2] [ref=e49]
+          - paragraph [ref=e50]: Precision-selected vehicles that define performance. Each car in our showroom is a masterpiece of engineering.
+        - generic [ref=e51]:
+          - button [ref=e52]:
+            - img [ref=e53]
+          - button [ref=e55]:
+            - img [ref=e56]
+      - generic [ref=e59]:
+        - img "Mercedes-Benz C180K" [ref=e61]
+        - generic [ref=e62]:
+          - generic [ref=e63]:
+            - generic [ref=e64]: 2010 MODEL
+            - heading "Mercedes-Benz C180K" [level=3] [ref=e65]
+            - paragraph [ref=e66]: SGD 44,300
+          - generic [ref=e67]:
+            - generic [ref=e68]: C63 Bodykits
+            - generic [ref=e69]: Superb Condition
+            - generic [ref=e70]: COE 2030
+          - button "View Technical Specs & Pricing" [ref=e72] [cursor=pointer]
+    - generic [ref=e74]:
+      - generic [ref=e75]:
+        - text: Why All Motoring
+        - heading "WE OFFER." [level=2] [ref=e76]
+      - generic [ref=e77]:
+        - generic [ref=e78]:
+          - img [ref=e80]
+          - heading "SVTA Executive Member" [level=3] [ref=e83]
+          - paragraph [ref=e84]: Fed Wu has served as an Executive Committee Member of SVTA for seven consecutive years.
+        - generic [ref=e85]:
+          - img [ref=e87]
+          - heading "Proven Track Record" [level=3] [ref=e92]
+          - paragraph [ref=e93]: Has served thousands of satisfied customers since 2011 with excellence.
+        - generic [ref=e94]:
+          - img [ref=e96]
+          - heading "Professional Inspection" [level=3] [ref=e99]
+          - paragraph [ref=e100]: Each vehicle inspected by professionals and restored to optimal condition.
+        - generic [ref=e101]:
+          - img [ref=e103]
+          - heading "One-Stop Shop" [level=3] [ref=e105]
+          - paragraph [ref=e106]: Comprehensive services for buying premium pre-owned vehicles in one location.
+        - generic [ref=e107]:
+          - img [ref=e109]
+          - heading "Best Trade-In Values" [level=3] [ref=e114]
+          - paragraph [ref=e115]: High-values for trade-in and competitive low prices on all pre-owned vehicles.
+        - generic [ref=e116]:
+          - img [ref=e118]
+          - heading "Refundable Deposits" [level=3] [ref=e120]
+          - paragraph [ref=e121]: Guaranteed 100% refundable deposit for unsuccessful loan applications.
+        - generic [ref=e122]:
+          - img [ref=e124]
+          - heading "Doorstep Viewing" [level=3] [ref=e127]
+          - paragraph [ref=e128]: We bring the car to you. Doorstep viewing available for your convenience.
+        - generic [ref=e129]:
+          - img [ref=e131]
+          - heading "Consignment Service" [level=3] [ref=e135]
+          - paragraph [ref=e136]: Get the best deal for your car with our professional consignment services.
+        - generic [ref=e137]:
+          - img [ref=e139]
+          - heading "Flexible Loan Schemes" [level=3] [ref=e142]
+          - paragraph [ref=e143]: Balloon Scheme loans available specifically for Uber & Grab drivers.
+    - generic [ref=e145]:
+      - generic [ref=e146]:
+        - generic [ref=e147]:
+          - paragraph [ref=e148]: New on Allmotoring
+          - heading "Car Plate Marketplace" [level=2] [ref=e149]:
+            - text: Car Plate
+            - text: Marketplace
+          - paragraph [ref=e150]: Buy or sell Singapore vehicle registration plates directly through our verified dealer network. 1-digit to 4-digit, vintage, and cheap sale.
+        - link "Browse All Plates" [ref=e151] [cursor=pointer]:
+          - /url: /plates
+          - text: Browse All Plates
+          - img [ref=e152]
+      - generic [ref=e154]:
+        - link "👑 1-Digit Ultra-rare 5 listings" [ref=e155] [cursor=pointer]:
+          - /url: /plates
+          - generic [ref=e156]: 👑
+          - generic [ref=e157]:
+            - paragraph [ref=e158]: 1-Digit
+            - paragraph [ref=e159]: Ultra-rare
+          - paragraph [ref=e160]: 5 listings
+        - link "💎 2-Digit Highly sought 9 listings" [ref=e161] [cursor=pointer]:
+          - /url: /plates
+          - generic [ref=e162]: 💎
+          - generic [ref=e163]:
+            - paragraph [ref=e164]: 2-Digit
+            - paragraph [ref=e165]: Highly sought
+          - paragraph [ref=e166]: 9 listings
+        - link "🏛️ Vintage Heritage plates 5 listings" [ref=e167] [cursor=pointer]:
+          - /url: /plates
+          - generic [ref=e168]: 🏛️
+          - generic [ref=e169]:
+            - paragraph [ref=e170]: Vintage
+            - paragraph [ref=e171]: Heritage plates
+          - paragraph [ref=e172]: 5 listings
+        - link "🔥 Cheap Sale From SGD 750 8 listings" [ref=e173] [cursor=pointer]:
+          - /url: /plates
+          - generic [ref=e174]: 🔥
+          - generic [ref=e175]:
+            - paragraph [ref=e176]: Cheap Sale
+            - paragraph [ref=e177]: From SGD 750
+          - paragraph [ref=e178]: 8 listings
+      - generic [ref=e179]:
+        - generic [ref=e180]:
+          - img [ref=e181]
+          - paragraph [ref=e183]: Featured Listings
+        - generic [ref=e184]:
+          - link "S 8 G SGD 280,000 All Motoring" [ref=e185] [cursor=pointer]:
+            - /url: /plates
+            - generic [ref=e189]: S 8 G
+            - generic [ref=e190]:
+              - paragraph [ref=e191]: SGD 280,000
+              - paragraph [ref=e192]: All Motoring
+          - link "SJN 88 SGD 98,000 All Motoring" [ref=e193] [cursor=pointer]:
+            - /url: /plates
+            - generic [ref=e197]: SJN 88
+            - generic [ref=e198]:
+              - paragraph [ref=e199]: SGD 98,000
+              - paragraph [ref=e200]: All Motoring
+          - link "STX 888 SGD 48,000 All Motoring" [ref=e201] [cursor=pointer]:
+            - /url: /plates
+            - generic [ref=e205]: STX 888
+            - generic [ref=e206]:
+              - paragraph [ref=e207]: SGD 48,000
+              - paragraph [ref=e208]: All Motoring
+          - link "SBF 8888 SGD 88,000 All Motoring" [ref=e209] [cursor=pointer]:
+            - /url: /plates
+            - generic [ref=e213]: SBF 8888
+            - generic [ref=e214]:
+              - paragraph [ref=e215]: SGD 88,000
+              - paragraph [ref=e216]: All Motoring
+          - link "SD 77 SGD 68,000 Premier Plates" [ref=e217] [cursor=pointer]:
+            - /url: /plates
+            - generic [ref=e221]: SD 77
+            - generic [ref=e222]:
+              - paragraph [ref=e223]: SGD 68,000
+              - paragraph [ref=e224]: Premier Plates
+      - generic [ref=e225]:
+        - generic [ref=e226]:
+          - paragraph [ref=e227]: Have a plate to sell?
+          - paragraph [ref=e228]: List it free — 1% success fee only when it sells.
+        - link "List for Free →" [ref=e229] [cursor=pointer]:
+          - /url: /plates
+    - generic [ref=e232]:
+      - generic [ref=e233]:
+        - heading "Speed Lead Engine" [level=2] [ref=e234]
+        - paragraph [ref=e235]: Get instant market valuations and connect with our experts via WhatsApp 24/7.
+      - generic [ref=e236]:
+        - generic [ref=e237]:
+          - generic [ref=e238]:
+            - img [ref=e240]
+            - heading "Instant Valuation" [level=3] [ref=e242]
+          - generic [ref=e243]:
+            - generic [ref=e244]:
+              - text: Make / Model
+              - textbox "e.g. Porsche 911" [ref=e245]
+            - generic [ref=e246]:
+              - text: Year of Manufacture
+              - spinbutton [ref=e247]
+          - generic [ref=e248]:
+            - generic [ref=e249]:
+              - img [ref=e250]
+              - generic [ref=e253]: Based on current Singapore COE & Market Trends
+            - button "Generate Instant Quote" [ref=e254]
+          - generic [ref=e259]: or upload log card
+          - generic [ref=e260] [cursor=pointer]:
+            - img [ref=e262]
+            - generic [ref=e265]:
+              - paragraph [ref=e266]: Drop your LTA Log Card (PDF)
+              - paragraph [ref=e267]: We'll automatically extract the details and generate a quote
+        - generic [ref=e268]:
+          - generic [ref=e269]:
+            - generic [ref=e270]:
+              - img [ref=e272]
+              - heading "WhatsApp Automation" [level=3] [ref=e274]
+            - paragraph [ref=e275]:
+              - text: Experience the "Speed Lead" response. Our AI bot answers servicing, availability, and booking enquiries 24/7.
+              - text: No more waiting for office hours. Book your workshop session instantly through WhatsApp.
+            - button "Chat with our Bot" [ref=e276]:
+              - img [ref=e277]
+              - text: Chat with our Bot
+          - generic [ref=e279]:
+            - generic [ref=e280]:
+              - paragraph [ref=e281]: +15%
+              - paragraph [ref=e282]: Resale Retention
+              - paragraph [ref=e283]: Average for Porsche GT series in Singapore
+            - generic [ref=e284]:
+              - paragraph [ref=e285]: < 2min
+              - paragraph [ref=e286]: Average Response
+              - paragraph [ref=e287]: Via our WhatsApp Lead Engine
+    - generic [ref=e292]:
+      - generic [ref=e293]:
+        - generic [ref=e294]:
+          - text: Get in Touch
+          - heading "VISIT THE SHOWROOM." [level=2] [ref=e295]:
+            - text: VISIT THE
+            - text: SHOWROOM.
+          - paragraph [ref=e296]: Experience our curated collection of luxury performance vehicles in person at our flagship location.
+        - generic [ref=e297]:
+          - 'link "Main Showroom 200 Jalan Sultan #04-17 S199018" [ref=e299] [cursor=pointer]':
+            - /url: https://google.com/maps/place/Allmotoring+Pte+Ltd/@1.303778,103.858701,17z/data=!3m1!5s0x31da110213baa51d:0xac090413e2685613!4m6!3m5!1s0x31da19dd486e0fd7:0x62e3a69ae3ae3b6c!8m2!3d1.303828!4d103.8614791!16s%2Fg%2F11qnywpl1f?entry=ttu
+            - img [ref=e301]
+            - generic [ref=e304]:
+              - paragraph [ref=e305]: Main Showroom
+              - paragraph [ref=e306]: "200 Jalan Sultan #04-17 S199018"
+          - 'link "Service Center 48 Toh Guan Road East #06-99 S608586" [ref=e308] [cursor=pointer]':
+            - /url: https://maps.google.com/?q=48+Toh+Guan+Road+East+Enterprise+Hub+S608586
+            - img [ref=e310]
+            - generic [ref=e313]:
+              - paragraph [ref=e314]: Service Center
+              - paragraph [ref=e315]: "48 Toh Guan Road East #06-99 S608586"
+          - link "Official Line +65 8100 0999" [ref=e317] [cursor=pointer]:
+            - /url: tel:+6581000999
+            - img [ref=e319]
+            - generic [ref=e321]:
+              - paragraph [ref=e322]: Official Line
+              - paragraph [ref=e323]: +65 8100 0999
+          - link "Email Inquiry admin@allmotoring.sg" [ref=e325] [cursor=pointer]:
+            - /url: mailto:admin@allmotoring.sg
+            - img [ref=e327]
+            - generic [ref=e330]:
+              - paragraph [ref=e331]: Email Inquiry
+              - paragraph [ref=e332]: admin@allmotoring.sg
+        - generic [ref=e333]:
+          - link [ref=e335] [cursor=pointer]:
+            - /url: https://www.instagram.com/allmotoring.sg/
+            - img [ref=e336]
+          - link [ref=e340] [cursor=pointer]:
+            - /url: https://www.facebook.com/allmotoring.sg/
+            - img [ref=e341]
+      - generic [ref=e345]:
+        - img [ref=e347]
+        - generic [ref=e350]:
+          - heading "PLAN YOUR VISIT" [level=3] [ref=e351]
+          - paragraph [ref=e352]: Our specialists are available for private viewings and personalized consultations.
+        - link "GET DIRECTIONS" [ref=e353] [cursor=pointer]:
+          - /url: https://google.com/maps/place/Allmotoring+Pte+Ltd/@1.303778,103.858701,17z/data=!3m1!5s0x31da110213baa51d:0xac090413e2685613!4m6!3m5!1s0x31da19dd486e0fd7:0x62e3a69ae3ae3b6c!8m2!3d1.303828!4d103.8614791!16s%2Fg%2F11qnywpl1f?entry=ttu
+          - text: GET DIRECTIONS
+          - img [ref=e354]
+    - generic [ref=e357]:
+      - paragraph [ref=e358]: Our Trusted Partners
+      - generic [ref=e359]:
+        - link "SVTA" [ref=e361] [cursor=pointer]:
+          - /url: "#"
+          - img "SVTA" [ref=e363]
+        - link "SGcarmart" [ref=e365] [cursor=pointer]:
+          - /url: https://www.sgcarmart.com/used-cars/listing?avl=a&dl=2867&utm_source=sgcm&utm_medium=website&utm_campaign=ucinfo_sellerinfo
+          - img "SGcarmart" [ref=e367]
+        - link "Motorist" [ref=e369] [cursor=pointer]:
+          - /url: https://www.motorist.sg/merchant/1017/allmotoring-pte-ltd/vehicle-listings?srsltid=AfmBOopN5PuY5TWrUib9A4Eqp5-qlAAudANxQuPdsvToyFQynriiVdc3
+          - img "Motorist" [ref=e371]
+        - link "Mycarconsultant" [ref=e373] [cursor=pointer]:
+          - /url: https://mycarholdings.asia/
+          - img "Mycarconsultant" [ref=e375]
+    - generic [ref=e376]:
+      - generic [ref=e377]:
+        - generic [ref=e378]:
+          - heading "ALLMOTORING.SG" [level=3] [ref=e379]
+          - paragraph [ref=e380]: Singapore's specialist in pre-owned Porsche and luxury performance vehicles. Registered Pte Ltd with full workshop support.
+          - generic [ref=e381]:
+            - link [ref=e382] [cursor=pointer]:
+              - /url: https://www.instagram.com/allmotoring.sg/
+              - img [ref=e383]
+            - link [ref=e386] [cursor=pointer]:
+              - /url: https://www.facebook.com/allmotoring.sg/
+              - img [ref=e387]
+        - generic [ref=e389]:
+          - heading "Contact Us" [level=4] [ref=e390]
+          - list [ref=e391]:
+            - listitem [ref=e392]:
+              - img [ref=e393]
+              - generic [ref=e396]:
+                - paragraph [ref=e397]: Textile Centre
+                - 'link "200 Jalan Sultan, #02-05 Singapore 199018" [ref=e398] [cursor=pointer]':
+                  - /url: https://google.com/maps/place/Allmotoring+Pte+Ltd/@1.303778,103.858701,17z/data=!3m1!5s0x31da110213baa51d:0xac090413e2685613!4m6!3m5!1s0x31da19dd486e0fd7:0x62e3a69ae3ae3b6c!8m2!3d1.303828!4d103.8614791!16s%2Fg%2F11qnywpl1f?entry=ttu
+                  - text: "200 Jalan Sultan, #02-05"
+                  - text: Singapore 199018
+            - listitem [ref=e399]:
+              - img [ref=e400]
+              - link "+65 8100 0999" [ref=e402] [cursor=pointer]:
+                - /url: tel:+6581000999
+            - listitem [ref=e403]:
+              - img [ref=e404]
+              - link "sales@allmotoring.sg" [ref=e407] [cursor=pointer]:
+                - /url: mailto:sales@allmotoring.sg
+            - listitem [ref=e408]:
+              - img [ref=e409]
+              - generic [ref=e412]: "Mon - Sun: 10AM - 7PM"
+        - generic [ref=e413]:
+          - heading "Inventory" [level=4] [ref=e414]
+          - list [ref=e415]:
+            - listitem [ref=e416]:
+              - link "Porsche 911" [ref=e417] [cursor=pointer]:
+                - /url: /inventory
+            - listitem [ref=e418]:
+              - link "Porsche 718" [ref=e419] [cursor=pointer]:
+                - /url: /inventory
+            - listitem [ref=e420]:
+              - link "Taycan & Panamera" [ref=e421] [cursor=pointer]:
+                - /url: /inventory
+            - listitem [ref=e422]:
+              - link "SUV Collection" [ref=e423] [cursor=pointer]:
+                - /url: /inventory
+        - generic [ref=e424]:
+          - heading "Services" [level=4] [ref=e425]
+          - list [ref=e426]:
+            - listitem [ref=e427]:
+              - link "Consignment" [ref=e428] [cursor=pointer]:
+                - /url: /consignment
+            - listitem [ref=e429]:
+              - link "Workshop Booking" [ref=e430] [cursor=pointer]:
+                - /url: /workshop
+            - listitem [ref=e431]:
+              - link "Instant Valuation" [ref=e432] [cursor=pointer]:
+                - /url: /valuation
+            - listitem [ref=e433]:
+              - link "About Us" [ref=e434] [cursor=pointer]:
+                - /url: /about
+      - generic [ref=e435]:
+        - paragraph [ref=e436]: © 2026 All Motoring Pte Ltd. All rights reserved.
+        - generic [ref=e437]:
+          - link "Privacy Policy" [ref=e438] [cursor=pointer]:
+            - /url: /privacy
+          - link "Terms of Use" [ref=e439] [cursor=pointer]:
+            - /url: /terms
+  - generic [ref=e441]:
+    - generic: Toggle Day Mode
+    - button "Toggle Theme" [ref=e442]:
+      - img [ref=e444]
+  - generic [ref=e450] [cursor=pointer]:
+    - button "Open Next.js Dev Tools" [ref=e451]:
+      - img [ref=e452]
+    - generic [ref=e455]:
+      - button "Open issues overlay" [ref=e456]:
+        - generic [ref=e457]:
+          - generic [ref=e458]: "119"
+          - generic [ref=e459]: "120"
+        - generic [ref=e460]:
+          - text: Issue
+          - generic [ref=e461]: s
+      - button "Collapse issues badge" [ref=e462]:
+        - img [ref=e463]
+  - alert [ref=e465]

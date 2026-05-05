@@ -4,6 +4,7 @@ import React, { useEffect, useRef } from 'react';
 import { useParams, useRouter } from 'next/navigation';
 import gsap from 'gsap';
 import Link from 'next/link';
+import Image from 'next/image';
 import MaterialConfigurator from '@/app/components/MaterialConfigurator';
 import SiteNav from '@/app/components/SiteNav';
 import SiteFooter from '@/app/components/SiteFooter';
@@ -164,7 +165,7 @@ export default function ServiceDetailPage() {
         </div>
 
         <div className="hero-img-container order-1 lg:order-2 relative aspect-square lg:aspect-video rounded-[40px] overflow-hidden border border-white/10 shadow-[0_0_50px_rgba(0,0,0,0.5)]">
-          <img src={detail.heroImg} alt={detail.title} className="w-full h-full object-cover" />
+          <Image src={detail.heroImg} alt={detail.title} fill className="object-cover" />
           <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
         </div>
       </section>
@@ -199,7 +200,7 @@ export default function ServiceDetailPage() {
         <div className="reveal-text max-w-2xl mx-auto space-y-10">
           <h2 className="text-4xl font-serif italic text-white/90">Curious how this fits into your space?</h2>
           <Link href="/quotation" className="glass-btn primary py-6 px-12 group">
-            START ASSESSMENT →
+            CONTACT SALES →
           </Link>
         </div>
       </section>

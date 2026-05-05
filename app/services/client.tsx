@@ -4,6 +4,7 @@ import React, { useEffect, useState } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import Link from 'next/link';
+import Image from 'next/image';
 import SiteNav from '@/app/components/SiteNav';
 import SiteFooter from '@/app/components/SiteFooter';
 
@@ -162,15 +163,16 @@ export default function ServicesClient() {
             
             {/* AtrellisZipblinds® */}
             <div 
-              className="product-glass-row showcase-reveal flex gap-10 items-center bg-white/2 backdrop-blur-2xl p-10 rounded-[40px] border border-white/5"
+              className="product-glass-row showcase-reveal flex gap-10 items-center glass-panel p-10 rounded-[40px]"
               onMouseEnter={() => setHoveredProduct('Zipblinds')}
               onMouseLeave={() => setHoveredProduct(null)}
             >
-              <div className="product-image-col flex-[1.5] h-[400px] rounded-2xl overflow-hidden shadow-2xl">
-                <img 
+              <div className="product-image-col relative flex-[1.5] h-[400px] rounded-2xl overflow-hidden shadow-2xl">
+                <Image 
                   src={hoveredProduct === 'Zipblinds' ? ZIPBLIND_IMAGES[currentImageIndex] : '/assets/products/mockups/zipblinds_mockup_1775999699794.png'} 
                   alt="AtrellisZipblinds®" 
-                  className="w-full h-full object-cover transition-all duration-500"
+                  fill
+                  className="object-cover transition-all duration-500"
                 />
               </div>
               <div className="product-title-col flex-1">
@@ -192,15 +194,16 @@ export default function ServicesClient() {
 
             {/* Indoor Korean Combi / Zebra */}
             <div 
-              className="product-glass-row showcase-reveal flex gap-10 items-center bg-white/2 backdrop-blur-2xl p-10 rounded-[40px] border border-white/5"
+              className="product-glass-row showcase-reveal flex gap-10 items-center glass-panel p-10 rounded-[40px]"
               onMouseEnter={() => setHoveredProduct('Indoor Blinds')}
               onMouseLeave={() => setHoveredProduct(null)}
             >
-              <div className="product-image-col flex-[1.5] h-[400px] rounded-2xl overflow-hidden shadow-2xl">
-                <img 
+              <div className="product-image-col relative flex-[1.5] h-[400px] rounded-2xl overflow-hidden shadow-2xl">
+                <Image 
                   src={hoveredProduct === 'Indoor Blinds' ? BLIND_IMAGES[currentImageIndex] : '/assets/products/mockups/blinds_mockup_1775999717013.png'} 
                   alt="Indoor Blinds" 
-                  className="w-full h-full object-cover transition-all duration-500"
+                  fill
+                  className="object-cover transition-all duration-500"
                 />
               </div>
               <div className="product-title-col flex-1">
@@ -221,9 +224,9 @@ export default function ServicesClient() {
             </div>
 
             {/* Architectural Roofing */}
-            <div className="product-glass-row showcase-reveal flex gap-10 items-center bg-white/2 backdrop-blur-2xl p-10 rounded-[40px] border border-white/5">
-              <div className="product-image-col flex-[1.5] h-[400px] rounded-2xl overflow-hidden shadow-2xl">
-                <img src="/assets/products/mockups/roofing_mockup_1775999733894.png" alt="Architectural Roofing" className="w-full h-full object-cover" />
+            <div className="product-glass-row showcase-reveal flex gap-10 items-center glass-panel p-10 rounded-[40px]">
+              <div className="product-image-col relative flex-[1.5] h-[400px] rounded-2xl overflow-hidden shadow-2xl">
+                <Image src="/assets/products/mockups/roofing_mockup_1775999733894.png" alt="Architectural Roofing" fill className="object-cover" />
               </div>
               <div className="product-title-col flex-1">
                 <h3 className="text-5xl font-black mb-2 tracking-tight">A&A Roofing</h3>

@@ -3,11 +3,13 @@
 import React, { useEffect, useRef, useState } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import ResponsiveScrollPlayer from './components/ResponsiveScrollPlayer';
+import dynamic from 'next/dynamic';
+const ResponsiveScrollPlayer = dynamic(() => import('./components/ResponsiveScrollPlayer'), { ssr: false });
 import PreloaderOverlay from './components/PreloaderOverlay';
 import SiteNav from './components/SiteNav';
 import SiteFooter from './components/SiteFooter';
 import Link from 'next/link';
+import Image from 'next/image';
 import { useRouter } from 'next/navigation';
 
 if (typeof window !== 'undefined') {
@@ -94,7 +96,7 @@ export default function LandingPage() {
   };
 
   return (
-    <main className="bg-black text-white selection:bg-blue-500/30">
+    <main id="main-content" className="bg-black text-white selection:bg-blue-500/30">
       <PreloaderOverlay />
       <SiteNav />
       
@@ -130,9 +132,9 @@ export default function LandingPage() {
           </div>
 
           {/* Design Card */}
-          <Link href="/quotation" id="design-card" className="info-card right-card pointer-events-auto block transition-all hover:scale-[1.02] active:scale-95 group">
+          <Link href="/quotation" id="design-card" className="info-card right-card pointer-events-auto block transition-all hover:scale-[1.02] active:scale-95 group focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:ring-offset-black">
             <div className="card-line"></div>
-            <h3 className="text-4xl font-serif italic font-bold mb-5">Architectural A&A</h3>
+            <h2 className="text-4xl font-serif italic font-bold mb-5">Architectural A&A</h2>
             <ul className="text-white/50 space-y-4 font-light tracking-wide text-sm mb-6">
               <li>Landed Property A&A (Additions & Alterations)</li>
               <li>BCA & URA Regulatory Submissions</li>
@@ -142,9 +144,9 @@ export default function LandingPage() {
           </Link>
 
           {/* Build Card */}
-          <Link href="/quotation" id="build-card" className="info-card left-card pointer-events-auto block transition-all hover:scale-[1.02] active:scale-95 group">
+          <Link href="/quotation" id="build-card" className="info-card left-card pointer-events-auto block transition-all hover:scale-[1.02] active:scale-95 group focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:ring-offset-black">
             <div className="card-line"></div>
-            <h3 className="text-xl uppercase tracking-[4px] font-black mb-5">AtrellisZipblinds®</h3>
+            <h2 className="text-xl uppercase tracking-[4px] font-black mb-5">AtrellisZipblinds®</h2>
             <ol className="process-list space-y-4 text-white/50 font-light italic text-sm mb-6">
               <li className="flex items-center gap-4"><span className="w-6 h-6 rounded-full bg-blue-500 text-white flex items-center justify-center text-[10px] font-bold not-italic">1</span> Online Assessment</li>
               <li className="flex items-center gap-4"><span className="w-6 h-6 rounded-full bg-blue-500 text-white flex items-center justify-center text-[10px] font-bold not-italic">2</span> Proprietary Omni-Tension™ Install</li>
@@ -153,27 +155,45 @@ export default function LandingPage() {
             <div className="text-[0.6rem] uppercase tracking-[3px] text-blue-500 font-black opacity-0 group-hover:opacity-100 transition-opacity">Launch Assessment &rarr;</div>
           </Link>
 
-          {/* Final Conversion Reveal */}
-          <div id="cta-reveal" className="flex flex-col items-center gap-8 pointer-events-auto">
-            <button 
-              onClick={triggerJourney}
-              className="start-journey-btn relative px-12 py-6 bg-transparent border border-white/20 text-white font-black uppercase tracking-[6px] text-lg overflow-hidden group hover:border-blue-500 transition-all duration-500"
-            >
-              <div className="absolute inset-0 bg-blue-600/10 translate-y-full group-hover:translate-y-0 transition-transform duration-500"></div>
-              START ASSESSMENT
-            </button>
+          {/* Final Conversion Reveal & Role Paths */}
+          <div id="cta-reveal" className="flex flex-col items-center gap-6 pointer-events-auto mt-10">
+            <h3 className="text-white/50 text-sm uppercase tracking-[4px] font-bold">Choose Your Path</h3>
+            <div className="flex flex-col sm:flex-row gap-6 items-center">
+              <button 
+                onClick={triggerJourney}
+                className="start-journey-btn relative px-10 py-5 bg-transparent border border-white/20 text-white font-black uppercase tracking-[4px] text-sm overflow-hidden group hover:border-blue-500 transition-all duration-500 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:ring-offset-black"
+              >
+                <div className="absolute inset-0 bg-blue-600/10 translate-y-full group-hover:translate-y-0 transition-transform duration-500"></div>
+                FOR HOMEOWNERS
+              </button>
+              <Link
+                href="/services"
+                className="start-journey-btn relative px-10 py-5 bg-transparent border border-white/20 text-white font-black uppercase tracking-[4px] text-sm overflow-hidden group hover:border-blue-500 transition-all duration-500 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:ring-offset-black"
+              >
+                <div className="absolute inset-0 bg-blue-600/10 translate-y-full group-hover:translate-y-0 transition-transform duration-500"></div>
+                FOR COMMERCIAL
+              </Link>
+            </div>
           </div>
 
         </div>
       </div>
 
-      {/* Trust Visibility Bar */}
-      <section className="bg-black py-20 px-8 border-t border-white/5">
-        <div className="max-w-7xl mx-auto flex flex-wrap justify-center gap-10 md:gap-20 opacity-60 hover:opacity-100 transition-all duration-700">
-          <img src="/assets/trustbar_logos/nippon_paint_clean.png" alt="Nippon Paint" className="h-10 w-auto" />
-          <img src="/assets/trustbar_logos/bizsafe3_clean.png" alt="bizSafe3" className="h-10 w-auto" />
-          <img src="/assets/trustbar_logos/hdb_licensed_clean.png" alt="HDB" className="h-10 w-auto" />
-          <img src="/assets/trustbar_logos/bca_authority_clean.png" alt="BCA" className="h-10 w-auto" />
+      {/* Trust Visibility Bar - Infinite Marquee */}
+      <section className="bg-black py-20 border-t border-white/5 overflow-hidden">
+        <div className="flex w-[200%] animate-marquee opacity-60 hover:opacity-100 transition-all duration-700">
+          <div className="flex w-1/2 justify-around items-center px-10">
+            <Image src="/assets/trustbar_logos/nippon_paint_clean.png" alt="Nippon Paint" width={160} height={40} className="h-10 w-auto object-contain" />
+            <Image src="/assets/trustbar_logos/bizsafe3_clean.png" alt="bizSafe3" width={160} height={40} className="h-10 w-auto object-contain" />
+            <Image src="/assets/trustbar_logos/hdb_licensed_clean.png" alt="HDB" width={160} height={40} className="h-10 w-auto object-contain" />
+            <Image src="/assets/trustbar_logos/bca_authority_clean.png" alt="BCA" width={160} height={40} className="h-10 w-auto object-contain" />
+          </div>
+          <div className="flex w-1/2 justify-around items-center px-10">
+            <Image src="/assets/trustbar_logos/nippon_paint_clean.png" alt="Nippon Paint" width={160} height={40} className="h-10 w-auto object-contain" />
+            <Image src="/assets/trustbar_logos/bizsafe3_clean.png" alt="bizSafe3" width={160} height={40} className="h-10 w-auto object-contain" />
+            <Image src="/assets/trustbar_logos/hdb_licensed_clean.png" alt="HDB" width={160} height={40} className="h-10 w-auto object-contain" />
+            <Image src="/assets/trustbar_logos/bca_authority_clean.png" alt="BCA" width={160} height={40} className="h-10 w-auto object-contain" />
+          </div>
         </div>
       </section>
 
@@ -199,7 +219,7 @@ export default function LandingPage() {
               { num: '98%', label: 'Client Satisfaction' },
               { num: '<15min', label: 'Speed-to-Lead' },
             ].map(({ num, label }) => (
-              <div key={label} className="p-8 bg-white/[0.03] border border-white/8 rounded-3xl">
+              <div key={label} className="p-8 glass-panel rounded-3xl">
                 <p className="text-4xl font-black text-blue-500 mb-2">{num}</p>
                 <p className="text-white/40 text-sm uppercase tracking-[2px]">{label}</p>
               </div>

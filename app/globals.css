@@ -4,14 +4,22 @@
 
 /* Liquid Glass Design System - V2 (Premium Refinement) */
 :root {
-    --glass-background: rgba(255, 255, 255, 0.03);
-    --glass-border: rgba(255, 255, 255, 0.12);
-    --glass-blur: blur(30px) saturate(180%); /* Enhanced Apple Blur */
-    --accent-blue: #007AFF; 
+    --glass-background: rgba(255, 255, 255, 0.05);
+    --glass-border: rgba(255, 255, 255, 0.15);
+    --glass-blur: blur(24px) saturate(180%);
+    --accent-blue: #0369A1; 
     --text-offwhite: rgba(255, 255, 255, 0.95);
-    --text-grey: rgba(255, 255, 255, 0.5);
+    --text-grey: rgba(255, 255, 255, 0.6);
     --font-main: 'Outfit', sans-serif;
     --font-serif: 'Cormorant Garamond', serif;
+    --font-poppins: 'Poppins', sans-serif;
+}
+
+.glass-panel {
+    background: var(--glass-background);
+    border: 1px solid var(--glass-border);
+    backdrop-filter: var(--glass-blur);
+    -webkit-backdrop-filter: var(--glass-blur);
 }
 
 * {

@@ -47,8 +47,16 @@ export default function PreloaderOverlay() {
         playsInline
         autoPlay
         onEnded={() => setVideoEnded(true)}
+        onError={() => setVideoEnded(true)}
+        onStalled={() => {
+          // If video stalls for 3s, treat as ended
+          setTimeout(() => setVideoEnded(true), 3000);
+        }}
         onLoadedData={() => {
-          videoRef.current?.play().catch(() => {});
+          videoRef.current?.play().catch(() => {
+            // Autoplay blocked (e.g. mobile) — skip preloader
+            setVideoEnded(true);
+          });
         }}
       />
       
