@@ -22,7 +22,7 @@ export default function LandingPage() {
 
   useEffect(() => {
     // 1. Initial State — hero headline visible, cards hidden
-    gsap.set(['#design-card', '#build-card', '#cta-reveal'], { opacity: 0, scale: 0.95, filter: 'blur(10px)' });
+    gsap.set(['#cta-reveal'], { opacity: 0, scale: 0.95, filter: 'blur(10px)' });
     gsap.set('#hero-headline', { opacity: 1, y: 0 });
 
     // 2. Main Scroll Timeline
@@ -30,7 +30,7 @@ export default function LandingPage() {
       scrollTrigger: {
         trigger: containerRef.current,
         start: 'top top',
-        end: '+=500%', // Sync with total scroll duration
+        end: '+=200%', // Reduced scroll duration since cards are removed
         scrub: 1,
         pin: true,
       }
@@ -43,43 +43,14 @@ export default function LandingPage() {
       filter: 'blur(8px)',
       duration: 1.5,
     }, 0);
-    tl.to({}, { duration: 0.5 });
 
-    // Segment 2: Design Section (20-45%)
-    tl.to('#design-card', { 
-      opacity: 1, 
-      scale: 1, 
-      filter: 'blur(0px)', 
-      duration: 1 
-    }, 2)
-    .to('#design-card', { 
-      opacity: 0, 
-      scale: 1.05, 
-      filter: 'blur(10px)', 
-      duration: 1 
-    }, 4.5);
-
-    // Segment 3: Build Section (50-75%)
-    tl.to('#build-card', { 
-      opacity: 1, 
-      scale: 1, 
-      filter: 'blur(0px)', 
-      duration: 1 
-    }, 5)
-    .to('#build-card', { 
-      opacity: 0, 
-      scale: 1.05, 
-      filter: 'blur(10px)', 
-      duration: 1 
-    }, 7.5);
-
-    // Segment 4: Call to Action (85-100%)
+    // Segment 2: Call to Action
     tl.to('#cta-reveal', { 
       opacity: 1, 
       y: 0, 
       filter: 'blur(0px)', 
       duration: 1.5 
-    }, 8.5);
+    }, 1.5);
 
     return () => {
       ScrollTrigger.getAll().forEach(t => t.kill());
@@ -130,30 +101,6 @@ export default function LandingPage() {
               <div className="w-1 h-2 bg-blue-500 rounded-full absolute top-2 left-1/2 -translate-x-1/2 animate-bounce"></div>
             </div>
           </div>
-
-          {/* Design Card */}
-          <Link href="/quotation" id="design-card" className="info-card right-card pointer-events-auto block transition-all hover:scale-[1.02] active:scale-95 group focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:ring-offset-black">
-            <div className="card-line"></div>
-            <h2 className="text-4xl font-serif italic font-bold mb-5">Architectural A&A</h2>
-            <ul className="text-white/50 space-y-4 font-light tracking-wide text-sm mb-6">
-              <li>Landed Property A&A (Additions & Alterations)</li>
-              <li>BCA & URA Regulatory Submissions</li>
-              <li>Bespoke 3D Visualization & Planning</li>
-            </ul>
-            <div className="text-[0.6rem] uppercase tracking-[3px] text-blue-500 font-black opacity-0 group-hover:opacity-100 transition-opacity">Launch Assessment &rarr;</div>
-          </Link>
-
-          {/* Build Card */}
-          <Link href="/quotation" id="build-card" className="info-card left-card pointer-events-auto block transition-all hover:scale-[1.02] active:scale-95 group focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:ring-offset-black">
-            <div className="card-line"></div>
-            <h2 className="text-xl uppercase tracking-[4px] font-black mb-5">AtrellisZipblinds®</h2>
-            <ol className="process-list space-y-4 text-white/50 font-light italic text-sm mb-6">
-              <li className="flex items-center gap-4"><span className="w-6 h-6 rounded-full bg-blue-500 text-white flex items-center justify-center text-[10px] font-bold not-italic">1</span> Online Assessment</li>
-              <li className="flex items-center gap-4"><span className="w-6 h-6 rounded-full bg-blue-500 text-white flex items-center justify-center text-[10px] font-bold not-italic">2</span> Proprietary Omni-Tension™ Install</li>
-              <li className="flex items-center gap-4"><span className="w-6 h-6 rounded-full bg-blue-500 text-white flex items-center justify-center text-[10px] font-bold not-italic">3</span> Site Handover & Smart Setup</li>
-            </ol>
-            <div className="text-[0.6rem] uppercase tracking-[3px] text-blue-500 font-black opacity-0 group-hover:opacity-100 transition-opacity">Launch Assessment &rarr;</div>
-          </Link>
 
           {/* Final Conversion Reveal & Role Paths */}
           <div id="cta-reveal" className="flex flex-col items-center gap-6 pointer-events-auto mt-10">
