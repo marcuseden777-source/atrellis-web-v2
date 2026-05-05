@@ -74,7 +74,7 @@ export default function SiteNav({
                 <div className="absolute top-full left-0 mt-4 w-64 bg-black/90 backdrop-blur-xl border border-white/10 rounded-2xl p-4 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 shadow-2xl flex flex-col gap-2 z-50">
                   <Link href="/services#architectural" className="px-4 py-3 text-sm text-white/70 hover:text-white hover:bg-white/5 rounded-xl transition-colors">Architectural A&A</Link>
                   <Link href="/services#smart-home" className="px-4 py-3 text-sm text-white/70 hover:text-white hover:bg-white/5 rounded-xl transition-colors">Smart Home Ecosystems</Link>
-                  <Link href="/services#zipblinds" className="px-4 py-3 text-sm text-white/70 hover:text-white hover:bg-white/5 rounded-xl transition-colors">AtrellisZipblinds®</Link>
+                  <Link href="/zipblinds" className="px-4 py-3 text-sm text-white/70 hover:text-white hover:bg-white/5 rounded-xl transition-colors">AtrellisZipblinds®</Link>
                 </div>
               )}
             </div>
