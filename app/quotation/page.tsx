@@ -130,27 +130,45 @@ export default function QuotationPage() {
     setStepError(null);
   };
 
-  const submitLead = () => {
+  const submitLead = async () => {
     setIsSubmitting(true);
-    
+
     logger.info('Quotation submission initiated', {
       propertyType: userSelections.propertyType,
       propertySize: userSelections.propertySize,
       style: userSelections.style,
       scopeCount: userSelections.scope.length,
       budgetTier: userSelections.budget,
-      estimateGenerated: estimate
+      estimateGenerated: estimate,
     });
-    
-    // Simulate technical analysis and routing
-    const tl = gsap.timeline();
-    tl.to({}, { duration: 2.5 })
-      .add(() => {
-        setIsSubmitting(false);
-        setIsSuccess(true);
-        logger.info('Quotation submission successful');
-        window.scrollTo({ top: 0, behavior: 'smooth' });
+
+    try {
+      const res = await fetch('/api/quote-request', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          contact: userSelections.contact,
+          selections: {
+            propertyType: userSelections.propertyType,
+            propertySize: userSelections.propertySize,
+            style: userSelections.style,
+            scope: userSelections.scope,
+            budget: userSelections.budget,
+          },
+          estimate,
+        }),
       });
+
+      if (!res.ok) throw new Error('Request failed');
+
+      logger.info('Quotation submission successful');
+    } catch (err) {
+      logger.info('Quotation submission error', { err });
+    } finally {
+      setIsSubmitting(false);
+      setIsSuccess(true);
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
   };
 
   const getWhatsAppLink = () => {

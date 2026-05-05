@@ -7,25 +7,16 @@ import Link from 'next/link';
 import Image from 'next/image';
 import SiteNav from '@/app/components/SiteNav';
 import SiteFooter from '@/app/components/SiteFooter';
+import { ServicesRepository } from '@/lib/repositories/services-repository';
+import { PortfolioRepository } from '@/lib/repositories/portfolio-repository';
 
 // Register ScrollTrigger plugin
 if (typeof window !== 'undefined') {
   gsap.registerPlugin(ScrollTrigger);
 }
 
-const serviceCards = [
-  { id: 1, title: 'Residential Turnkey', description: 'Complete design-and-build solutions for HDB BTO, Resale, and Luxury Condominiums.', features: ['BTO Package Optimization', 'Condo Spatial Flow', 'Integrated ID & Build'] },
-  { id: 2, title: 'Architectural A&A', description: 'Additions & Alterations for Landed Properties, managing structural extensions and facade rebuilds.', features: ['BCA & URA Submissions', 'Licensed PE/Architect Support', 'Landed Property Rebuilds'] },
-  { id: 3, title: 'Waterproofing & Sealing', description: 'Professional seepage repair using the latest injection and membrane technologies.', features: ['No-Hacking PU Grouting', 'Torch-on Roofing Membrane', '24hr Water Ponding Tests'] },
-  { id: 4, title: 'Bespoke Carpentry', description: 'Precision-engineered woodwork for premium kitchens and architectural built-ins.', features: ['Quartz & Sintered Stone', 'Blum/Hettich Hardware', 'Custom Floor-to-Ceiling'] },
-  { id: 5, title: 'Smart Ecosystems', description: 'Hardwired smart home automation specializing in motorized shading and climate control.', features: ['Somfy Home Automation', 'Voice-Controlled Blinds', 'Integrated App Ecosystems'] },
-  { id: 6, title: 'Outdoor Living', description: 'Structural balcony and roof extensions utilizing heavy-duty galvanized steel framing.', features: ['Galvanized Steel Structures', 'Weatherproof Decking', 'Architectural Cladding'] },
-];
-
-const portfolioCards = [
-  { id: 1, title: 'Sentosa Cove / Modern Luxury', description: 'AtrellisZipblinds® integration with structural A&A facade works.', imagePath: '/assets/projects/sentosa_after.png', slug: 'sentosa-cove' },
-  { id: 2, title: 'Marina One / Minimalist Loft', description: 'Space optimization featuring Korean Combi systems and smart lighting.', imagePath: '/assets/projects/marina_after.png', slug: 'marina-one' },
-];
+const serviceCards = ServicesRepository.findAll();
+const portfolioCards = PortfolioRepository.findFeatured().slice(0, 2);
 
 const ZIPBLIND_IMAGES = [
   '/assets/products/zipblinds/Zipblind images/Zipblind_202604031305.jpeg',
@@ -135,10 +126,10 @@ export default function ServicesClient() {
           <h2 className="section-title showcase-reveal">CASE STUDIES</h2>
           <div className="portfolio-grid">
             {portfolioCards.map((card) => (
-              <Link href={`/portfolio/${card.slug}`} key={card.id} className="portfolio-card showcase-reveal block no-underline overflow-hidden border border-white/5 bg-white/2 hover:border-white/20 transition-all group">
-                <div 
-                  className="portfolio-img h-[300px] bg-cover bg-center transition-transform duration-700 group-hover:scale-110" 
-                  style={{ backgroundImage: `url('${card.imagePath}')` }}
+              <Link href={`/portfolio/${card.slug}`} key={card.slug} className="portfolio-card showcase-reveal block no-underline overflow-hidden border border-white/5 bg-white/2 hover:border-white/20 transition-all group">
+                <div
+                  className="portfolio-img h-[300px] bg-cover bg-center transition-transform duration-700 group-hover:scale-110"
+                  style={{ backgroundImage: `url('${card.thumbnail}')` }}
                 />
                 <div className="portfolio-info p-8">
                   <h4 className="text-xl font-bold mb-2">{card.title}</h4>

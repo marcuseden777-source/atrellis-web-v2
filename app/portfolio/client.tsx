@@ -7,35 +7,13 @@ import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import SiteNav from '@/app/components/SiteNav';
 import SiteFooter from '@/app/components/SiteFooter';
+import { PortfolioRepository } from '@/lib/repositories/portfolio-repository';
 
 if (typeof window !== 'undefined') {
   gsap.registerPlugin(ScrollTrigger);
 }
 
-const PORTFOLIO_PROJECTS = [
-  {
-    slug: 'sentosa-cove',
-    title: 'Sentosa Cove Waterfront',
-    location: 'Ocean Drive, Sentosa',
-    category: 'Landed A&A · Outdoor Structures',
-    vost: 'S$45,000 – S$65,000',
-    description:
-      'A complete terrace overhaul for a prestigious waterfront penthouse — heavy-duty structural framework supporting oversized AtrellisZipblinds® against coastal wind loads.',
-    thumbnail: '/assets/portfolio/sentosa_cove.png',
-    tags: ['AtrellisZipblinds®', 'Galvanized Steel', 'BCA Compliant'],
-  },
-  {
-    slug: 'marina-one',
-    title: 'Marina One Smart Loft',
-    location: 'Marina Way, Core Central Region',
-    category: 'Luxury Residential · Smart Home',
-    vost: 'S$25,000 – S$35,000',
-    description:
-      'Transforming a cluttered urban loft into a minimalist Japandi sanctuary through hidden storage architecture, Korean Combi systems, and smart lighting automation.',
-    thumbnail: '/assets/portfolio/marina_one_loft.png',
-    tags: ['Korean Combi', 'Smart Lighting', 'Japandi'],
-  },
-];
+const PORTFOLIO_PROJECTS = PortfolioRepository.findAll();
 
 export default function PortfolioPageClient() {
   useEffect(() => {
