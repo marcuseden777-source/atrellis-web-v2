@@ -108,7 +108,7 @@ export default function ResponsiveScrollPlayer({
       scrollTrigger: {
         trigger: containerRef.current,
         start: 'top top',
-        end: '+=500%',
+        end: '+=200%',
         scrub: 1.5,
         pin: true,
         onUpdate: (self) => {
