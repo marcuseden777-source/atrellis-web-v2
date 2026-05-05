@@ -126,19 +126,19 @@ export default function LandingPage() {
       </div>
 
       {/* Trust Visibility Bar - Infinite Marquee */}
-      <section className="bg-black py-20 border-t border-white/5 overflow-hidden">
-        <div className="flex w-[200%] animate-marquee opacity-60 hover:opacity-100 transition-all duration-700">
+      <section className="bg-slate-50 py-16 overflow-hidden">
+        <div className="flex w-[200%] animate-marquee opacity-80 hover:opacity-100 transition-all duration-700">
           <div className="flex w-1/2 justify-around items-center px-10">
-            <Image src="/assets/trustbar_logos/nippon_paint_nobg.png" alt="Nippon Paint" width={160} height={40} className="h-10 w-auto object-contain brightness-0 invert" />
-            <Image src="/assets/trustbar_logos/bizsafe3_nobg.png" alt="bizSafe3" width={160} height={40} className="h-10 w-auto object-contain brightness-0 invert" />
-            <Image src="/assets/trustbar_logos/hdb_licensed_nobg.png" alt="HDB" width={160} height={40} className="h-10 w-auto object-contain brightness-0 invert" />
-            <Image src="/assets/trustbar_logos/bca_authority_nobg.png" alt="BCA" width={160} height={40} className="h-10 w-auto object-contain brightness-0 invert" />
+            <Image src="/assets/trustbar_logos/nippon_paint_nobg.png" alt="Nippon Paint" width={160} height={40} className="h-12 w-auto object-contain" />
+            <Image src="/assets/trustbar_logos/bizsafe3_nobg.png" alt="bizSafe3" width={160} height={40} className="h-12 w-auto object-contain" />
+            <Image src="/assets/trustbar_logos/hdb_licensed_nobg.png" alt="HDB" width={160} height={40} className="h-12 w-auto object-contain" />
+            <Image src="/assets/trustbar_logos/bca_authority_nobg.png" alt="BCA" width={160} height={40} className="h-12 w-auto object-contain" />
           </div>
           <div className="flex w-1/2 justify-around items-center px-10">
-            <Image src="/assets/trustbar_logos/nippon_paint_nobg.png" alt="Nippon Paint" width={160} height={40} className="h-10 w-auto object-contain brightness-0 invert" />
-            <Image src="/assets/trustbar_logos/bizsafe3_nobg.png" alt="bizSafe3" width={160} height={40} className="h-10 w-auto object-contain brightness-0 invert" />
-            <Image src="/assets/trustbar_logos/hdb_licensed_nobg.png" alt="HDB" width={160} height={40} className="h-10 w-auto object-contain brightness-0 invert" />
-            <Image src="/assets/trustbar_logos/bca_authority_nobg.png" alt="BCA" width={160} height={40} className="h-10 w-auto object-contain brightness-0 invert" />
+            <Image src="/assets/trustbar_logos/nippon_paint_nobg.png" alt="Nippon Paint" width={160} height={40} className="h-12 w-auto object-contain" />
+            <Image src="/assets/trustbar_logos/bizsafe3_nobg.png" alt="bizSafe3" width={160} height={40} className="h-12 w-auto object-contain" />
+            <Image src="/assets/trustbar_logos/hdb_licensed_nobg.png" alt="HDB" width={160} height={40} className="h-12 w-auto object-contain" />
+            <Image src="/assets/trustbar_logos/bca_authority_nobg.png" alt="BCA" width={160} height={40} className="h-12 w-auto object-contain" />
           </div>
         </div>
       </section>

@@ -101,7 +101,7 @@ export default function SiteFooter() {
               alt={logo.alt}
               width={120}
               height={30}
-              className="site-footer-trust-logo brightness-0 invert"
+              className="site-footer-trust-logo bg-white/95 p-2 rounded-lg hover:scale-105 transition-transform"
             />
           ))}
         </div>
