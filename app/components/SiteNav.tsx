@@ -48,11 +48,11 @@ export default function SiteNav({
         {/* Logo */}
         <Link href="/" className="site-nav-logo flex items-center" aria-label="Atrellis Home">
           <Image
-            src="/assets/trustbar_logos/atrellis_brand_nobg.png"
+            src="/assets/trustbar_logos/atrellis_brand.png"
             alt="Atrellis"
             width={120}
             height={35}
-            className="h-[35px] w-auto object-contain"
+            className="h-[35px] w-auto object-contain brightness-0 invert mix-blend-screen"
             priority
           />
           {breadcrumb && (

@@ -26,13 +26,14 @@ export default function SiteFooter() {
 
           {/* Brand column */}
           <div className="site-footer-brand">
-            <Link href="/" aria-label="Atrellis Home">
+            <Link href="/" className="inline-block mb-4" aria-label="Atrellis Home">
               <Image
-                src="/assets/trustbar_logos/atrellis_brand_nobg.png"
+                src="/assets/trustbar_logos/atrellis_brand.png"
                 alt="Atrellis"
-                width={120}
-                height={35}
-                className="site-footer-logo"
+                width={160}
+                height={45}
+                className="site-footer-logo brightness-0 invert mix-blend-screen"
+                priority
               />
             </Link>
             <p className="site-footer-tagline">
