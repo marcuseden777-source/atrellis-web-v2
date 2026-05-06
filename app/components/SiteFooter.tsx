@@ -32,7 +32,7 @@ export default function SiteFooter() {
                 alt="Atrellis"
                 width={160}
                 height={45}
-                className="site-footer-logo"
+                className="site-footer-logo brightness-0 invert"
                 priority
               />
             </Link>

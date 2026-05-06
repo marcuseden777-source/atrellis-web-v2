@@ -52,7 +52,7 @@ export default function SiteNav({
             alt="Atrellis"
             width={120}
             height={35}
-            className="h-[35px] w-auto object-contain"
+            className="h-[35px] w-auto object-contain brightness-0 invert"
             priority
           />
           {breadcrumb && (
