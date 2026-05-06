@@ -28,11 +28,11 @@ export default function SiteFooter() {
           <div className="site-footer-brand">
             <Link href="/" className="inline-block mb-4" aria-label="Atrellis Home">
               <Image
-                src="/assets/trustbar_logos/atrellis_brand.png"
+                src="/assets/trustbar_logos/atrellis_brand_nobg.png"
                 alt="Atrellis"
                 width={160}
                 height={45}
-                className="site-footer-logo brightness-0 invert mix-blend-screen"
+                className="site-footer-logo"
                 priority
               />
             </Link>
